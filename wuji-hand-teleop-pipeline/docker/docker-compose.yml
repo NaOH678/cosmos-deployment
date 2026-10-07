@@ -1,0 +1,117 @@
+# ===========================================
+# Wuji Hand Teleop Docker Compose
+# ===========================================
+#
+# Prerequisites (host):
+#   sudo apt-get install docker.io docker-compose-plugin
+#   sudo usermod -aG docker $USER && newgrp docker
+#   sudo apt-get install git-lfs && git lfs install && git lfs pull
+#
+# Usage:
+#   cd docker
+#   docker compose build                    # Build the image
+#   docker compose up -d                    # Start the container
+#   docker exec -it wuji-hand-teleop bash   # Open a shell inside
+#
+# Start teleop inside the container:
+#   ros2 launch wuji_teleop_bringup wuji_teleop.launch.py
+#
+# Accelerate the build behind a slow PyPI mirror:
+#   docker compose build --build-arg PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+#
+# ===========================================
+
+services:
+  teleop:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY:-}
+        HTTPS_PROXY: ${HTTPS_PROXY:-}
+        NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1}
+        http_proxy: ${http_proxy:-}
+        https_proxy: ${https_proxy:-}
+        no_proxy: ${no_proxy:-localhost,127.0.0.1}
+      # Host users commonly expose an HTTP proxy on 127.0.0.1. BuildKit's
+      # default bridge would resolve that address inside the build container.
+      network: host
+    image: wuji-hand-teleop:latest
+    container_name: wuji-hand-teleop
+    # Auto-start on boot and after a crash, so a host reboot brings the teleop
+    # container back without a manual `docker start`. 'unless-stopped' still
+    # honors an explicit `docker stop` by the operator.
+    restart: unless-stopped
+    # --- Network & IPC ---
+    network_mode: host                  # ROS2 DDS multi-host discovery
+    ipc: host                           # ROS2 shared-memory transport
+    pid: host                           # SteamVR IPC needs a shared PID namespace
+
+    # Lets entrypoint.sh pin per-glove /32 routes when the harness wires each
+    # glove receiver to a separate NIC on the same subnet (see
+    # scripts/setup_glove_routes.sh). Editing the host routing table needs
+    # NET_ADMIN; harmless on single-NIC setups where the script is a no-op.
+    cap_add:
+      - NET_ADMIN
+
+    # --- PID 1 management ---
+    # PC-Service runs as a background process; init reaps zombies + forwards signals.
+    init: true
+
+    # --- GPU (optional, NVENC hardware H.264 encoding) ---
+    # Uncomment the block below when an NVIDIA GPU is available; host needs
+    # nvidia-container-toolkit. Without GPU the build falls back to libx264
+    # software encoding automatically (no functional change).
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+    # --- Device access ---
+    device_cgroup_rules:
+      - 'c 81:* rmw'                   # video4linux (cameras)
+      - 'c 189:* rmw'                  # USB (MANUS, RealSense)
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - TZ=Asia/Shanghai
+      - HOST_HOME=${HOME}                  # used by SteamVR path resolution
+      # The container uses host networking, so a loopback proxy on the host is
+      # reachable at the same address. Pass both spellings because apt/pip and
+      # Python tooling do not consistently use the same case.
+      - HTTP_PROXY=${HTTP_PROXY:-}
+      - HTTPS_PROXY=${HTTPS_PROXY:-}
+      - NO_PROXY=${NO_PROXY:-localhost,127.0.0.1}
+      - http_proxy=${http_proxy:-}
+      - https_proxy=${https_proxy:-}
+      - no_proxy=${no_proxy:-localhost,127.0.0.1}
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw  # GUI passthrough (rviz, rqt)
+      - /dev:/dev:rw                       # device hot-plug
+      - ../src:/home/wuji/ros2_ws/src:rw   # bind-mount the host source tree
+      - ../datasets:/home/wuji/datasets:rw # LMDB/MP4 episodes survive container rebuilds
+      # --- Wuji Studio calibration ---
+      # Studio writes <SN>.toml to host ~/.wuji/sdk/params/; SDK reads it in
+      # the container. entrypoint.sh chowns this if docker auto-created it as root.
+      - ${HOME}/.wuji:/home/wuji/.wuji:rw
+      # --- SteamVR / OpenVR (HTC Vive Tracker path only) ---
+      # PICO-only users may comment this out or leave it (the empty dir is harmless).
+      - ${HOME}/.steam:/home/wuji/.steam:ro
+
+    # --- Log rotation (avoid filling disk during long runs) ---
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+    user: wuji
+    stdin_open: true
+    tty: true
+    command: bash

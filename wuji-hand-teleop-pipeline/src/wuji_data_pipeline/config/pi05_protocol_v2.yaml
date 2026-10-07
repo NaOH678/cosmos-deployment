@@ -1,0 +1,195 @@
+recording:
+  output_dir: "~/datasets/tianji_wuji"
+  frame_rate: 30.0
+  sync_tolerance_s: 0.04
+  buffer_seconds: 3.0
+  lmdb_map_size: 1099511627776  # 1 TiB virtual map; disk grows on demand.
+  video_fourcc: "mp4v"
+  require_cameras: true
+  camera_names: [head, left_wrist, right_wrist]
+  # Stage D default: images bypass ROS 2/DDS.  Set camera_transport to "ros"
+  # only for migration comparison with the previous pipeline.
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  # Analysis-only RealSense streams. These never participate in readiness,
+  # training-frame rejection, GUI preview, deployment, or replay.
+  auxiliary_camera:
+    enabled: true
+    depth_camera_names: [head, left_wrist, right_wrist]
+    infrared_stream_names: [head_ir_left, head_ir_right]
+    sync_tolerance_s: 0.06
+    queue_capacity: 64
+    # Head D435 Stereo Module is currently constrained to 6 Hz by USB 2.1.
+    infrared_frame_rate: 6.0
+    # OpenCV PNG level 1 is lossless and keeps recorder CPU bounded.
+    depth_png_compression: 1
+
+# Optional analysis-only inputs. They never participate in source readiness,
+# frame skipping, robot commands, or replay. Missing samples are stored with
+# available/valid=0 while the original training frame is still recorded.
+teleop_diagnostics:
+  enabled: true
+  sync_tolerance_s: 0.10
+  tracker_topic: "/openvr/tracker_diagnostics"
+  tracker_roles: [chest, left_wrist, right_wrist, left_arm, right_arm]
+  manus_topics: ["/manus_glove_0", "/manus_glove_1"]
+  manus_node_count: 25
+  manus_sensor_count: 5
+  manus_ergonomics_count: 20
+
+topics:
+  arm:
+    left:
+      state: "/left_arm/joint_states"
+      command: "/left_arm/joint_commands"
+      actual_eef: "/left_arm/actual_ee_pose"
+      target_eef: "/left_arm/target_ee_pose"
+      zsp: "/left_arm/zsp_para"
+      external_target: "/left_arm/external_target_pose"
+      external_zsp: "/left_arm/external_zsp"
+    right:
+      state: "/right_arm/joint_states"
+      command: "/right_arm/joint_commands"
+      actual_eef: "/right_arm/actual_ee_pose"
+      target_eef: "/right_arm/target_ee_pose"
+      zsp: "/right_arm/zsp_para"
+      external_target: "/right_arm/external_target_pose"
+      external_zsp: "/right_arm/external_zsp"
+  hand:
+    left:
+      state: "/left_hand/joint_states"
+      command: "/left_hand/joint_commands"
+    right:
+      state: "/right_hand/joint_states"
+      command: "/right_hand/joint_commands"
+  camera:
+    head:
+      topic: "/cam_head/color/image_raw/compressed"
+      type: "compressed"
+    left_wrist:
+      topic: "/cam_left_wrist/color/image_raw/compressed"
+      type: "compressed"
+    right_wrist:
+      topic: "/cam_right_wrist/color/image_raw/compressed"
+      type: "compressed"
+
+deployment:
+  # Dedicated Pi 0.5 synchronous protocol-v2 deployment profile.
+  protocol_mode: "pi_v2"
+  # Endpoint scheme selects the transport automatically:
+  # tcp:// keeps the ZMQ replay/LAN path; http(s):// uses the hosted policy.
+  # Keep the tracked default local and pass a hosted service URL to
+  # start_deployment_session.sh. Platform service instance names are ephemeral.
+  server: "tcp://127.0.0.1:5555"
+  policy_http_path: "/v1/robot-policy"
+  policy_http_api_key_env: "PI05_HTTP_API_KEY"
+  policy_http_max_response_bytes: 33554432
+  policy_http_expected_model_id: "checkpoints/pi05_singlerighthand_dropper_100_joint/dropper_joint_4gpu_v3/30000"
+  policy_http_expected_chunk_size: 50
+  # Protocol-v2 hello/action responses must explicitly echo this value. The
+  # client never guesses action semantics from the model ID or 54D shape.
+  expected_arm_action_space: "joint_position"
+  # Must match the camera names/order used by the trained policy. The Dropper
+  # Joint checkpoint consumes head + right_wrist; update this explicitly when
+  # a checkpoint is trained with a different camera set.
+  camera_names: [head, right_wrist]
+  request_rate_hz: 30.0
+  request_timeout_ms: 1000
+  reconnect_interval_s: 1.0
+  # Reject a response computed from an observation older than this, even if
+  # the response itself has only just arrived.
+  max_observation_age_s: 0.5
+  # A successful hello is not enough: after Tianji reaches READY the first
+  # valid action must arrive before this lease expires, otherwise standby.
+  policy_start_timeout_s: 2.0
+  # Pi HTTP startup is a two-inference barrier. The first chunk contributes
+  # only action[0], held fixed while Tianji completes its joint-space handoff.
+  # That bootstrap chunk is discarded; a fresh observation is then sent and
+  # only its response starts the 30 Hz policy clock. Replay and FDM ignore it.
+  startup_handoff_gate_enabled: true
+  # Controller handoff is currently 0.2 s hold + 1.0 s ramp. This timeout
+  # leaves ROS scheduling margin while still failing safely to standby.
+  startup_handoff_timeout_s: 3.0
+  publish_rate_hz: 120.0
+  action_rate_hz: 30.0
+  # Keep only the mandatory 30 -> 120 Hz rate conversion. Absolute arm-joint
+  # targets remain radians and WujiHand targets remain degrees.
+  # Options for this joint profile: none, linear_joint, pchip_joint.
+  action_interpolation_method: linear_joint
+  # Optional zero-phase Butterworth smoothing runs in the network worker before
+  # 120 Hz interpolation and adds no causal control-loop delay. It is disabled
+  # in this comparison profile.
+  # Options: none, butterworth.
+  action_smoothing_method: none
+  action_smoothing_cutoff_hz: 3.0
+  action_smoothing_order: 3
+  # These values come directly from the Tianji ccs_m6.MvKDCfg PNVA rows:
+  # [positive position, negative position, max velocity, max acceleration].
+  # They are protocol-side rejection limits, not guessed clipping values.
+  # Targets outside them reject the complete chunk.
+  pi_joint_safety:
+    position_lower_deg: [-170.0, -120.0, -170.0, -140.0, -170.0, -60.0, -90.0]
+    position_upper_deg: [170.0, 120.0, 170.0, 78.0, 170.0, 60.0, 90.0]
+    velocity_limit_deg_s: [180.0, 180.0, 180.0, 180.0, 180.0, 180.0, 180.0]
+    # Keep the final 120 Hz slew ceiling equal to the verified PNVA/protocol
+    # ceiling. A lower value lets the policy clock outrun the published target
+    # and creates an artificial chunk-boundary discontinuity.
+    command_velocity_limit_deg_s: [180.0, 180.0, 180.0, 180.0, 180.0, 180.0, 180.0]
+  # 50/30 comparison mode: time-align each 50-step model chunk and execute a
+  # 30-step window. The remaining model actions provide alignment headroom.
+  open_loop_horizon: 30
+  # Hosted-policy requests are prefetched into a separate pending slot. The
+  # current 30-step plan is never overwritten. Lead is computed as
+  # ceil(P99 complete RTT / 33.33 ms) + 2 and clamped to [3, 9].
+  prefetch_enabled: true
+  prefetch_latency_window: 100
+  prefetch_latency_min_samples: 5
+  prefetch_safety_actions: 2
+  prefetch_min_lead_actions: 3
+  # The returned 50-action chunk leaves ample room for the configured lead and
+  # time-alignment skip before selecting the 30-action execution window.
+  prefetch_max_lead_actions: 9
+  prefetch_initial_lead_actions: 5
+  prefetch_time_alignment_enabled: true
+  # Use the basic position bridge only; velocity-continuous Hermite blending
+  # remains disabled for this comparison.
+  # Options: smoothstep or velocity_continuous.
+  boundary_blend_method: smoothstep
+  # The first policy chunk has no preceding command chunk. A positive value
+  # anchors it to fresh measured arm-joint/hand state and consumes that many model
+  # steps before joining the model trajectory. Zero disables this bridge.
+  initial_blend_steps: 0
+  # Bridge the first six aligned actions (200 ms at 30 Hz) from the previous
+  # published target. No low-pass or PCHIP shaping is applied.
+  boundary_blend_steps: 6
+  # JSONL diagnostics are produced by a dedicated writer thread. Robot/control
+  # callbacks only enqueue events and drop trace entries if the queue is full.
+  diagnostic_trace_enabled: true
+  diagnostic_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  diagnostic_trace_queue_size: 4096
+  diagnostic_trace_flush_interval_s: 0.5
+  # Read-only state/action sidecar. It runs in a separate low-priority process
+  # and samples cached ROS state/command topics onto one 120 Hz time axis.
+  # JSON encoding and disk writes never run in controller/deployment callbacks.
+  state_action_trace_rate_hz: 120.0
+  state_action_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  state_action_trace_queue_size: 32768
+  state_action_trace_flush_interval_s: 0.5
+  state_trace_arm_state_max_age_ms: 25.0
+  state_trace_eef_max_age_ms: 100.0
+  state_trace_action_max_age_ms: 50.0
+  state_trace_hand_max_age_ms: 100.0
+  require_cameras: true
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  # Shared-memory frames remain raw for GUI/recording; only the network copy
+  # is JPEG encoded by the deployment worker.
+  image_codec: "jpeg"
+  jpeg_quality: 90
+
+replay:
+  bind: "tcp://0.0.0.0:5555"
+  mode: "absolute"
+  rebase: true
+  start_hold_s: 1.0
+  loop: false

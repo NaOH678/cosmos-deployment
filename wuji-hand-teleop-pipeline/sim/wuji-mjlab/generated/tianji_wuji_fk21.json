@@ -1,0 +1,73 @@
+{
+  "output": "/media/pjlab/536a2487-be1b-4673-9c1d-5e8cb6efcbdc1/liuhangxu/dexmanip_tool/sim/wuji-mjlab/generated/tianji_wuji_fk21.npz",
+  "shape": [
+    2266,
+    2,
+    21,
+    3
+  ],
+  "coordinate_frame": "Link_Base",
+  "units": "metre",
+  "sides": [
+    "left",
+    "right"
+  ],
+  "keypoint_names": [
+    "wrist",
+    "thumb_cmc",
+    "thumb_mcp",
+    "thumb_ip",
+    "thumb_tip",
+    "index_mcp",
+    "index_pip",
+    "index_dip",
+    "index_tip",
+    "middle_mcp",
+    "middle_pip",
+    "middle_dip",
+    "middle_tip",
+    "ring_mcp",
+    "ring_pip",
+    "ring_dip",
+    "ring_tip",
+    "pinky_mcp",
+    "pinky_pip",
+    "pinky_dip",
+    "pinky_tip"
+  ],
+  "side_is_observed": [
+    false,
+    true
+  ],
+  "qpos_was_clipped": false,
+  "limit_violation_frames": 2266,
+  "max_limit_violation_rad": 0.0475,
+  "ranges": {
+    "left": {
+      "observed": false,
+      "min_xyz_m": [
+        0.5575573444366455,
+        0.10402370989322662,
+        0.8388422131538391
+      ],
+      "max_xyz_m": [
+        0.8527852296829224,
+        0.4079931974411011,
+        1.0550258159637451
+      ]
+    },
+    "right": {
+      "observed": true,
+      "min_xyz_m": [
+        0.5448833703994751,
+        -0.5022773146629333,
+        0.7536539435386658
+      ],
+      "max_xyz_m": [
+        0.8817483186721802,
+        -0.17333738505840302,
+        1.0455598831176758
+      ]
+    }
+  }
+}

@@ -1,0 +1,531 @@
+diff --git a/wujihand_driver/CMakeLists.txt b/wujihand_driver/CMakeLists.txt
+index a3d5b01a338cc3566e8eb5a132478304946ae28d..52db53d027f2398038d27a1c5f84e1df48a6fcb9 100644
+--- a/wujihand_driver/CMakeLists.txt
++++ b/wujihand_driver/CMakeLists.txt
+@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ find_package(ament_cmake REQUIRED)
+ find_package(rclcpp REQUIRED)
+ find_package(std_msgs REQUIRED)
++find_package(std_srvs REQUIRED)
+ find_package(sensor_msgs REQUIRED)
+ find_package(wujihand_msgs REQUIRED)
+ 
+@@ -58,6 +59,7 @@ target_include_directories(wujihand_driver_node PUBLIC
+ ament_target_dependencies(wujihand_driver_node
+   rclcpp
+   std_msgs
++  std_srvs
+   sensor_msgs
+   wujihand_msgs
+ )
+diff --git a/wujihand_driver/include/wujihand_driver/wujihand_driver_node.hpp b/wujihand_driver/include/wujihand_driver/wujihand_driver_node.hpp
+index 95e493e8d7a5d7272bfe7ae5ad7ae102c27a617c..9f637d028fd864c0222526e6ec12b949d41b37d8 100644
+--- a/wujihand_driver/include/wujihand_driver/wujihand_driver_node.hpp
++++ b/wujihand_driver/include/wujihand_driver/wujihand_driver_node.hpp
+@@ -18,10 +18,12 @@
+ #include <array>
+ #include <atomic>
+ #include <chrono>
++#include <cstdint>
+ #include <memory>
+ #include <mutex>
+ #include <string>
+ #include <thread>
++#include <vector>
+ #include <wujihandcpp/data/hand.hpp>
+ #include <wujihandcpp/data/helper.hpp>
+ #include <wujihandcpp/data/joint.hpp>
+@@ -31,6 +33,8 @@
+ 
+ #include "rclcpp/rclcpp.hpp"
+ #include "sensor_msgs/msg/joint_state.hpp"
++#include "std_msgs/msg/int8.hpp"
++#include "std_srvs/srv/trigger.hpp"
+ #include "wujihand_msgs/msg/hand_diagnostics.hpp"
+ #include "wujihand_msgs/srv/reset_error.hpp"
+ #include "wujihand_msgs/srv/set_enabled.hpp"
+@@ -57,6 +61,7 @@ class WujiHandDriverNode : public rclcpp::Node {
+   // Publishers
+   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
+   rclcpp::Publisher<wujihand_msgs::msg::HandDiagnostics>::SharedPtr diagnostics_pub_;
++  rclcpp::Publisher<std_msgs::msg::Int8>::SharedPtr recovery_state_pub_;
+ 
+   // Subscribers
+   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr cmd_sub_;
+@@ -64,34 +69,49 @@ class WujiHandDriverNode : public rclcpp::Node {
+   // Services
+   rclcpp::Service<wujihand_msgs::srv::SetEnabled>::SharedPtr set_enabled_srv_;
+   rclcpp::Service<wujihand_msgs::srv::ResetError>::SharedPtr reset_error_srv_;
++  rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr recover_to_initial_srv_;
+ 
+   // Timers
+   rclcpp::TimerBase::SharedPtr state_timer_;
+   rclcpp::TimerBase::SharedPtr diagnostics_timer_;
++  rclcpp::TimerBase::SharedPtr recovery_timer_;
+ 
+   // Parameters
+   std::string serial_number_;
+   std::string hand_side_;           // "" (unique device), "left" or "right"
+   bool name_by_handedness_{false};  // root topics at /hand_<handedness> when true
++  bool auto_enable_{true};
+   double publish_rate_;
+   double filter_cutoff_freq_;
+   double diagnostics_rate_;
+   double command_ramp_duration_;
+   double command_stream_timeout_;
++  std::vector<double> initial_position_;
++  double recovery_duration_{5.0};
++  double recovery_tolerance_{0.12};
++  double recovery_settle_timeout_{2.0};
++  bool require_recovery_before_enable_{false};
+ 
+   // Cached state
+   std::array<double, NUM_JOINTS> last_target_positions_;
+   std::array<double, NUM_JOINTS> command_ramp_start_positions_;
++  std::array<double, NUM_JOINTS> recovery_start_positions_;
+   std::array<double, NUM_JOINTS> joint_upper_limits_;
+   std::array<double, NUM_JOINTS> joint_lower_limits_;
+   std::chrono::steady_clock::time_point command_ramp_start_time_;
+   std::chrono::steady_clock::time_point last_command_time_;
++  std::chrono::steady_clock::time_point recovery_start_time_;
+   bool command_stream_active_{false};
++  std::atomic<bool> enabled_{false};
++  bool external_commands_enabled_{false};
++  bool recovery_active_{false};
++  bool recovery_ready_{false};
+   bool hardware_connected_;
+   std::string handedness_;
+   std::string firmware_version_;
+   std::atomic<bool> diagnostics_busy_{false};
+   std::mutex hardware_mutex_;  // Mutex for thread-safe hardware access
++  std::mutex control_mutex_;   // Serializes command targets and enable transitions
+ 
+   // Pre-allocated messages for efficiency
+   sensor_msgs::msg::JointState joint_state_msg_;
+@@ -100,12 +120,17 @@ class WujiHandDriverNode : public rclcpp::Node {
+   void command_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
+   void publish_state();
+   void publish_diagnostics();
++  void update_recovery();
++  void publish_recovery_state(int8_t state);
+ 
+   // Service callbacks
+   void set_enabled_callback(const std::shared_ptr<wujihand_msgs::srv::SetEnabled::Request> request,
+                             std::shared_ptr<wujihand_msgs::srv::SetEnabled::Response> response);
+   void reset_error_callback(const std::shared_ptr<wujihand_msgs::srv::ResetError::Request> request,
+                             std::shared_ptr<wujihand_msgs::srv::ResetError::Response> response);
++  void recover_to_initial_callback(
++      const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
++      std::shared_ptr<std_srvs::srv::Trigger::Response> response);
+ 
+   // Helper functions
+   bool connect_hardware();
+diff --git a/wujihand_driver/package.xml b/wujihand_driver/package.xml
+index 3856f2c1093a84d7e38fcd283fb426b341cb21b9..7815507378d5dff91d838f94ecaf5783409013eb 100644
+--- a/wujihand_driver/package.xml
++++ b/wujihand_driver/package.xml
+@@ -11,6 +11,7 @@
+ 
+   <depend>rclcpp</depend>
+   <depend>std_msgs</depend>
++  <depend>std_srvs</depend>
+   <depend>sensor_msgs</depend>
+   <depend>wujihand_msgs</depend>
+ 
+diff --git a/wujihand_driver/src/wujihand_driver_node.cpp b/wujihand_driver/src/wujihand_driver_node.cpp
+index 386cc5255152eafc0b18eb08b1cfde93e83e5f22..0ae78bb1cb33bd23e2eb53e13405d7fdbc876e04 100644
+--- a/wujihand_driver/src/wujihand_driver_node.cpp
++++ b/wujihand_driver/src/wujihand_driver_node.cpp
+@@ -21,6 +21,13 @@
+ 
+ namespace wujihand_driver {
+ 
++namespace {
++constexpr int8_t RECOVERY_IDLE = 0;
++constexpr int8_t RECOVERY_MOVING = 1;
++constexpr int8_t RECOVERY_READY = 2;
++constexpr int8_t RECOVERY_FAILED = 3;
++}  // namespace
++
+ const std::array<std::string, WujiHandDriverNode::NUM_JOINTS> WujiHandDriverNode::JOINT_NAMES = {
+     "finger1_joint1", "finger1_joint2", "finger1_joint3", "finger1_joint4", "finger2_joint1",
+     "finger2_joint2", "finger2_joint3", "finger2_joint4", "finger3_joint1", "finger3_joint2",
+@@ -32,27 +39,53 @@ WujiHandDriverNode::WujiHandDriverNode() : Node("wujihand_driver"), hardware_con
+   this->declare_parameter("serial_number", "");
+   this->declare_parameter("hand_side", "");
+   this->declare_parameter("name_by_handedness", false);
++  this->declare_parameter("auto_enable", true);
+   this->declare_parameter("publish_rate", 1000.0);
+   this->declare_parameter("filter_cutoff_freq", 10.0);
+   this->declare_parameter("diagnostics_rate", 10.0);
+   this->declare_parameter("command_ramp_duration", 0.0);
+   this->declare_parameter("command_stream_timeout", 0.5);
++  this->declare_parameter<std::vector<double>>(
++      "initial_position", std::vector<double>{});
++  this->declare_parameter("recovery_duration", 5.0);
++  this->declare_parameter("recovery_tolerance", 0.12);
++  this->declare_parameter("recovery_settle_timeout", 2.0);
++  this->declare_parameter("require_recovery_before_enable", false);
+ 
+   // Get parameters
+   serial_number_ = this->get_parameter("serial_number").as_string();
+   hand_side_ = this->get_parameter("hand_side").as_string();
+   name_by_handedness_ = this->get_parameter("name_by_handedness").as_bool();
++  auto_enable_ = this->get_parameter("auto_enable").as_bool();
+   publish_rate_ = this->get_parameter("publish_rate").as_double();
+   filter_cutoff_freq_ = this->get_parameter("filter_cutoff_freq").as_double();
+   diagnostics_rate_ = this->get_parameter("diagnostics_rate").as_double();
+   command_ramp_duration_ = this->get_parameter("command_ramp_duration").as_double();
+   command_stream_timeout_ = this->get_parameter("command_stream_timeout").as_double();
+-  if (command_ramp_duration_ < 0.0 || command_stream_timeout_ < 0.0) {
+-    throw std::invalid_argument("command ramp duration and stream timeout must be non-negative");
++  initial_position_ = this->get_parameter("initial_position").as_double_array();
++  recovery_duration_ = this->get_parameter("recovery_duration").as_double();
++  recovery_tolerance_ = this->get_parameter("recovery_tolerance").as_double();
++  recovery_settle_timeout_ =
++      this->get_parameter("recovery_settle_timeout").as_double();
++  require_recovery_before_enable_ =
++      this->get_parameter("require_recovery_before_enable").as_bool();
++  if (command_ramp_duration_ < 0.0 || command_stream_timeout_ < 0.0 ||
++      recovery_duration_ < 0.0 || recovery_tolerance_ < 0.0 ||
++      recovery_settle_timeout_ < 0.0) {
++    throw std::invalid_argument(
++        "command ramp, stream timeout, and Recovery parameters must be non-negative");
++  }
++  if (!initial_position_.empty() && initial_position_.size() != NUM_JOINTS) {
++    throw std::invalid_argument("initial_position must be empty or contain exactly 20 values");
++  }
++  if (!std::all_of(initial_position_.begin(), initial_position_.end(),
++                   [](double value) { return std::isfinite(value); })) {
++    throw std::invalid_argument("initial_position contains NaN or infinity");
+   }
+ 
+   // Initialize last target positions
+   last_target_positions_.fill(0.0);
++  recovery_start_positions_.fill(0.0);
+ 
+   // Declare read-only parameters for hardware info (must be declared before connect_hardware)
+   this->declare_parameter("handedness", std::string(""));
+@@ -78,6 +111,8 @@ WujiHandDriverNode::WujiHandDriverNode() : Node("wujihand_driver"), hardware_con
+                                                                           rclcpp::SensorDataQoS());
+   diagnostics_pub_ =
+       this->create_publisher<wujihand_msgs::msg::HandDiagnostics>(prefix + "hand_diagnostics", 10);
++  recovery_state_pub_ = this->create_publisher<std_msgs::msg::Int8>(
++      prefix + "recovery_state", rclcpp::QoS(1).reliable().transient_local());
+ 
+   // Create subscriber for joint commands (using SensorDataQoS for high-frequency data)
+   cmd_sub_ = this->create_subscription<sensor_msgs::msg::JointState>(
+@@ -92,6 +127,10 @@ WujiHandDriverNode::WujiHandDriverNode() : Node("wujihand_driver"), hardware_con
+   reset_error_srv_ = this->create_service<wujihand_msgs::srv::ResetError>(
+       prefix + "reset_error", std::bind(&WujiHandDriverNode::reset_error_callback, this,
+                                         std::placeholders::_1, std::placeholders::_2));
++  recover_to_initial_srv_ = this->create_service<std_srvs::srv::Trigger>(
++      prefix + "recover_to_initial",
++      std::bind(&WujiHandDriverNode::recover_to_initial_callback, this,
++                std::placeholders::_1, std::placeholders::_2));
+ 
+   // Initialize pre-allocated JointState message with handedness prefix
+   joint_state_msg_.name.reserve(NUM_JOINTS);
+@@ -113,8 +152,18 @@ WujiHandDriverNode::WujiHandDriverNode() : Node("wujihand_driver"), hardware_con
+       this->create_wall_timer(std::chrono::duration_cast<std::chrono::nanoseconds>(diag_period),
+                               std::bind(&WujiHandDriverNode::publish_diagnostics, this));
+ 
+-  RCLCPP_INFO(this->get_logger(), "WujiHand driver started (state: %.1f Hz, diagnostics: %.1f Hz)",
+-              publish_rate_, diagnostics_rate_);
++  // Recovery is deliberately independent of external command arrival. While
++  // it is active, command_callback rejects MANUS/replay/policy commands and
++  // this timer is the sole writer of hand targets.
++  recovery_timer_ = this->create_wall_timer(
++      std::chrono::milliseconds(10),
++      std::bind(&WujiHandDriverNode::update_recovery, this));
++  publish_recovery_state(0);
++
++  RCLCPP_INFO(this->get_logger(),
++              "WujiHand driver started (state: %.1f Hz, diagnostics: %.1f Hz, "
++              "recovery: %.1fs)",
++              publish_rate_, diagnostics_rate_, recovery_duration_);
+ }
+ 
+ WujiHandDriverNode::~WujiHandDriverNode() {
+@@ -146,8 +195,14 @@ bool WujiHandDriverNode::connect_hardware() {
+     // Disable thread safety check for multi-threaded access
+     hand_->disable_thread_safe_check();
+ 
+-    // Enable all joints
+-    hand_->write<wujihandcpp::data::joint::Enabled>(true);
++    // A supervised session must remove actuator power immediately after the
++    // SDK connection is established. Do this before firmware/state discovery
++    // so Prepare never leaves a previously energized device enabled while the
++    // rest of the launch graph is still starting.
++    if (!auto_enable_) {
++      hand_->write<wujihandcpp::data::joint::Enabled>(false);
++      enabled_.store(false);
++    }
+ 
+     // Read handedness (0 = right, 1 = left)
+     auto handedness_value = hand_->read<wujihandcpp::data::hand::Handedness>();
+@@ -185,6 +240,19 @@ bool WujiHandDriverNode::connect_hardware() {
+     // Send initial target position to start realtime communication
+     controller_->set_joint_target_position(initial_positions);
+ 
++    // Preserve the legacy standalone behavior by default, while allowing a
++    // supervised launch to connect and publish state without energizing the
++    // joints.  Always seed the target from measured hardware position before
++    // changing the enable state so a later enable cannot jump to a stale
++    // command.
++    if (auto_enable_) {
++      hand_->write<wujihandcpp::data::joint::Enabled>(true);
++    }
++    enabled_.store(auto_enable_);
++    external_commands_enabled_ = auto_enable_;
++    recovery_active_ = false;
++    recovery_ready_ = auto_enable_ && !require_recovery_before_enable_;
++
+     // Update ROS parameters with hardware info so other nodes can query them
+     this->set_parameter(rclcpp::Parameter("handedness", handedness_));
+     this->set_parameter(rclcpp::Parameter("firmware_version", firmware_version_));
+@@ -196,7 +264,8 @@ bool WujiHandDriverNode::connect_hardware() {
+         std::vector<double>(joint_lower_limits_.begin(), joint_lower_limits_.end())));
+ 
+     hardware_connected_ = true;
+-    RCLCPP_INFO(this->get_logger(), "Connected to WujiHand (%s)", handedness_.c_str());
++    RCLCPP_INFO(this->get_logger(), "Connected to WujiHand (%s, joints %s)",
++                handedness_.c_str(), auto_enable_ ? "enabled" : "disabled");
+     return true;
+   } catch (const std::exception& e) {
+     RCLCPP_ERROR(this->get_logger(), "Failed to connect: %s", e.what());
+@@ -208,6 +277,10 @@ void WujiHandDriverNode::disconnect_hardware() {
+   if (hardware_connected_ && hand_) {
+     try {
+       // Disable all joints before disconnecting
++      enabled_.store(false);
++      external_commands_enabled_ = false;
++      recovery_active_ = false;
++      recovery_ready_ = false;
+       hand_->write<wujihandcpp::data::joint::Enabled>(false);
+       RCLCPP_INFO(this->get_logger(), "Disconnected from WujiHand");
+     } catch (const std::exception& e) {
+@@ -226,6 +299,11 @@ void WujiHandDriverNode::command_callback(const sensor_msgs::msg::JointState::Sh
+     return;
+   }
+ 
++  std::lock_guard<std::mutex> control_lock(control_mutex_);
++  if (!enabled_.load() || !external_commands_enabled_ || recovery_active_) {
++    return;
++  }
++
+   std::array<double, NUM_JOINTS> requested_positions = last_target_positions_;
+ 
+   if (!msg->name.empty()) {
+@@ -355,6 +433,159 @@ void WujiHandDriverNode::publish_diagnostics() {
+   }).detach();
+ }
+ 
++void WujiHandDriverNode::publish_recovery_state(int8_t state) {
++  if (!recovery_state_pub_) {
++    return;
++  }
++  std_msgs::msg::Int8 message;
++  message.data = state;
++  recovery_state_pub_->publish(message);
++}
++
++void WujiHandDriverNode::recover_to_initial_callback(
++    const std::shared_ptr<std_srvs::srv::Trigger::Request> /*request*/,
++    std::shared_ptr<std_srvs::srv::Trigger::Response> response) {
++  if (!hardware_connected_ || !hand_ || !controller_) {
++    response->success = false;
++    response->message = "Hardware not connected";
++    return;
++  }
++  if (initial_position_.size() != NUM_JOINTS) {
++    response->success = false;
++    response->message =
++        "initial_position is not configured for this hand (expected 20 radians)";
++    return;
++  }
++
++  std::lock_guard<std::mutex> control_lock(control_mutex_);
++  if (recovery_active_) {
++    response->success = false;
++    response->message = "Hand Recovery is already running";
++    return;
++  }
++  if (external_commands_enabled_) {
++    response->success = false;
++    response->message = "Disable external hand control before Recovery";
++    return;
++  }
++
++  try {
++    std::lock_guard<std::mutex> hardware_lock(hardware_mutex_);
++    hand_->read<wujihandcpp::data::joint::ActualPosition>();
++    double measured_positions[NUM_FINGERS][JOINTS_PER_FINGER] = {};
++    for (size_t f = 0; f < NUM_FINGERS; ++f) {
++      for (size_t j = 0; j < JOINTS_PER_FINGER; ++j) {
++        const size_t index = to_flat_index(f, j);
++        const double position =
++            hand_->finger(f).joint(j).get<wujihandcpp::data::joint::ActualPosition>();
++        measured_positions[f][j] = position;
++        recovery_start_positions_[index] = position;
++        last_target_positions_[index] = position;
++        command_ramp_start_positions_[index] = position;
++      }
++    }
++
++    // Seed the realtime controller at the measured posture before applying
++    // power. The Recovery timer is then the only target writer until READY.
++    controller_->set_joint_target_position(measured_positions);
++    command_stream_active_ = false;
++    recovery_ready_ = false;
++    external_commands_enabled_ = false;
++    recovery_start_time_ = std::chrono::steady_clock::now();
++    recovery_active_ = true;
++    hand_->write<wujihandcpp::data::joint::Enabled>(true);
++    enabled_.store(true);
++    publish_recovery_state(RECOVERY_MOVING);
++
++    response->success = true;
++    response->message = "Hand Recovery started; external commands are blocked";
++    RCLCPP_INFO(this->get_logger(),
++                "Hand Recovery started: measured posture -> configured initial posture in %.1fs",
++                recovery_duration_);
++  } catch (const std::exception& e) {
++    recovery_active_ = false;
++    recovery_ready_ = false;
++    external_commands_enabled_ = false;
++    enabled_.store(false);
++    try {
++      std::lock_guard<std::mutex> hardware_lock(hardware_mutex_);
++      hand_->write<wujihandcpp::data::joint::Enabled>(false);
++    } catch (const std::exception& disable_error) {
++      RCLCPP_ERROR(this->get_logger(), "Failed to disable after Recovery start error: %s",
++                   disable_error.what());
++    }
++    publish_recovery_state(RECOVERY_FAILED);
++    response->success = false;
++    response->message = std::string("Hand Recovery failed to start: ") + e.what();
++  }
++}
++
++void WujiHandDriverNode::update_recovery() {
++  std::lock_guard<std::mutex> control_lock(control_mutex_);
++  if (!recovery_active_ || !hardware_connected_ || !controller_) {
++    return;
++  }
++
++  try {
++    const double elapsed = std::chrono::duration<double>(
++        std::chrono::steady_clock::now() - recovery_start_time_).count();
++    const double phase = recovery_duration_ <= 0.0
++                             ? 1.0
++                             : std::clamp(elapsed / recovery_duration_, 0.0, 1.0);
++    const double blend = phase * phase * (3.0 - 2.0 * phase);
++    double positions[NUM_FINGERS][JOINTS_PER_FINGER] = {};
++    for (size_t i = 0; i < NUM_JOINTS; ++i) {
++      const double target = recovery_start_positions_[i] +
++                            blend * (initial_position_[i] - recovery_start_positions_[i]);
++      positions[i / JOINTS_PER_FINGER][i % JOINTS_PER_FINGER] = target;
++      last_target_positions_[i] = target;
++    }
++    controller_->set_joint_target_position(positions);
++
++    if (phase >= 1.0) {
++      const auto& actual = controller_->get_joint_actual_position();
++      double max_error = 0.0;
++      for (size_t f = 0; f < NUM_FINGERS; ++f) {
++        for (size_t j = 0; j < JOINTS_PER_FINGER; ++j) {
++          const size_t index = to_flat_index(f, j);
++          max_error = std::max(
++              max_error,
++              std::abs(actual[f][j].load() - initial_position_[index]));
++        }
++      }
++      if (max_error <= recovery_tolerance_) {
++        recovery_active_ = false;
++        recovery_ready_ = true;
++        command_stream_active_ = false;
++        publish_recovery_state(RECOVERY_READY);
++        RCLCPP_INFO(
++            this->get_logger(),
++            "Hand Recovery complete (max error %.4f rad); holding initial posture until Enable",
++            max_error);
++      } else if (elapsed >= recovery_duration_ + recovery_settle_timeout_) {
++        throw std::runtime_error(
++            "actual joints did not converge to initial_position; max error=" +
++            std::to_string(max_error) + " rad");
++      }
++    }
++  } catch (const std::exception& e) {
++    recovery_active_ = false;
++    recovery_ready_ = false;
++    external_commands_enabled_ = false;
++    command_stream_active_ = false;
++    enabled_.store(false);
++    try {
++      std::lock_guard<std::mutex> hardware_lock(hardware_mutex_);
++      hand_->write<wujihandcpp::data::joint::Enabled>(false);
++    } catch (const std::exception& disable_error) {
++      RCLCPP_ERROR(this->get_logger(), "Failed to disable after Recovery error: %s",
++                   disable_error.what());
++    }
++    publish_recovery_state(RECOVERY_FAILED);
++    RCLCPP_ERROR(this->get_logger(), "Hand Recovery failed: %s", e.what());
++  }
++}
++
+ void WujiHandDriverNode::set_enabled_callback(
+     const std::shared_ptr<wujihand_msgs::srv::SetEnabled::Request> request,
+     std::shared_ptr<wujihand_msgs::srv::SetEnabled::Response> response) {
+@@ -366,7 +597,50 @@ void WujiHandDriverNode::set_enabled_callback(
+ 
+   try {
+     if (request->finger_id == 255 && request->joint_id == 255) {
+-      hand_->write<wujihandcpp::data::joint::Enabled>(request->enabled);
++      std::lock_guard<std::mutex> control_lock(control_mutex_);
++      std::lock_guard<std::mutex> hardware_lock(hardware_mutex_);
++      if (request->enabled) {
++        if (recovery_active_) {
++          response->success = false;
++          response->message = "Hand Recovery is still running";
++          return;
++        }
++        if (require_recovery_before_enable_ && !recovery_ready_) {
++          response->success = false;
++          response->message = "Hand Recovery must complete before external control is enabled";
++          return;
++        }
++        // Re-anchor the command path at the measured physical posture every
++        // time the hand is enabled.  The next command frame then uses the
++        // existing command_ramp_duration instead of snapping to commands that
++        // arrived while the hand was disabled.
++        hand_->read<wujihandcpp::data::joint::ActualPosition>();
++        double measured_positions[NUM_FINGERS][JOINTS_PER_FINGER];
++        for (size_t f = 0; f < NUM_FINGERS; ++f) {
++          for (size_t j = 0; j < JOINTS_PER_FINGER; ++j) {
++            const auto position =
++                hand_->finger(f).joint(j).get<wujihandcpp::data::joint::ActualPosition>();
++            const auto index = to_flat_index(f, j);
++            measured_positions[f][j] = position;
++            last_target_positions_[index] = position;
++            command_ramp_start_positions_[index] = position;
++          }
++        }
++        controller_->set_joint_target_position(measured_positions);
++        command_stream_active_ = false;
++        hand_->write<wujihandcpp::data::joint::Enabled>(true);
++        enabled_.store(true);
++        external_commands_enabled_ = true;
++      } else {
++        // Gate command callbacks before removing actuator power.
++        external_commands_enabled_ = false;
++        recovery_active_ = false;
++        recovery_ready_ = false;
++        enabled_.store(false);
++        command_stream_active_ = false;
++        hand_->write<wujihandcpp::data::joint::Enabled>(false);
++        publish_recovery_state(RECOVERY_IDLE);
++      }
+       response->success = true;
+       response->message = request->enabled ? "All joints enabled" : "All joints disabled";
+     } else if (request->finger_id < NUM_FINGERS) {

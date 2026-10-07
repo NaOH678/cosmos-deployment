@@ -1,0 +1,22 @@
+# Tianji Arm Chest-frame Configuration (HTC/Tracker pathway)
+
+# Robot IP address
+robot_ip: "192.168.1.190"
+
+# Initial joint angles (degrees) — dual-arm forward-reach pose.
+# Shared with tianji_world.yaml so both pathways use the same home pose.
+init_joints:
+  left:  [80.28, -70.12, -80.99, -85.99, 65.00, 0.00, 0.00]
+  right: [-80.15, -70.00, 80.99, -85.99, -65.00, -0.00, 0.00]
+
+# Mode-specific Recovery reference (degrees). Dual-arm mode continues to use
+# init_joints above; right-arm-only mode uses this less extended right pose.
+single_arm_init_joints:
+  right: [-55.0, -65.0, 70.0, -60.0, -60.0, 0.0, 0.0]
+
+# Inactive-arm parking poses (degrees).
+# Right-arm teleoperation moves the left arm here with the same guarded,
+# feedback-limited state=1 trajectory used by Recovery, then returns it to
+# standby state=0 before enabling the right arm.
+park_joints:
+  left: [90.0, -90.0, 0.0, 0.0, 0.0, 0.0, 0.0]

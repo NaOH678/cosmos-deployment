@@ -1,0 +1,156 @@
+{
+  "run_id": "20261007T112817Z-54fbff90",
+  "user_feedback": {
+    "verbatim": "跑完了，我看起来停顿缓解了挺多, 但是有一点块状感",
+    "task_success": "not_reported"
+  },
+  "current": {
+    "events": {
+      "session_start": 1,
+      "policy_handshake_ready": 31,
+      "callback_timing": 66,
+      "lifecycle_change": 6,
+      "action_stream_clear": 5,
+      "controller_handoff_state": 1,
+      "policy_request_claim": 35,
+      "policy_request_send": 35,
+      "paper_async_request_clock": 35,
+      "policy_action_chunk": 35,
+      "pending_chunk_store": 34,
+      "prefetch_latency_update": 34,
+      "policy_response_ready": 34,
+      "paper_async_activate": 34,
+      "pending_chunk_activate": 34,
+      "action_dispatch": 546,
+      "command_publish": 4365,
+      "stale_policy_response": 1,
+      "session_stop": 1,
+      "trace_summary": 1
+    },
+    "ros_publish_interval_ms": {
+      "n": 4364,
+      "median": 8.33121093455702,
+      "p95": 8.561483077937737,
+      "max": 17.661865917034447
+    },
+    "publish_gaps_over100ms": 0,
+    "inference_ms": {
+      "n": 34,
+      "median": 412.7728029852733,
+      "p95": 420.054778206395,
+      "max": 425.41816807352006
+    },
+    "rtt_ms": {
+      "n": 34,
+      "median": 434.9674179684371,
+      "p95": 444.1277410427574,
+      "max": 456.9260709686205
+    }
+  },
+  "sequential_reference": {
+    "run_id": "20261007T105136Z-05bfe0ed",
+    "events": {
+      "session_start": 1,
+      "policy_handshake_ready": 32,
+      "callback_timing": 73,
+      "lifecycle_change": 48,
+      "action_stream_clear": 5,
+      "controller_handoff_state": 1,
+      "policy_request_claim": 22,
+      "policy_request_send": 22,
+      "policy_action_chunk": 22,
+      "pending_chunk_store": 22,
+      "prefetch_latency_update": 22,
+      "policy_response_ready": 22,
+      "policy_splice_snapshot": 22,
+      "pending_chunk_activate": 22,
+      "action_dispatch": 510,
+      "command_publish": 3948,
+      "session_stop": 1,
+      "trace_summary": 1
+    },
+    "ros_publish_interval_ms": {
+      "n": 3947,
+      "median": 8.33184493239969,
+      "p95": 8.486789755988866,
+      "max": 507.3956709820777
+    },
+    "publish_gaps_over100ms": 21,
+    "inference_ms": {
+      "n": 22,
+      "median": 409.58674100693315,
+      "p95": 421.2006116693374,
+      "max": 436.8480610428378
+    },
+    "rtt_ms": {
+      "n": 22,
+      "median": 432.4158789822832,
+      "p95": 443.4826431388501,
+      "max": 466.1651779897511
+    }
+  },
+  "overlap_s": {
+    "n": 33,
+    "median": 0.5333333333255723,
+    "p95": 0.5333333333255723,
+    "max": 0.5999999999767169
+  },
+  "activation_compute_ms": {
+    "n": 33,
+    "median": 4.694932955317199,
+    "p95": 6.095699849538504,
+    "max": 8.944481960497797
+  },
+  "handoff_interval_s": {
+    "n": 32,
+    "median": 1.0666666666511446,
+    "p95": 1.0666666666511446,
+    "max": 1.0666666666511446
+  },
+  "command_velocity_change_mps": {
+    "boundary_actual": {
+      "n": 33,
+      "median": 0.11166124866218698,
+      "p95": 0.21883321196148758,
+      "max": 0.2762731587878706
+    },
+    "old_plan_without_this_handoff_blend": {
+      "n": 33,
+      "median": 0.08764243183664856,
+      "p95": 0.1266663690042613,
+      "max": 0.15495091417891982
+    },
+    "added_by_blend": {
+      "n": 33,
+      "median": 0.053440491898434306,
+      "p95": 0.13424399246720414,
+      "max": 0.16846939754755355
+    },
+    "counterfactual_smoothstep_boundary": {
+      "n": 33,
+      "median": 0.09726304462862014,
+      "p95": 0.15333391635586255,
+      "max": 0.17675795706408665
+    }
+  },
+  "offline_all_installed_target_speed_mps": {
+    "linear": {
+      "n": 792,
+      "median": 0.1300273856264143,
+      "p95": 0.2764285488346948,
+      "max": 0.4043460410636273
+    },
+    "counterfactual_smoothstep": {
+      "n": 792,
+      "median": 0.13183568884368024,
+      "p95": 0.2724833409553779,
+      "max": 0.4043460410636273
+    }
+  },
+  "interpretation": [
+    "本会话未记录断流或激活拒绝，发布最长约18ms，相比顺序对照约507ms明显改善。",
+    "切块处目标速度仍有变化；线性混合贡献部分变化，不能归因全部块状感。",
+    "smoothstep仅复用固定历史轨迹的局部反事实计算，不模拟后续闭环、不代表真机速度或成功率。",
+    "运行配置未修改；建议后续仅对权重曲线做单变量对照，保持时间轴/stride/模型及共同臂手权重。"
+  ]
+}

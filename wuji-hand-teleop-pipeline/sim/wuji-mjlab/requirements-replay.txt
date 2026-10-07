@@ -1,0 +1,5 @@
+# Minimal dependencies for scripts/replay/replay_teleop.py.
+# The full mjlab/CUDA training environment is not required.
+lmdb>=1.4,<2
+mujoco==3.2.5
+numpy>=1.26,<3

@@ -1,0 +1,136 @@
+topics:
+  arm:
+    left:
+      state: "/left_arm/joint_states"
+      command: "/left_arm/joint_commands"
+      actual_eef: "/left_arm/actual_ee_pose"
+      target_eef: "/left_arm/target_ee_pose"
+      zsp: "/left_arm/zsp_para"
+      external_target: "/left_arm/external_target_pose"
+      external_zsp: "/left_arm/external_zsp"
+    right:
+      state: "/right_arm/joint_states"
+      command: "/right_arm/joint_commands"
+      actual_eef: "/right_arm/actual_ee_pose"
+      target_eef: "/right_arm/target_ee_pose"
+      zsp: "/right_arm/zsp_para"
+      external_target: "/right_arm/external_target_pose"
+      external_zsp: "/right_arm/external_zsp"
+  hand:
+    left:
+      state: "/left_hand/joint_states"
+      command: "/left_hand/joint_commands"
+    right:
+      state: "/right_hand/joint_states"
+      command: "/right_hand/joint_commands"
+  camera:
+    head:
+      topic: "/cam_head/color/image_raw/compressed"
+      type: "compressed"
+    right_wrist:
+      topic: "/cam_right_wrist/color/image_raw/compressed"
+      type: "compressed"
+
+deployment:
+  protocol_mode: "fdm_async"
+  # Override this base URL at launch. API keys remain environment-only.
+  server: "http://127.0.0.1:8000"
+  policy_http_path: "/v1/robot-policy"
+  policy_http_api_key_env: "LINGBOT_VA_API_KEY"
+  policy_http_max_response_bytes: 33554432
+  policy_http_expected_model_id: "lingbot-va/singlerighthand/pointflow-dropper-joint/step50000"
+  policy_http_expected_chunk_size: 48
+
+  require_cameras: true
+  camera_names: [head, right_wrist]
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  image_codec: "jpeg"
+  jpeg_quality: 90
+
+  request_rate_hz: 30.0
+  request_timeout_ms: 30000
+  reconnect_interval_s: 1.0
+  max_observation_age_s: 1.0
+  # W0 is fetched before Enable, so this watches only local activation.
+  policy_start_timeout_s: 2.0
+  publish_rate_hz: 120.0
+  action_rate_hz: 30.0
+  open_loop_horizon: 48
+
+  # Interpolation is a 120 Hz controller detail. Every 30 Hz model waypoint is
+  # retained and reported as the actual feedback action.
+  action_interpolation_method: "pchip_joint"
+  action_smoothing_method: "none"
+  action_smoothing_cutoff_hz: 3.0
+  action_smoothing_order: 3
+  prefetch_enabled: true
+  prefetch_latency_window: 100
+  prefetch_latency_min_samples: 5
+  prefetch_safety_actions: 2
+  prefetch_min_lead_actions: 3
+  prefetch_initial_lead_actions: 12
+  prefetch_max_lead_actions: 47
+  prefetch_time_alignment_enabled: false
+  boundary_blend_method: "smoothstep"
+  initial_blend_steps: 0
+  boundary_blend_steps: 0
+
+  diagnostic_trace_enabled: true
+  diagnostic_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  diagnostic_trace_queue_size: 4096
+  diagnostic_trace_flush_interval_s: 0.5
+  state_action_trace_rate_hz: 120.0
+  state_action_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  state_action_trace_queue_size: 32768
+  state_action_trace_flush_interval_s: 0.5
+  state_trace_arm_state_max_age_ms: 25.0
+  state_trace_eef_max_age_ms: 100.0
+  state_trace_action_max_age_ms: 50.0
+  state_trace_hand_max_age_ms: 100.0
+
+  # Centralized protocol-review choices. These are local baselines, not a
+  # claim that cloud_original already implements the contract.
+  fdm_async:
+    # Repeated for the cloud handoff contract. Startup rejects any mismatch
+    # with deployment.policy_http_expected_model_id above.
+    model_id: "lingbot-va/singlerighthand/pointflow-dropper-joint/step50000"
+
+    protocol_version: 3
+    action_mode: "joint"
+    action_rate_hz: 30.0
+    wire_chunk_size: 48
+    native_first_horizon: 48
+    native_horizon: 64
+    feedback_stride: 4
+    # Optional backward-compatible extension. When enabled, each 7.5 Hz
+    # feedback contains the measured 54D qpos for all four 30 Hz actions.
+    # Set false for servers/models that only accept the original q4/q8 snapshot.
+    state_history:
+      enabled: true
+    camera_names: [head, right_wrist]
+    supports_selective_grounding: true
+    # A second persistent transport object uses this path.
+    feedback_http_path: "/v1/robot-policy"
+    actual_action_semantics: "final_30hz_waypoint"
+    keyframe_policy: "first_complete_snapshot_after_stride"
+    single_active_session: true
+    feedback_queue_size: 64
+    feedback_retry_limit: 5
+    feedback_retry_backoff_s: 0.1
+    keyframe_wait_timeout_s: 0.5
+    # A slow, still-live action request must not break the 120 Hz command
+    # stream. Hold ticks repeat the last valid target and are not model steps.
+    pending_miss_policy: "hold_last"
+    # Final safety ceiling: a dead/unreachable cloud must not hold forever.
+    pending_miss_timeout_s: 5.0
+    action_retry_backoff_s: 0.1
+    # ACK field names remain a centrally configurable protocol review item.
+    feedback_ack_global_start_field: "accepted_global_action_start"
+    feedback_ack_action_count_field: "accepted_action_count"
+    feedback_ack_required_fields:
+      - native_chunk_id
+      - received_batches
+      - required_batches
+      - grounding_triggered
+      - grounded_frontier

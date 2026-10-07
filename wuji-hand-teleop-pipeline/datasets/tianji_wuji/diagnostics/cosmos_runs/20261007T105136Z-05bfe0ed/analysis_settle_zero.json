@@ -1,0 +1,55 @@
+{
+  "run_id": "20261007T105136Z-05bfe0ed",
+  "comparison_run_id": "20261007T094342Z-3c272ee1",
+  "operator_feedback": "成功，但差别不明显",
+  "task_completed_operator_report": true,
+  "change": {
+    "sequential_request_settle_s": {
+      "before": 0.1,
+      "after": 0.0
+    }
+  },
+  "unchanged": {
+    "open_loop_horizon": 24,
+    "prefetch_enabled": false,
+    "boundary_blend_steps": 8,
+    "boundary_hand_blend_steps": 2
+  },
+  "metrics_ms": {
+    "server_inference": {
+      "median": 409.59,
+      "p95": 421.2
+    },
+    "complete_rtt": {
+      "median": 432.42,
+      "p95": 443.48
+    },
+    "publish_gaps_over_100ms": {
+      "count": 21,
+      "median": 500.02,
+      "p95": 507.39
+    },
+    "last_scheduled_waypoint_to_observation": {
+      "count": 21,
+      "median": 68.58,
+      "min": 1.49,
+      "max": 70.71
+    }
+  },
+  "comparison_metrics_ms": {
+    "server_inference_median": 410.29,
+    "complete_rtt_median": 430.55,
+    "publish_gap_median": 568.24,
+    "last_scheduled_waypoint_to_observation_median": 135.17
+  },
+  "requests": 22,
+  "activations": 22,
+  "request_failure_events": 0,
+  "notes": [
+    "Runtime deployment.yaml confirms settle=0.0.",
+    "Observed publish-gap median reduction 68.22ms, not exactly100ms.",
+    "Request loop waits on network wakeup with timeout min(interval,0.1); deadline-to-observation timing still shows scheduling wait. No scheduling behavior modified during analysis.",
+    "Different real robot runs; no paired identical-observation quality comparison.",
+    "No claim of eliminated pause: current sequential inference still blocks next chunk."
+  ]
+}

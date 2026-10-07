@@ -1,0 +1,163 @@
+recording:
+  output_dir: "~/datasets/tianji_wuji"
+  frame_rate: 30.0
+  sync_tolerance_s: 0.04
+  buffer_seconds: 3.0
+  lmdb_map_size: 1099511627776
+  video_fourcc: "mp4v"
+  require_cameras: true
+  camera_names: [head, left_wrist, right_wrist]
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  auxiliary_camera:
+    enabled: true
+    depth_camera_names: [head, left_wrist, right_wrist]
+    infrared_stream_names: [head_ir_left, head_ir_right]
+    sync_tolerance_s: 0.06
+    queue_capacity: 64
+    infrared_frame_rate: 6.0
+    depth_png_compression: 1
+
+teleop_diagnostics:
+  enabled: true
+  sync_tolerance_s: 0.10
+  tracker_topic: "/openvr/tracker_diagnostics"
+  tracker_roles: [chest, left_wrist, right_wrist, left_arm, right_arm]
+  manus_topics: ["/manus_glove_0", "/manus_glove_1"]
+  manus_node_count: 25
+  manus_sensor_count: 5
+  manus_ergonomics_count: 20
+
+topics:
+  arm:
+    left:
+      state: "/left_arm/joint_states"
+      command: "/left_arm/joint_commands"
+      actual_eef: "/left_arm/actual_ee_pose"
+      target_eef: "/left_arm/target_ee_pose"
+      zsp: "/left_arm/zsp_para"
+      external_target: "/left_arm/external_target_pose"
+      external_zsp: "/left_arm/external_zsp"
+    right:
+      state: "/right_arm/joint_states"
+      command: "/right_arm/joint_commands"
+      actual_eef: "/right_arm/actual_ee_pose"
+      target_eef: "/right_arm/target_ee_pose"
+      zsp: "/right_arm/zsp_para"
+      external_target: "/right_arm/external_target_pose"
+      external_zsp: "/right_arm/external_zsp"
+  hand:
+    left:
+      state: "/left_hand/joint_states"
+      command: "/left_hand/joint_commands"
+    right:
+      state: "/right_hand/joint_states"
+      command: "/right_hand/joint_commands"
+  camera:
+    head:
+      topic: "/cam_head/color/image_raw/compressed"
+      type: "compressed"
+    left_wrist:
+      topic: "/cam_left_wrist/color/image_raw/compressed"
+      type: "compressed"
+    right_wrist:
+      topic: "/cam_right_wrist/color/image_raw/compressed"
+      type: "compressed"
+
+deployment:
+  protocol_mode: "protocol_v2"
+  server: "http://127.0.0.1:8000"
+  policy_http_path: "/v1/robot-policy"
+  policy_http_api_key_env: "COSMOS_POLICY_API_KEY"
+  policy_http_max_response_bytes: 4194304
+
+  # Cosmos 4B Sandwich EEF profile (run singlerighthand-edge-droid-16n-1001,
+  # iter_000020000, task "make a sandwich"). The sandwich-100 raw recipe trains
+  # right EEF xyz + quaternion xyzw + 20 hand joints, so this profile executes
+  # EEF pose targets via /right_arm/external_target_pose, not joint commands.
+  policy_http_expected_model_id: "singlerighthand-sandwich-edge-droid-16n-1001-iter-000020000"
+  policy_http_expected_chunk_size: 32
+  arm_command_mode: eef
+  action_space: eef
+  camera_names: [head, right_wrist]
+  request_rate_hz: 15.0
+  # The local policy server caps inference at 30 s; measured warm complete RTT
+  # on this machine is ~0.73 s (inference ~0.56 s), close to the original EEF
+  # cloud integration envelope below.
+  request_timeout_ms: 31000
+  reconnect_interval_s: 1.0
+  # Measured local warm RTT is ~0.78 s (inference ~0.6 s). Keep the freshness
+  # lease just inside the 16-action (1.067 s) alignment budget, matching the
+  # latency-tuned joint profile.
+  max_observation_age_s: 1.06
+  policy_start_timeout_s: 3.0
+
+  # The Cosmos manifest explicitly disables the first-chunk handoff barrier.
+  startup_handoff_gate_enabled: false
+  startup_handoff_timeout_s: 3.0
+
+  publish_rate_hz: 120.0
+  action_rate_hz: 15.0
+  # EEF pose targets interpolate position linearly and quaternion via SLERP.
+  action_interpolation_method: linear_slerp
+  # Zero-phase 3rd-order Butterworth on the raw 15 Hz waypoints of each complete
+  # chunk (arm xyz + quaternion rotvec chart + 20 hand dims), before alignment,
+  # blending and interpolation. Adds no control delay (sosfiltfilt) and cuts
+  # alternating waypoint jitter curvature to <10% (repo unit test). Enabled for
+  # this sandwich profile because the checkpoint's raw chunks tremble (arm
+  # +/-0.5-1 cm, hand flips 69% of steps, 2026-10-06). Keep it as the ONLY
+  # smoothing stage: stacking PCHIP/velocity_continuous was judged over-smoothed
+  # in the PI05 notes. The dropper profile keeps `none`.
+  action_smoothing_method: butterworth
+  action_smoothing_cutoff_hz: 3.0
+  action_smoothing_order: 3
+
+  # Alignment budget = 32 - horizon actions must exceed the RTT in actions
+  # (~0.78 s * 15 Hz = ~12). horizon 24 leaves only 8 and starved on the real
+  # machine (TARGET_HOLD -> DISABLED watchdog, 2026-10-06); horizon 16 leaves
+  # 16 (1.067 s) and is the latency-proven value from the joint profile.
+  open_loop_horizon: 16
+  prefetch_enabled: true
+  prefetch_latency_window: 100
+  prefetch_latency_min_samples: 5
+  prefetch_safety_actions: 2
+  # Prefetch lead is separate from the alignment budget: request early enough
+  # to cover the complete RTT before the current window runs out. Start at
+  # 12 actions (0.8 s); adapt to ceil(P99 RTT * 15 Hz) + 2 within [6, 15].
+  prefetch_min_lead_actions: 6
+  prefetch_max_lead_actions: 15
+  prefetch_initial_lead_actions: 12
+  prefetch_time_alignment_enabled: true
+
+  # Cosmos smooths each model chunk server-side. Keep local action smoothing
+  # disabled, but blend four actions at chunk boundaries to bridge the
+  # replanning discontinuity left by time-alignment skips.
+  boundary_blend_method: smoothstep
+  initial_blend_steps: 0
+  boundary_blend_steps: 4
+
+  diagnostic_trace_enabled: true
+  diagnostic_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  diagnostic_trace_queue_size: 4096
+  diagnostic_trace_flush_interval_s: 0.5
+  state_action_trace_rate_hz: 120.0
+  state_action_trace_directory: "/home/wuji/datasets/tianji_wuji/diagnostics"
+  state_action_trace_queue_size: 32768
+  state_action_trace_flush_interval_s: 0.5
+  state_trace_arm_state_max_age_ms: 25.0
+  state_trace_eef_max_age_ms: 100.0
+  state_trace_action_max_age_ms: 50.0
+  state_trace_hand_max_age_ms: 100.0
+
+  require_cameras: true
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  image_codec: "jpeg"
+  jpeg_quality: 90
+
+replay:
+  bind: "tcp://0.0.0.0:5555"
+  mode: "absolute"
+  rebase: true
+  start_hold_s: 1.0
+  loop: false

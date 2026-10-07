@@ -1,0 +1,253 @@
+{
+  "comparison": {
+    "native": {
+      "run_id": "20261007T115439Z-3ae236df",
+      "inference_ms": {
+        "n": 50,
+        "median": 590.7551109557971,
+        "p95": 596.557435306022,
+        "max": 604.3625619495288
+      },
+      "rtt_ms": {
+        "n": 50,
+        "median": 607.1300939656794,
+        "p95": 613.8193108141422,
+        "max": 840.3398359660059
+      },
+      "publish_interval_ms": {
+        "n": 6406,
+        "median": 8.329378033522516,
+        "p95": 8.532955485861748,
+        "max": 22.07475493196398
+      },
+      "publish_gaps_over100ms": 0,
+      "overlap_s": {
+        "n": 49,
+        "median": 0.33333333337213844,
+        "p95": 0.44000000001396944,
+        "max": 0.4666666666744277
+      },
+      "camera_to_handoff_ms": {
+        "n": 49,
+        "median": 679.7188919736072,
+        "p95": 702.0519394194707,
+        "max": 707.626924966462
+      },
+      "handoffs": 49,
+      "underruns": 0,
+      "activation_rejections": 0,
+      "boundary_target_velocity_change_mps": {
+        "n": 49,
+        "median": 0.10162694342342786,
+        "p95": 0.1828291564244256,
+        "max": 0.21610159439426113
+      },
+      "deployment": {
+        "protocol_mode": "protocol_v2",
+        "server": "http://127.0.0.1:8000",
+        "policy_http_path": "/v1/robot-policy",
+        "policy_http_api_key_env": "COSMOS_POLICY_API_KEY",
+        "policy_http_max_response_bytes": 4194304,
+        "policy_http_expected_model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+        "policy_http_expected_chunk_size": 32,
+        "arm_command_mode": "eef",
+        "action_space": "eef",
+        "camera_names": [
+          "head",
+          "right_wrist"
+        ],
+        "request_rate_hz": 15.0,
+        "request_timeout_ms": 31000,
+        "reconnect_interval_s": 1.0,
+        "max_observation_age_s": 1.0,
+        "policy_start_timeout_s": 3.0,
+        "startup_handoff_gate_enabled": false,
+        "startup_handoff_timeout_s": 3.0,
+        "publish_rate_hz": 120.0,
+        "action_rate_hz": 15.0,
+        "action_interpolation_method": "linear_slerp",
+        "action_smoothing_method": "none",
+        "action_smoothing_cutoff_hz": 3.0,
+        "action_smoothing_order": 3,
+        "paper_async_blend_enabled": true,
+        "paper_async_stride_steps": 16,
+        "paper_async_weight_curve": "smoothstep",
+        "open_loop_horizon": 32,
+        "prefetch_enabled": false,
+        "prefetch_latency_window": 100,
+        "prefetch_latency_min_samples": 5,
+        "prefetch_safety_actions": 2,
+        "prefetch_min_lead_actions": 3,
+        "prefetch_max_lead_actions": 7,
+        "prefetch_initial_lead_actions": 7,
+        "prefetch_time_alignment_enabled": false,
+        "first_step_anchor_on_measured_pose": true,
+        "boundary_blend_method": "smoothstep",
+        "initial_blend_steps": 0,
+        "boundary_blend_steps": 0,
+        "diagnostic_trace_enabled": true,
+        "diagnostic_policy_chunk_enabled": true,
+        "diagnostic_trace_directory": "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T115439Z-3ae236df/client",
+        "diagnostic_trace_queue_size": 4096,
+        "diagnostic_trace_flush_interval_s": 0.5,
+        "state_action_trace_rate_hz": 120.0,
+        "state_action_trace_directory": "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T115439Z-3ae236df/client",
+        "state_action_trace_queue_size": 32768,
+        "state_action_trace_flush_interval_s": 0.5,
+        "state_trace_arm_state_max_age_ms": 25.0,
+        "state_trace_eef_max_age_ms": 100.0,
+        "state_trace_action_max_age_ms": 50.0,
+        "state_trace_hand_max_age_ms": 100.0,
+        "require_cameras": true,
+        "camera_transport": "direct",
+        "camera_shared_memory_dir": "/dev/shm/wuji_camera_v1",
+        "image_codec": "jpeg",
+        "jpeg_quality": 90,
+        "early_splice_enabled": false,
+        "early_splice_bridge_max_steps": 0,
+        "boundary_hand_blend_steps": 0,
+        "sequential_boundary_blend_enabled": false,
+        "sequential_request_settle_s": 0.0,
+        "recording_run_id": "20261007T115439Z-3ae236df",
+        "recording_source_pipeline_config": "/home/wuji/ros2_ws/src/wuji_data_pipeline/config/cosmos_protocol_v2_50k_retrain_async_blend.yaml"
+      }
+    },
+    "omni": {
+      "run_id": "20261007T114022Z-e6651399",
+      "inference_ms": {
+        "n": 28,
+        "median": 411.1016149399802,
+        "p95": 426.5143715136219,
+        "max": 430.3333180723712
+      },
+      "rtt_ms": {
+        "n": 28,
+        "median": 434.6630685031414,
+        "p95": 450.6420760124456,
+        "max": 453.3978949766606
+      },
+      "publish_interval_ms": {
+        "n": 3619,
+        "median": 8.32972303032875,
+        "p95": 8.543627301696688,
+        "max": 15.677010989747941
+      },
+      "publish_gaps_over100ms": 0,
+      "overlap_s": {
+        "n": 27,
+        "median": 0.5333333333255723,
+        "p95": 0.5333333333255723,
+        "max": 0.5999999999767169
+      },
+      "camera_to_handoff_ms": {
+        "n": 27,
+        "median": 490.8981383778155,
+        "p95": 499.8485926655121,
+        "max": 500.86133868899196
+      },
+      "handoffs": 27,
+      "underruns": 0,
+      "activation_rejections": 0,
+      "boundary_target_velocity_change_mps": {
+        "n": 27,
+        "median": 0.08738942565320049,
+        "p95": 0.16016700820375207,
+        "max": 0.170133263350568
+      },
+      "deployment": {
+        "protocol_mode": "protocol_v2",
+        "server": "http://127.0.0.1:8000",
+        "policy_http_path": "/v1/robot-policy",
+        "policy_http_api_key_env": "COSMOS_POLICY_API_KEY",
+        "policy_http_max_response_bytes": 4194304,
+        "policy_http_expected_model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+        "policy_http_expected_chunk_size": 32,
+        "arm_command_mode": "eef",
+        "action_space": "eef",
+        "camera_names": [
+          "head",
+          "right_wrist"
+        ],
+        "request_rate_hz": 15.0,
+        "request_timeout_ms": 31000,
+        "reconnect_interval_s": 1.0,
+        "max_observation_age_s": 1.0,
+        "policy_start_timeout_s": 3.0,
+        "startup_handoff_gate_enabled": false,
+        "startup_handoff_timeout_s": 3.0,
+        "publish_rate_hz": 120.0,
+        "action_rate_hz": 15.0,
+        "action_interpolation_method": "linear_slerp",
+        "action_smoothing_method": "none",
+        "action_smoothing_cutoff_hz": 3.0,
+        "action_smoothing_order": 3,
+        "paper_async_blend_enabled": true,
+        "paper_async_stride_steps": 16,
+        "paper_async_weight_curve": "smoothstep",
+        "open_loop_horizon": 32,
+        "prefetch_enabled": false,
+        "prefetch_latency_window": 100,
+        "prefetch_latency_min_samples": 5,
+        "prefetch_safety_actions": 2,
+        "prefetch_min_lead_actions": 3,
+        "prefetch_max_lead_actions": 7,
+        "prefetch_initial_lead_actions": 7,
+        "prefetch_time_alignment_enabled": false,
+        "first_step_anchor_on_measured_pose": true,
+        "boundary_blend_method": "smoothstep",
+        "initial_blend_steps": 0,
+        "boundary_blend_steps": 0,
+        "diagnostic_trace_enabled": true,
+        "diagnostic_policy_chunk_enabled": true,
+        "diagnostic_trace_directory": "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T114022Z-e6651399/client",
+        "diagnostic_trace_queue_size": 4096,
+        "diagnostic_trace_flush_interval_s": 0.5,
+        "state_action_trace_rate_hz": 120.0,
+        "state_action_trace_directory": "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T114022Z-e6651399/client",
+        "state_action_trace_queue_size": 32768,
+        "state_action_trace_flush_interval_s": 0.5,
+        "state_trace_arm_state_max_age_ms": 25.0,
+        "state_trace_eef_max_age_ms": 100.0,
+        "state_trace_action_max_age_ms": 50.0,
+        "state_trace_hand_max_age_ms": 100.0,
+        "require_cameras": true,
+        "camera_transport": "direct",
+        "camera_shared_memory_dir": "/dev/shm/wuji_camera_v1",
+        "image_codec": "jpeg",
+        "jpeg_quality": 90,
+        "early_splice_enabled": false,
+        "early_splice_bridge_max_steps": 0,
+        "boundary_hand_blend_steps": 0,
+        "sequential_boundary_blend_enabled": false,
+        "sequential_request_settle_s": 0.0,
+        "recording_run_id": "20261007T114022Z-e6651399",
+        "recording_source_pipeline_config": "/home/wuji/ros2_ws/src/wuji_data_pipeline/config/cosmos_protocol_v2_50k_retrain_async_blend.yaml"
+      }
+    }
+  },
+  "client_config_differences": {
+    "diagnostic_trace_directory": [
+      "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T115439Z-3ae236df/client",
+      "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T114022Z-e6651399/client"
+    ],
+    "state_action_trace_directory": [
+      "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T115439Z-3ae236df/client",
+      "/home/wuji/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T114022Z-e6651399/client"
+    ],
+    "recording_run_id": [
+      "20261007T115439Z-3ae236df",
+      "20261007T114022Z-e6651399"
+    ]
+  },
+  "conclusions": [
+    "两轮smoothstep/stride16/32步/15Hz一致，原生本轮也无断流。",
+    "原生推理中位数比Omni慢约180ms；实际相机至交接中位数慢约189ms，剩余重叠区少约200ms。",
+    "交接目标速度变化P95原生较高，但不同会话轨迹、时长和环境不受控，不足以判定任务质量差异。"
+  ],
+  "limitations": [
+    "速度是命令目标速度变化，不是实测机械臂速度。",
+    "Omni录制视频latent，native未录制，服务端数值路径及录制负载不完全一致。",
+    "native最高RTT840ms发生于首块，不是执行中断流。",
+    "用户尚未提供本轮native的任务成功和流畅性反馈。"
+  ]
+}

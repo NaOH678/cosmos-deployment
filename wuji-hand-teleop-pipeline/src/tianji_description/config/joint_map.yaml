@@ -1,0 +1,31 @@
+# Joint order consumed by the vendor SDK (indices 0 through 6).
+left:
+  - Joint1_L
+  - Joint2_L
+  - Joint3_L
+  - Joint4_L
+  - Joint5_L
+  - Joint6_L
+  - Joint7_L
+right:
+  - Joint1_R
+  - Joint2_R
+  - Joint3_R
+  - Joint4_R
+  - Joint5_R
+  - Joint6_R
+  - Joint7_R
+
+# Constant Link7 -> SDK flange/TCP transform. The SDK's eighth MDH row is
+# [alpha=90 deg, a=0 mm, d=95 mm, theta=90 deg]. Apply by right multiplication:
+# T_base_sdk = T_base_Link7 @ flange_offset_<side>.
+flange_offset_left:
+  - [0.0, -1.0, 0.0, 0.0]
+  - [0.0, 0.0, -1.0, -0.095]
+  - [1.0, 0.0, 0.0, 0.0]
+  - [0.0, 0.0, 0.0, 1.0]
+flange_offset_right:
+  - [0.0, -1.0, 0.0, 0.0]
+  - [0.0, 0.0, -1.0, -0.095]
+  - [1.0, 0.0, 0.0, 0.0]
+  - [0.0, 0.0, 0.0, 1.0]

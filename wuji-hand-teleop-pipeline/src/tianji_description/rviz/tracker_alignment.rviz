@@ -1,0 +1,112 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Robot Init Pose1
+        - /Tracker Skeleton1
+        - /Target Frames1
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.35
+      Cell Size: 0.25
+      Class: rviz_default_plugins/Grid
+      Color: 115; 120; 128
+      Enabled: true
+      Name: Grid
+      Plane: XY
+      Plane Cell Count: 16
+      Reference Frame: Link_Base
+    - Alpha: 0.82
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
+      Enabled: true
+      Name: Robot Init Pose
+      Update Interval: 0
+      Visual Enabled: true
+    - Alpha: 0.38
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /tianji_alignment/ghost/robot_description
+      Enabled: true
+      Name: Tracker IK Ghost
+      TF Prefix: ghost_
+      Update Interval: 0
+      Visual Enabled: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Marker Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /tianji_alignment/markers
+      Name: Tracker Skeleton
+    - Class: rviz_default_plugins/Axes
+      Enabled: true
+      Length: 0.16
+      Name: Left Tracker Target
+      Radius: 0.012
+      Reference Frame: tianji_left
+    - Class: rviz_default_plugins/Axes
+      Enabled: true
+      Length: 0.16
+      Name: Right Tracker Target
+      Radius: 0.012
+      Reference Frame: tianji_right
+  Enabled: true
+  Global Options:
+    Background Color: 35; 38; 43
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.65
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.06
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0.0
+        Y: 0.0
+        Z: 1.0
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.35
+      Target Frame: Link_Base
+      Value: Orbit (rviz)
+      Yaw: 0.8
+Window Geometry:
+  Height: 760
+  Hide Left Dock: true
+  Hide Right Dock: true
+  Width: 1180
+  X: 90
+  Y: 45

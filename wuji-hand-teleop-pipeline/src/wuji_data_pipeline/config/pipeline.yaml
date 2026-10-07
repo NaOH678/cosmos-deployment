@@ -1,0 +1,119 @@
+recording:
+  output_dir: "~/datasets/tianji_wuji"
+  frame_rate: 30.0
+  sync_tolerance_s: 0.04
+  buffer_seconds: 3.0
+  lmdb_map_size: 1099511627776  # 1 TiB virtual map; disk grows on demand.
+  video_fourcc: "mp4v"
+  require_cameras: true
+  camera_names: [head, left_wrist, right_wrist]
+  # Stage D default: images bypass ROS 2/DDS.  Set camera_transport to "ros"
+  # only for migration comparison with the previous pipeline.
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  # Analysis-only RealSense streams. These never participate in readiness,
+  # training-frame rejection, GUI preview, deployment, or replay.
+  auxiliary_camera:
+    enabled: true
+    depth_camera_names: [head, left_wrist, right_wrist]
+    infrared_stream_names: [head_ir_left, head_ir_right]
+    sync_tolerance_s: 0.06
+    queue_capacity: 64
+    # Head D435 Stereo Module is currently constrained to 6 Hz by USB 2.1.
+    infrared_frame_rate: 6.0
+    # OpenCV PNG level 1 is lossless and keeps recorder CPU bounded.
+    depth_png_compression: 1
+
+# Optional analysis-only inputs. They never participate in source readiness,
+# frame skipping, robot commands, or replay. Missing samples are stored with
+# available/valid=0 while the original training frame is still recorded.
+teleop_diagnostics:
+  enabled: true
+  sync_tolerance_s: 0.10
+  tracker_topic: "/openvr/tracker_diagnostics"
+  tracker_roles: [chest, left_wrist, right_wrist, left_arm, right_arm]
+  manus_topics: ["/manus_glove_0", "/manus_glove_1"]
+  manus_node_count: 25
+  manus_sensor_count: 5
+  manus_ergonomics_count: 20
+
+topics:
+  arm:
+    left:
+      state: "/left_arm/joint_states"
+      command: "/left_arm/joint_commands"
+      actual_eef: "/left_arm/actual_ee_pose"
+      target_eef: "/left_arm/target_ee_pose"
+      zsp: "/left_arm/zsp_para"
+      external_target: "/left_arm/external_target_pose"
+      external_zsp: "/left_arm/external_zsp"
+    right:
+      state: "/right_arm/joint_states"
+      command: "/right_arm/joint_commands"
+      actual_eef: "/right_arm/actual_ee_pose"
+      target_eef: "/right_arm/target_ee_pose"
+      zsp: "/right_arm/zsp_para"
+      external_target: "/right_arm/external_target_pose"
+      external_zsp: "/right_arm/external_zsp"
+  hand:
+    left:
+      state: "/left_hand/joint_states"
+      command: "/left_hand/joint_commands"
+    right:
+      state: "/right_hand/joint_states"
+      command: "/right_hand/joint_commands"
+  camera:
+    head:
+      topic: "/cam_head/color/image_raw/compressed"
+      type: "compressed"
+    left_wrist:
+      topic: "/cam_left_wrist/color/image_raw/compressed"
+      type: "compressed"
+    right_wrist:
+      topic: "/cam_right_wrist/color/image_raw/compressed"
+      type: "compressed"
+
+deployment:
+  # Endpoint scheme selects the transport automatically:
+  # tcp:// keeps the ZMQ replay/LAN path; http(s):// uses the hosted policy.
+  # Keep the tracked default local and pass a hosted service URL to
+  # start_deployment_session.sh. Platform service instance names are ephemeral.
+  server: "tcp://127.0.0.1:5555"
+  policy_http_path: "/v1/robot-policy"
+  policy_http_api_key_env: "PI05_HTTP_API_KEY"
+  policy_http_max_response_bytes: 33554432
+  policy_http_expected_model_id: "checkpoints/pi05_singlerighthand_sandwich_100/sandwich_v1/99999"
+  policy_http_expected_chunk_size: 50
+  # Must match the camera names/order used by the trained policy. Current
+  # sandwich episodes contain head + right_wrist; update this explicitly when
+  # a checkpoint is trained with a different camera set.
+  camera_names: [head, right_wrist]
+  request_rate_hz: 30.0
+  request_timeout_ms: 1000
+  reconnect_interval_s: 1.0
+  # Reject a response computed from an observation older than this, even if
+  # the response itself has only just arrived.
+  max_observation_age_s: 0.5
+  # A successful hello is not enough: after Tianji reaches READY the first
+  # valid action must arrive before this lease expires, otherwise standby.
+  policy_start_timeout_s: 2.0
+  publish_rate_hz: 120.0
+  action_rate_hz: 30.0
+  # openpi ActionChunkBroker semantics: the pi0.5 model predicts 50 actions,
+  # but the robot executes only this prefix before observing and inferring
+  # again.  This matches the official ALOHA 50-predict / 25-execute pattern.
+  open_loop_horizon: 25
+  require_cameras: true
+  camera_transport: "direct"
+  camera_shared_memory_dir: "/dev/shm/wuji_camera_v1"
+  # Shared-memory frames remain raw for GUI/recording; only the network copy
+  # is JPEG encoded by the deployment worker.
+  image_codec: "jpeg"
+  jpeg_quality: 90
+
+replay:
+  bind: "tcp://0.0.0.0:5555"
+  mode: "absolute"
+  rebase: true
+  start_hold_s: 1.0
+  loop: false
