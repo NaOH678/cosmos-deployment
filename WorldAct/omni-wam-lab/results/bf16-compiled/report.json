@@ -1,0 +1,159 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "eager": false,
+  "samples": [
+    {
+      "index": 0,
+      "warmup": true,
+      "end_to_end_ms": 872.2748039290309
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "end_to_end_ms": 635.8844670467079
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "end_to_end_ms": 636.1638570670038
+    },
+    {
+      "index": 3,
+      "warmup": true,
+      "end_to_end_ms": 635.4592819698155
+    },
+    {
+      "index": 4,
+      "warmup": true,
+      "end_to_end_ms": 657.9415469896048
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "end_to_end_ms": 639.4517270382494
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "end_to_end_ms": 639.1310780309141
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "end_to_end_ms": 640.8399940701202
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "end_to_end_ms": 637.419851962477
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "end_to_end_ms": 633.6082289926708
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "end_to_end_ms": 633.4985540015623
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "end_to_end_ms": 632.2566830785945
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "end_to_end_ms": 632.7894190326333
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "end_to_end_ms": 636.2243909388781
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "end_to_end_ms": 639.159789076075
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "end_to_end_ms": 642.7500389982015
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "end_to_end_ms": 635.5249690823257
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "end_to_end_ms": 640.3248489368707
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "end_to_end_ms": 639.7935890126973
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "end_to_end_ms": 639.8194159846753
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "end_to_end_ms": 641.0353389801458
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "end_to_end_ms": 637.7719020238146
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "end_to_end_ms": 638.914278941229
+    },
+    {
+      "index": 23,
+      "warmup": false,
+      "end_to_end_ms": 637.1757119195536
+    },
+    {
+      "index": 24,
+      "warmup": false,
+      "end_to_end_ms": 635.5390399694443
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "p50_ms": 638.3430904825218,
+  "p95_ms": 641.1210739810485
+}

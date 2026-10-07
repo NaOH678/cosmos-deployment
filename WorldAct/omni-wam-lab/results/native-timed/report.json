@@ -1,0 +1,189 @@
+{
+  "config": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/local5090_services/20261007T004610546291Z_4w_standalone/server.yaml",
+  "model": {
+    "service_mode": "full",
+    "checkpoint_path": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000",
+    "checkpoint_sha256": null,
+    "config_file": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml",
+    "experiment": "action_policy_singlerighthand_edge",
+    "experiment_overrides": [],
+    "output_dir": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/local5090_services/20261007T004610546291Z_4w_standalone/outputs",
+    "credential_path": "credentials/gcp_checkpoint.secret",
+    "sampler": "unipc",
+    "task": "make a sandwich",
+    "domain_name": "singlerighthand",
+    "seed": 0,
+    "guidance": 3.0,
+    "num_steps": 4,
+    "shift": 5.0,
+    "trajectory_smoothing": "binomial5",
+    "resolution": "480",
+    "native_action_dim": 27,
+    "native_chunk_size": 32,
+    "max_action_dim": 64,
+    "use_ema_weights": true,
+    "use_cuda_graphs": false,
+    "warmup": false
+  },
+  "observation": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "model_ms": 3768.664654926397,
+      "end_to_end_ms": 3776.290499023162
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "model_ms": 621.7328499769792,
+      "end_to_end_ms": 631.988808978349
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "model_ms": 635.47702296637,
+      "end_to_end_ms": 640.9021079307422
+    },
+    {
+      "index": 3,
+      "warmup": true,
+      "model_ms": 623.489785939455,
+      "end_to_end_ms": 629.1273069800809
+    },
+    {
+      "index": 4,
+      "warmup": true,
+      "model_ms": 619.0790670225397,
+      "end_to_end_ms": 627.2195799974725
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "model_ms": 614.5319249480963,
+      "end_to_end_ms": 620.0427339645103
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "model_ms": 615.0886309333146,
+      "end_to_end_ms": 620.5278809648007
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "model_ms": 615.8919179579243,
+      "end_to_end_ms": 621.7399410670623
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "model_ms": 616.6209279326722,
+      "end_to_end_ms": 622.0167520223185
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "model_ms": 605.045730015263,
+      "end_to_end_ms": 613.4810330113396
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "model_ms": 600.1279969932511,
+      "end_to_end_ms": 607.653929037042
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "model_ms": 606.9547890219837,
+      "end_to_end_ms": 612.089741975069
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "model_ms": 605.643454939127,
+      "end_to_end_ms": 611.353471991606
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "model_ms": 616.240966017358,
+      "end_to_end_ms": 621.8474309425801
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "model_ms": 617.8647689521313,
+      "end_to_end_ms": 623.6239429563284
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "model_ms": 614.9208809947595,
+      "end_to_end_ms": 622.5747970165685
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "model_ms": 617.2596550313756,
+      "end_to_end_ms": 622.9802010348067
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "model_ms": 617.4058850156143,
+      "end_to_end_ms": 622.7931060129777
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "model_ms": 615.8522360492498,
+      "end_to_end_ms": 621.5451589087024
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "model_ms": 618.133589043282,
+      "end_to_end_ms": 624.2145790020004
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "model_ms": 619.1405820427462,
+      "end_to_end_ms": 624.9457490630448
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "model_ms": 623.89521591831,
+      "end_to_end_ms": 630.0284280441701
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "model_ms": 622.2430339548737,
+      "end_to_end_ms": 630.1945670275018
+    },
+    {
+      "index": 23,
+      "warmup": false,
+      "model_ms": 615.6888620462269,
+      "end_to_end_ms": 621.1919480701908
+    },
+    {
+      "index": 24,
+      "warmup": false,
+      "model_ms": 617.6809199387208,
+      "end_to_end_ms": 623.2845620252192
+    }
+  ],
+  "model_ms": {
+    "p50": 616.0664419876412,
+    "p95": 622.3256430530455
+  },
+  "end_to_end_ms": {
+    "p50": 621.9320914824493,
+    "p95": 630.0367349933367
+  }
+}

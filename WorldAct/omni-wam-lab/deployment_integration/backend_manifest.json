@@ -1,0 +1,20 @@
+{
+  "changed_files": {
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/wam_gen_graph.py": "5581406f9b446c5dc6aa5fb98c15995eaf20137f544eb3dc7d46a2b9c5480842",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py": "d083d12c7d119d3576477bd128018417c8a052687fca20766e9288696fec6ba1",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3/vllm_omni/diffusion/models/cosmos3/transformer_cosmos3.py": "e7f492cc6ec4263048956fccc57479e143c3138c4af793bc15f8be6783dfdadc"
+  },
+  "backup_dir": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/deployment_integration/backend_before",
+  "scope": "Only explicit _wam_native requests and WAM_FULL_GEN_GRAPH opt-in. Ordinary RoboLab retains generic domain validation.",
+  "graph_cache_limit": 4,
+  "fallback": "Unsupported WAM shape/parallel/offload/mixedprecision or new variant after cap uses original GEN stack. Graph capture runtime errors still propagate.",
+  "audit": "Cold capture only optional disk snapshot; OSError logged without failing model. In-memory graph_audit provides runtime counters.",
+  "cpu_tests": [
+    "5 graph scope/buffer/cap/exception restoration tests passed",
+    "4 valid domains x2 ranks bitwise equal versus pre-change backup; invalid type/range, generic fallback, batch and rank rejected",
+    "stable helper ruff passed",
+    "pinned pipeline/transformer AST syntax passed"
+  ],
+  "gpu_validation_owner": "profile_performance; see production_validation results for full service evidence",
+  "last_core_change": "2026-10-07 17:38:52 +0800: cold audit OSError guard only; no subsequent core edits"
+}

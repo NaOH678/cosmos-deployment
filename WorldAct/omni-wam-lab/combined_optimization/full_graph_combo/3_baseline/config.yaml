@@ -1,0 +1,135 @@
+auth:
+  api_key_env: COSMOS_POLICY_API_KEY
+  api_key_file: null
+coordinate_frames:
+  model_right_eef: right_chest
+  model_to_wire_transform: identity
+  native_action_type: absolute
+  observation_right_eef: right_chest
+  quaternion_order: xyzw
+  wire_right_eef: right_chest
+deployment:
+  action_rate_hz: 15.0
+  action_space: eef
+  active_hand_sides:
+  - right
+  arm_command_mode: eef
+  camera_names:
+  - head
+  - right_wrist
+  mode: right
+  model_id: singlerighthand-edge-droid-50k-retrain-v1-iter-000040000
+  protocol_version: 2
+  robot_layout:
+    action_dim: 54
+    action_layout:
+    - eef:
+      - 0
+      - 7
+      hand:
+      - 7
+      - 27
+      side: left
+    - eef:
+      - 27
+      - 34
+      hand:
+      - 34
+      - 54
+      side: right
+    arm_dof: 14
+    arm_dof_per_side: 7
+    eef_dim: 14
+    eef_dof_per_side: 7
+    hand_dof: 40
+    hand_dof_per_side: 20
+    n_sides: 2
+    qpos_layout:
+    - arm:
+      - 0
+      - 7
+      hand:
+      - 7
+      - 27
+      side: left
+    - arm:
+      - 27
+      - 34
+      hand:
+      - 34
+      - 54
+      side: right
+    sides:
+    - left
+    - right
+    state_dim: 54
+    units:
+      action.eef.position: metre
+      action.eef.quaternion: xyzw
+      action.hand: degree
+      qpos.arm: radian
+      qpos.hand: radian
+  schema_version: 2
+  startup_handoff: false
+  wire_chunk_size: 32
+  zero_filled_hand_sides:
+  - left
+image_preprocessing:
+  codec: jpeg
+  composition: right_wrist_over_head
+  input_color_space: bgr8
+  keep_aspect_ratio: true
+  model_color_space: rgb
+  padding: reflection
+  warmup_shapes:
+    head:
+    - 480
+    - 640
+    - 3
+    right_wrist:
+    - 480
+    - 640
+    - 3
+model:
+  checkpoint_path: /home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000
+  checkpoint_sha256: null
+  config_file: /home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml
+  credential_path: credentials/gcp_checkpoint.secret
+  domain_name: singlerighthand
+  experiment: action_policy_singlerighthand_edge
+  experiment_overrides: []
+  guidance: 3.0
+  max_action_dim: 64
+  native_action_dim: 27
+  native_chunk_size: 32
+  num_steps: 4
+  output_dir: /home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/full_graph_combo/3_baseline/server_output
+  resolution: '480'
+  sampler: unipc
+  seed: 0
+  service_mode: full
+  shift: 5.0
+  task: make a sandwich
+  trajectory_smoothing: binomial5
+  use_ema_weights: true
+  warmup: true
+safety:
+  max_eef_step_deg: 75.0
+  max_eef_step_m: 0.15
+  max_hand_step_deg: 75.0
+  quaternion_min_norm: 1.0e-06
+  small_motion_max_eef_deg: 5.0
+  small_motion_max_eef_m: 0.01
+  small_motion_max_hand_deg: 5.0
+service:
+  endpoint: /v1/robot-policy
+  host: 0.0.0.0
+  inference_timeout_s: 30.0
+  max_inflight_inferences: 1
+  max_request_bytes: 16777216
+  max_response_bytes: 4194304
+  max_sessions: 8
+  port: 8000
+  session_ttl_s: 120.0
+timestamps:
+  max_image_source_skew_s: 0.25

@@ -1,0 +1,117 @@
+{
+  "baseline": {
+    "p50_ms": 441.7062359279953,
+    "p95_ms": 443.8275077030994
+  },
+  "candidate": {
+    "p50_ms": 437.7288414980285,
+    "p95_ms": 441.4010531094391
+  },
+  "p50_delta_ms": -3.9773944299668074,
+  "output_checks": [
+    {
+      "index": 5,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 6,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 7,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 8,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 9,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 10,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 11,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 12,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 13,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 14,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 15,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 16,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 17,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 18,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 19,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 20,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 21,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 22,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 23,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "index": 24,
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    }
+  ],
+  "tests": "CPU valid domains 0/1/26/31, rank2/rank3, invalid ranges/types and batch/rank checks pass",
+  "hot_sync_events_removed": 32,
+  "profiled_requests_per_run": 2,
+  "conclusion": "Small ~4ms improvement in separate offline runs; no large speed claim, especially given GPU clock/load variation. Domain checks retained at CPU request entry and generic fallback. All 20 measured output pairs bitwise equal. Candidate isolated, not deployed."
+}

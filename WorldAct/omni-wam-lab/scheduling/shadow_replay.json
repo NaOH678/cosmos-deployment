@@ -1,0 +1,3475 @@
+[
+  {
+    "run": "20261007T080926Z-4fdfb8bc",
+    "experimental_limits": {
+      "position_m": 0.025,
+      "rotation_rad": 0.20943951023931956,
+      "hand_rad": 0.17453292519943295,
+      "state_age_s": 0.1,
+      "match_time_s": 0.025,
+      "max_commit_s": 0.6,
+      "history_steps": 3
+    },
+    "timing_hypothesis": "Model output row i at observation_created_at + (i+1)/rate; source image timestamps are recorded separately, and true learned action phase is not known.",
+    "missing_evidence": [
+      "No request-time commitment deadline/full future plan snapshot. Do not invent it from post-hoc execution.",
+      "No grasp contact/phase ground truth. Full27D compatibility cannot prove semantic phase."
+    ],
+    "accepted": 0,
+    "rejected": 25,
+    "reason_counts": {
+      "missing_commitment_record": 25,
+      "missing_measured_or_command_state": 1,
+      "missing_time_matched_executed_history": 25,
+      "entry_disagreement": 20,
+      "old_plan_budget_exhausted": 24,
+      "stale_or_future_state": 24
+    },
+    "known_exhausted_old_plan_count": 24,
+    "unknown_budget_count": 1,
+    "valid_online_acceptance_estimate": false,
+    "rows": [
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_measured_or_command_state",
+          "missing_time_matched_executed_history"
+        ],
+        "old_plan_budget_s": null,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": []
+        },
+        "experimental_only": true,
+        "chunk_id": 1,
+        "request_id": 25
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.020204139509088375,
+            0.07059579788313806,
+            0.24924944089923273
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 2,
+        "request_id": 26
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.0873555323577493,
+            0.24199123766778535,
+            0.06769529122288775
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 3,
+        "request_id": 27
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.03820380889873369,
+            0.03281787737445927,
+            0.048579537037219206
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 4,
+        "request_id": 28
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.07789210900884543,
+            0.16203075170617792,
+            0.19345581658790922
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 5,
+        "request_id": 29
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.027517293017892384,
+            0.09584211918772932,
+            0.2969111028219994
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 6,
+        "request_id": 30
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.05811933255072704,
+            0.1139111345922166,
+            0.27164323013640934
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 7,
+        "request_id": 31
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.023859495200790257,
+            0.04117118820637642,
+            0.11480334853405405
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 8,
+        "request_id": 32
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.027976144697900628,
+            0.11953319384473442,
+            0.24390201316743543
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 9,
+        "request_id": 33
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.01232664519188285,
+            0.040258971944394095,
+            0.24951808727419456
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 10,
+        "request_id": 34
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.071379241027247,
+            0.170262911949444,
+            0.05580128089945752
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 11,
+        "request_id": 35
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.015753125849612828,
+            0.11477645697210649,
+            0.6302534504079558
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 12,
+        "request_id": 36
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.031995469553941745,
+            0.06707219450978677,
+            0.055419083993517526
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 13,
+        "request_id": 37
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.07729206109690415,
+            0.18116075647313018,
+            0.07027909011248257
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 14,
+        "request_id": 38
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.0362497809754296,
+            0.08021447664488233,
+            0.08212962433111715
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 15,
+        "request_id": 39
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.07207623552590832,
+            0.1356437812083248,
+            0.13624618952499046
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 16,
+        "request_id": 40
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.01319208106287151,
+            0.05942499438623198,
+            0.0778869423985119
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 17,
+        "request_id": 41
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.014584346181412694,
+            0.05248202183992118,
+            0.046589739584009804
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 18,
+        "request_id": 42
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.0408212413260072,
+            0.1122005001898752,
+            0.04871254528891189
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 19,
+        "request_id": 43
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.09796616291590542,
+            0.19756745173572576,
+            0.03378476172020439
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 20,
+        "request_id": 44
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.022500455339321494,
+            0.08372309689491172,
+            0.15004449318588176
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 21,
+        "request_id": 45
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.07918303118747565,
+            0.2725316292939449,
+            0.0303617674816119
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 22,
+        "request_id": 46
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.03747663206710283,
+            0.08278264207821806,
+            0.06311278993518843
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 23,
+        "request_id": 47
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.09428694449232694,
+            0.1653392271745661,
+            0.12256067073626409
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 24,
+        "request_id": 48
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "missing_time_matched_executed_history",
+          "old_plan_budget_exhausted",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [],
+          "entry_residual": [
+            0.03882642275682869,
+            0.10882287342998442,
+            0.051534066675904544
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 25,
+        "request_id": 49
+      }
+    ]
+  },
+  {
+    "run": "20261006T211440Z-574ff3db",
+    "experimental_limits": {
+      "position_m": 0.025,
+      "rotation_rad": 0.20943951023931956,
+      "hand_rad": 0.17453292519943295,
+      "state_age_s": 0.1,
+      "match_time_s": 0.025,
+      "max_commit_s": 0.6,
+      "history_steps": 3
+    },
+    "timing_hypothesis": "Model output row i at observation_created_at + (i+1)/rate; source image timestamps are recorded separately, and true learned action phase is not known.",
+    "missing_evidence": [
+      "No request-time commitment deadline/full future plan snapshot. Do not invent it from post-hoc execution.",
+      "No grasp contact/phase ground truth. Full27D compatibility cannot prove semantic phase."
+    ],
+    "accepted": 0,
+    "rejected": 67,
+    "reason_counts": {
+      "missing_commitment_record": 67,
+      "missing_measured_or_command_state": 1,
+      "missing_time_matched_executed_history": 1,
+      "entry_disagreement": 60,
+      "old_plan_budget_exhausted": 66,
+      "prefix_disagreement": 63,
+      "tracking_residual": 2,
+      "stale_or_future_state": 1
+    },
+    "known_exhausted_old_plan_count": 66,
+    "unknown_budget_count": 1,
+    "valid_online_acceptance_estimate": false,
+    "rows": [
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "missing_measured_or_command_state",
+          "missing_time_matched_executed_history"
+        ],
+        "old_plan_budget_s": null,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": []
+        },
+        "experimental_only": true,
+        "chunk_id": 1,
+        "request_id": 22
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement",
+          "tracking_residual"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.006070946734743017,
+            0.014456396795770736,
+            0.26266344800153274
+          ],
+          "prefix_residuals": [
+            [
+              0.008050251990910504,
+              0.10240558893966423,
+              0.3590191486569281
+            ],
+            [
+              0.01240647276828389,
+              0.1014312951014454,
+              0.3347420384758747
+            ],
+            [
+              0.016617840042255774,
+              0.10463438159767638,
+              0.31328781247127824
+            ]
+          ],
+          "entry_residual": [
+            0.01261523921879914,
+            0.09388019298292759,
+            0.2744133171442551
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 2,
+        "request_id": 25
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017029949001113428,
+            0.04786229681942591,
+            0.07103118701394129
+          ],
+          "prefix_residuals": [
+            [
+              0.03298282053091851,
+              0.1139694034474743,
+              0.24591083557768223
+            ],
+            [
+              0.041788815180411706,
+              0.13630110321998135,
+              0.21000556512901591
+            ],
+            [
+              0.045057228366733995,
+              0.15486330686942823,
+              0.17776576973619374
+            ]
+          ],
+          "entry_residual": [
+            0.05163175145882073,
+            0.16990428703604815,
+            0.1672280740664273
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 3,
+        "request_id": 26
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017137343795427924,
+            0.036269279092439,
+            0.03920476622800306
+          ],
+          "prefix_residuals": [
+            [
+              0.06696250455066728,
+              0.16339522253575262,
+              0.03352943115069296
+            ],
+            [
+              0.06932256627689397,
+              0.1559483818823646,
+              0.0397920209015824
+            ],
+            [
+              0.06934474992288556,
+              0.14420849855159715,
+              0.04215264689182874
+            ]
+          ],
+          "entry_residual": [
+            0.06763359881817085,
+            0.13424839354998985,
+            0.030554979818697148
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 4,
+        "request_id": 27
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.00488013573921229,
+            0.02129501397954927,
+            0.04612170298149021
+          ],
+          "prefix_residuals": [
+            [
+              0.029950758170433314,
+              0.05625389976679003,
+              0.030610839622561614
+            ],
+            [
+              0.027705802342790017,
+              0.05208842745984165,
+              0.031798542889709625
+            ],
+            [
+              0.02264811262995255,
+              0.06666593469269175,
+              0.036621527623843075
+            ]
+          ],
+          "entry_residual": [
+            0.024840741045218075,
+            0.07941141227224945,
+            0.031824358907526606
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 5,
+        "request_id": 28
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.006736801602599959,
+            0.04629496107546603,
+            0.12444126952765902
+          ],
+          "prefix_residuals": [
+            [
+              0.026437181113379057,
+              0.12295976354423782,
+              0.10498121095967827
+            ],
+            [
+              0.016398796670630822,
+              0.12535855914561392,
+              0.1747956460409692
+            ],
+            [
+              0.009409679223287741,
+              0.12464065298679844,
+              0.26544325796065027
+            ]
+          ],
+          "entry_residual": [
+            0.006171998793764796,
+            0.12102157293503936,
+            0.3194178766684226
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 6,
+        "request_id": 29
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.012130716632551492,
+            0.03949109484855106,
+            0.013162841313174412
+          ],
+          "prefix_residuals": [
+            [
+              0.03495762316925129,
+              0.12348022000007972,
+              0.1478981185053323
+            ],
+            [
+              0.03456678077090424,
+              0.12731347382759986,
+              0.14159867726285902
+            ],
+            [
+              0.03261411892135052,
+              0.11241074259145672,
+              0.13016426196454944
+            ]
+          ],
+          "entry_residual": [
+            0.026335381885691473,
+            0.08925046497449862,
+            0.11560562581244027
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 7,
+        "request_id": 30
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.008734392052476534,
+            0.015293621963756422,
+            0.061848930244913
+          ],
+          "prefix_residuals": [
+            [
+              0.010201461112786983,
+              0.03994319660073522,
+              0.166264875279173
+            ],
+            [
+              0.014640123811294366,
+              0.042294828675635804,
+              0.1880607848516267
+            ],
+            [
+              0.014156265704992359,
+              0.04345918992106322,
+              0.20932492773341893
+            ]
+          ],
+          "entry_residual": [
+            0.00969902707657081,
+            0.04693203988022104,
+            0.23505951940004532
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 8,
+        "request_id": 31
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.02227388468865006,
+            0.052696720922504034,
+            0.013516919436366404
+          ],
+          "prefix_residuals": [
+            [
+              0.051898085840082576,
+              0.282433373644556,
+              0.4693105530274131
+            ],
+            [
+              0.0685169953768209,
+              0.31334381315806764,
+              0.48426027438560004
+            ],
+            [
+              0.08331917628894737,
+              0.3451817917514033,
+              0.4858750321782992
+            ]
+          ],
+          "entry_residual": [
+            0.0949094195611913,
+            0.3640906966380057,
+            0.48375786904595663
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 9,
+        "request_id": 32
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.012820772322496475,
+            0.039758918752753294,
+            0.029769518236556783
+          ],
+          "prefix_residuals": [
+            [
+              0.06677499493643832,
+              0.2970307241412466,
+              0.4791446914714509
+            ],
+            [
+              0.0865603159252984,
+              0.3498458663454927,
+              0.48605040133608096
+            ],
+            [
+              0.09724409968846469,
+              0.38251201406519336,
+              0.48893257413630564
+            ]
+          ],
+          "entry_residual": [
+            0.10176095713172645,
+            0.3997921192196177,
+            0.4890674798902749
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 10,
+        "request_id": 33
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01395138530583264,
+            0.04890517576389112,
+            0.019792645157811747
+          ],
+          "prefix_residuals": [
+            [
+              0.06516618983713714,
+              0.29944239029294223,
+              0.47426746147486387
+            ],
+            [
+              0.08100144422505899,
+              0.33283992724132094,
+              0.4844209129336023
+            ],
+            [
+              0.09663179669752549,
+              0.3756281558684509,
+              0.49245781711600023
+            ]
+          ],
+          "entry_residual": [
+            0.10764055827546821,
+            0.4188388561319289,
+            0.4964814540489464
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 11,
+        "request_id": 34
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01741398140314751,
+            0.047913501532822554,
+            0.02002017676091103
+          ],
+          "prefix_residuals": [
+            [
+              0.03274370710927496,
+              0.06711352787314058,
+              0.051865128808320504
+            ],
+            [
+              0.036959108036502576,
+              0.08382033356595428,
+              0.04544564557971165
+            ],
+            [
+              0.04183591396871921,
+              0.10125643359023814,
+              0.0432862546993345
+            ]
+          ],
+          "entry_residual": [
+            0.042188733272545575,
+            0.11062883895257275,
+            0.04693275473241193
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 12,
+        "request_id": 35
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01078456428804357,
+            0.029580721054834887,
+            0.01627969158162136
+          ],
+          "prefix_residuals": [
+            [
+              0.1066007582681146,
+              0.12424206250556687,
+              0.15658611563998426
+            ],
+            [
+              0.11777040277222842,
+              0.1258014531729273,
+              0.20364949842386465
+            ],
+            [
+              0.12694693549349367,
+              0.13125656008931855,
+              0.26827895859985307
+            ]
+          ],
+          "entry_residual": [
+            0.13938716819642297,
+            0.14851943976345314,
+            0.3364851772778725
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 13,
+        "request_id": 36
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.005118251531138449,
+            0.01235517531814857,
+            0.06622457668946558
+          ],
+          "prefix_residuals": [
+            [
+              0.021921906348095366,
+              0.04755382805188543,
+              0.1840918093000543
+            ],
+            [
+              0.023384599905387354,
+              0.05559481573253116,
+              0.22431879098667395
+            ],
+            [
+              0.025853023905452212,
+              0.056747509993465776,
+              0.26229919655672995
+            ]
+          ],
+          "entry_residual": [
+            0.023829352753464348,
+            0.058717972807831836,
+            0.2952203284249353
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 14,
+        "request_id": 37
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010518296828378832,
+            0.025613371926299297,
+            0.013448389300935129
+          ],
+          "prefix_residuals": [
+            [
+              0.02644941428763726,
+              0.11749588503376018,
+              0.5216246408612504
+            ],
+            [
+              0.028796747769444252,
+              0.1634132768091295,
+              0.5170911417376085
+            ],
+            [
+              0.028290679539272067,
+              0.19511134453824694,
+              0.4902360250423312
+            ]
+          ],
+          "entry_residual": [
+            0.03235943082581929,
+            0.19474501572313344,
+            0.44130543343916906
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 15,
+        "request_id": 38
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.022352312633052325,
+            0.05159044845168686,
+            0.016048321937820853
+          ],
+          "prefix_residuals": [
+            [
+              0.040631292612455266,
+              0.06890520012989873,
+              0.10073579928695575
+            ],
+            [
+              0.04285646202470807,
+              0.07583898831586847,
+              0.1023399210800513
+            ],
+            [
+              0.050292332688173805,
+              0.09580536518849882,
+              0.10316546772846236
+            ]
+          ],
+          "entry_residual": [
+            0.05357089321170609,
+            0.10358783850104736,
+            0.1000348552880469
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 16,
+        "request_id": 39
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.004094117982005246,
+            0.018294116814923416,
+            0.013450977776062412
+          ],
+          "prefix_residuals": [
+            [
+              0.03468382323998323,
+              0.05355008695526431,
+              0.1354302635460175
+            ],
+            [
+              0.028260187355121525,
+              0.05184627916104688,
+              0.1419512132121583
+            ],
+            [
+              0.011621301275613347,
+              0.0692515291105034,
+              0.1403123704563507
+            ]
+          ],
+          "entry_residual": [
+            0.013301167051137293,
+            0.08224658324648865,
+            0.14786862399625988
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 17,
+        "request_id": 40
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.021538213634663274,
+            0.05428394654356256,
+            0.011541014984674414
+          ],
+          "prefix_residuals": [
+            [
+              0.014564525862088663,
+              0.05575812361652692,
+              0.1519826752482143
+            ],
+            [
+              0.007977552989270546,
+              0.05194362812660335,
+              0.15277316803877705
+            ],
+            [
+              0.014723484350912846,
+              0.05571669716429113,
+              0.16737714450844465
+            ]
+          ],
+          "entry_residual": [
+            0.026786503372729382,
+            0.06308413982591995,
+            0.17727631401735078
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 18,
+        "request_id": 41
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010353295104687412,
+            0.008272373388803158,
+            0.05772667312854446
+          ],
+          "prefix_residuals": [
+            [
+              0.021491243529428047,
+              0.09136874682522639,
+              0.2205872362462823
+            ],
+            [
+              0.015005119988988217,
+              0.09835580500862127,
+              0.27031697591354986
+            ],
+            [
+              0.01475153858902291,
+              0.09719677506585507,
+              0.33529291334735767
+            ]
+          ],
+          "entry_residual": [
+            0.018824075727633192,
+            0.10054574194044147,
+            0.3805616584516607
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 19,
+        "request_id": 42
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010428364085772534,
+            0.03106874509618578,
+            0.028639712446819066
+          ],
+          "prefix_residuals": [
+            [
+              0.017636322326965742,
+              0.1943784818133062,
+              0.38792220294096263
+            ],
+            [
+              0.031339692030966176,
+              0.22908058150884472,
+              0.4346140581080201
+            ],
+            [
+              0.03937685297542135,
+              0.25020158856382135,
+              0.4543348492038409
+            ]
+          ],
+          "entry_residual": [
+            0.04473225242529341,
+            0.2680307252015851,
+            0.4480982086288229
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 20,
+        "request_id": 43
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.014566776177640297,
+            0.04211037410048804,
+            0.019434489118185252
+          ],
+          "prefix_residuals": [
+            [
+              0.0669511177148724,
+              0.250311386814112,
+              0.45915056017924705
+            ],
+            [
+              0.08148833452804405,
+              0.2860195403788351,
+              0.4731532780985588
+            ],
+            [
+              0.08585431748044213,
+              0.30264684053098106,
+              0.48318394118628777
+            ]
+          ],
+          "entry_residual": [
+            0.08667309046105567,
+            0.31845614553555074,
+            0.48304707135101455
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 21,
+        "request_id": 44
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017012188986409993,
+            0.048144997896364686,
+            0.025431612268171214
+          ],
+          "prefix_residuals": [
+            [
+              0.059741804253405646,
+              0.2664513285549811,
+              0.4654538297157876
+            ],
+            [
+              0.07676423411053665,
+              0.3135198327441825,
+              0.46822969245424756
+            ],
+            [
+              0.09407153135833121,
+              0.36067621040016995,
+              0.462883263407859
+            ]
+          ],
+          "entry_residual": [
+            0.10354980179525014,
+            0.4021115393877592,
+            0.4554198043871823
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 22,
+        "request_id": 45
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.014557585921526119,
+            0.043493368908636726,
+            0.023294557942238725
+          ],
+          "prefix_residuals": [
+            [
+              0.04956046805909421,
+              0.2838580441348053,
+              0.49122430747810275
+            ],
+            [
+              0.06483193611427539,
+              0.3098222869577807,
+              0.5000067968971821
+            ],
+            [
+              0.08438319889623626,
+              0.3360037375466962,
+              0.49762694621281683
+            ]
+          ],
+          "entry_residual": [
+            0.09407168760668935,
+            0.3719298438714365,
+            0.49316618467644774
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 23,
+        "request_id": 46
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.015362953393635798,
+            0.04046903013991223,
+            0.012939400337842022
+          ],
+          "prefix_residuals": [
+            [
+              0.06467206127059413,
+              0.2860480957535369,
+              0.47987902485252665
+            ],
+            [
+              0.07515230965107815,
+              0.3142786967395551,
+              0.4876962515345067
+            ],
+            [
+              0.08240242052786763,
+              0.34973464954356565,
+              0.4856671724552185
+            ]
+          ],
+          "entry_residual": [
+            0.08879636297745568,
+            0.3899571068971569,
+            0.480189366343305
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 24,
+        "request_id": 47
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.014390725562179648,
+            0.04058508462039393,
+            0.021275217950346773
+          ],
+          "prefix_residuals": [
+            [
+              0.06206379375507646,
+              0.32804963143813454,
+              0.4741549096292944
+            ],
+            [
+              0.07948553529143512,
+              0.3595399992086758,
+              0.48764039173064233
+            ],
+            [
+              0.08971026103399925,
+              0.3803113004655974,
+              0.4822062281710924
+            ]
+          ],
+          "entry_residual": [
+            0.09388153781986774,
+            0.3997695584429251,
+            0.47355105449687573
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 25,
+        "request_id": 48
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.018114871840962728,
+            0.03715073020186408,
+            0.014795732611490364
+          ],
+          "prefix_residuals": [
+            [
+              0.06915684201122904,
+              0.29755944933643763,
+              0.35771776170074715
+            ],
+            [
+              0.07498181036283748,
+              0.3426786163897991,
+              0.433862580627427
+            ],
+            [
+              0.09018161190302112,
+              0.3610197362364857,
+              0.4768322853416919
+            ]
+          ],
+          "entry_residual": [
+            0.10156957754593775,
+            0.38221936953498475,
+            0.4950035993810342
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 26,
+        "request_id": 49
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.013380623920857143,
+            0.05767718374056331,
+            0.012891656206770585
+          ],
+          "prefix_residuals": [
+            [
+              0.05452125523909209,
+              0.22053487792554552,
+              0.45681074013501716
+            ],
+            [
+              0.06511766751463534,
+              0.26451584442149456,
+              0.4610470304810062
+            ],
+            [
+              0.07711839326795156,
+              0.30912750214325596,
+              0.46014167222367697
+            ]
+          ],
+          "entry_residual": [
+            0.0864368131105735,
+            0.344632782124112,
+            0.4600407550631198
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 27,
+        "request_id": 50
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010039269348245625,
+            0.045245231707521254,
+            0.01743879214133902
+          ],
+          "prefix_residuals": [
+            [
+              0.02220033905923607,
+              0.22532477558398023,
+              0.43744924275976166
+            ],
+            [
+              0.0365759840682705,
+              0.26470454310280866,
+              0.4414112108687156
+            ],
+            [
+              0.05110999570862344,
+              0.28760343541165245,
+              0.44657965753050294
+            ]
+          ],
+          "entry_residual": [
+            0.06082069170018241,
+            0.30096677922436565,
+            0.4479479896985856
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 28,
+        "request_id": 51
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.020072472999288146,
+            0.05589718982906854,
+            0.026814089521498025
+          ],
+          "prefix_residuals": [
+            [
+              0.07353095791286243,
+              0.289044729215292,
+              0.47938793794751605
+            ],
+            [
+              0.08691113605388176,
+              0.32783292359451793,
+              0.4920762027765487
+            ],
+            [
+              0.10550192956036795,
+              0.36492344705334323,
+              0.49687543544271007
+            ]
+          ],
+          "entry_residual": [
+            0.11758993552803423,
+            0.39827402895246106,
+            0.4973327168466335
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 29,
+        "request_id": 52
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement",
+          "tracking_residual"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.02752453616461339,
+            0.05410972239740839,
+            0.01646661948766559
+          ],
+          "prefix_residuals": [
+            [
+              0.050393426415990386,
+              0.2787338841275713,
+              0.4862604748118178
+            ],
+            [
+              0.057202614437533474,
+              0.2836962940684681,
+              0.49827382804159703
+            ],
+            [
+              0.07510647933860697,
+              0.3089956566595795,
+              0.49850064614268774
+            ]
+          ],
+          "entry_residual": [
+            0.09569137739110668,
+            0.3597203912796528,
+            0.48961827153797366
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 30,
+        "request_id": 53
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017007123962794014,
+            0.04117856245659423,
+            0.02788815175127178
+          ],
+          "prefix_residuals": [
+            [
+              0.06799659359212167,
+              0.2644927188906395,
+              0.47251851365273845
+            ],
+            [
+              0.084662125611364,
+              0.30386084209354797,
+              0.491908040798467
+            ],
+            [
+              0.09927907858964205,
+              0.33517538513036116,
+              0.4957724373429834
+            ]
+          ],
+          "entry_residual": [
+            0.10898705052252743,
+            0.35726510537623996,
+            0.49173097387549036
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 31,
+        "request_id": 54
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.022500906568229857,
+            0.04282179484037091,
+            0.034930611551935636
+          ],
+          "prefix_residuals": [
+            [
+              0.05841156663090349,
+              0.3009531900890916,
+              0.4623925260427414
+            ],
+            [
+              0.0652875648089752,
+              0.3354352084633158,
+              0.47846202341552274
+            ],
+            [
+              0.08130955034407764,
+              0.36000635486370447,
+              0.4893939002161345
+            ]
+          ],
+          "entry_residual": [
+            0.09796162276216051,
+            0.38412059989301095,
+            0.49633764335008224
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 32,
+        "request_id": 55
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.011594886680238416,
+            0.03389618547705681,
+            0.01927667202761399
+          ],
+          "prefix_residuals": [
+            [
+              0.07127623577420338,
+              0.27331549957955914,
+              0.4822470411147979
+            ],
+            [
+              0.07862223376387238,
+              0.3011207197675552,
+              0.4866198018218967
+            ],
+            [
+              0.08376888752524334,
+              0.3130753850198378,
+              0.47998030819773374
+            ]
+          ],
+          "entry_residual": [
+            0.08776784113842885,
+            0.3244377308321954,
+            0.47543202853004196
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 33,
+        "request_id": 56
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.020111065534885293,
+            0.033276381108051506,
+            0.027599389920776124
+          ],
+          "prefix_residuals": [
+            [
+              0.04890512360307104,
+              0.28862509559451216,
+              0.4678121420848368
+            ],
+            [
+              0.058231710694393965,
+              0.3231725054284424,
+              0.47422894550759864
+            ],
+            [
+              0.0773269834149844,
+              0.3520522346536405,
+              0.46716414505735004
+            ]
+          ],
+          "entry_residual": [
+            0.09624212222846025,
+            0.3749357446285145,
+            0.45751020275056964
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 34,
+        "request_id": 57
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01904106255018669,
+            0.029418584251254754,
+            0.013964082649076448
+          ],
+          "prefix_residuals": [
+            [
+              0.05410563533770029,
+              0.28901267264995095,
+              0.4600647568024441
+            ],
+            [
+              0.06910239342512248,
+              0.3274621387508929,
+              0.48583009133490407
+            ],
+            [
+              0.08580837197688697,
+              0.3553408164983095,
+              0.4953889088564982
+            ]
+          ],
+          "entry_residual": [
+            0.10091322871260143,
+            0.38386729459281954,
+            0.49696538370852744
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 35,
+        "request_id": 58
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01586636349755976,
+            0.0391913460185715,
+            0.015286359548050257
+          ],
+          "prefix_residuals": [
+            [
+              0.07171029659380439,
+              0.19321395234364838,
+              0.08963754149724124
+            ],
+            [
+              0.07815308621984497,
+              0.21150614776889873,
+              0.0647856545739216
+            ],
+            [
+              0.08045916226450764,
+              0.23965402852752327,
+              0.044886781224958594
+            ]
+          ],
+          "entry_residual": [
+            0.08129390917299971,
+            0.24680072034151168,
+            0.03406276244849504
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 36,
+        "request_id": 59
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.005934106338478581,
+            0.009711728133107804,
+            0.016235013797157055
+          ],
+          "prefix_residuals": [
+            [
+              0.026150363374039285,
+              0.08511937525137474,
+              0.3009466574008236
+            ],
+            [
+              0.021368108920380602,
+              0.08035081484798544,
+              0.33806346640839424
+            ],
+            [
+              0.006842493213035934,
+              0.06414102782001413,
+              0.3645869529689294
+            ]
+          ],
+          "entry_residual": [
+            0.008211888472020824,
+            0.04309478381185223,
+            0.3860628171573829
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 37,
+        "request_id": 60
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.008507354362516555,
+            0.01122936789884736,
+            0.0634401474571607
+          ],
+          "prefix_residuals": [
+            [
+              0.03330107786627105,
+              0.11055496927835813,
+              0.30419115326735363
+            ],
+            [
+              0.036371016911271994,
+              0.12018535498649677,
+              0.35924961195976074
+            ],
+            [
+              0.04015137189814467,
+              0.1261163480164144,
+              0.40560915455704677
+            ]
+          ],
+          "entry_residual": [
+            0.04654344215287192,
+            0.14498090659165025,
+            0.4280174247326506
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 38,
+        "request_id": 61
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.005580873168827583,
+            0.02098385631216321,
+            0.03808338420505697
+          ],
+          "prefix_residuals": [
+            [
+              0.014930392974255182,
+              0.04053857427364577,
+              0.14049499672810306
+            ],
+            [
+              0.022745099683918784,
+              0.035690787838721746,
+              0.16186892842583367
+            ],
+            [
+              0.02571245858946621,
+              0.036293492014343884,
+              0.1778869102762788
+            ]
+          ],
+          "entry_residual": [
+            0.023893548094783463,
+            0.04524015141413902,
+            0.1842105862846718
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 39,
+        "request_id": 62
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01529266022733277,
+            0.04631857151461434,
+            0.012375713177338765
+          ],
+          "prefix_residuals": [
+            [
+              0.04794394168809763,
+              0.2020070912281322,
+              0.36485007328462915
+            ],
+            [
+              0.05703473412631116,
+              0.22109297628962685,
+              0.3975188040605222
+            ],
+            [
+              0.059090492185981454,
+              0.2442388591717756,
+              0.407691813108516
+            ]
+          ],
+          "entry_residual": [
+            0.06010774068655685,
+            0.27120651397950446,
+            0.4008675293942151
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 40,
+        "request_id": 63
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.021351644329201138,
+            0.04808077896572114,
+            0.04713608865294261
+          ],
+          "prefix_residuals": [
+            [
+              0.06142483895563485,
+              0.27758928222577883,
+              0.4778773596877095
+            ],
+            [
+              0.06845368497160188,
+              0.30081724041502705,
+              0.48785239599816943
+            ],
+            [
+              0.0814879978451677,
+              0.3378882117853447,
+              0.48538331277252966
+            ]
+          ],
+          "entry_residual": [
+            0.09806886745100783,
+            0.38323993911877285,
+            0.4767700505959681
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 41,
+        "request_id": 64
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01502624269926126,
+            0.03988288634746073,
+            0.016058639558860992
+          ],
+          "prefix_residuals": [
+            [
+              0.0398908929776151,
+              0.2674389118697019,
+              0.4643633984074546
+            ],
+            [
+              0.05037118235678054,
+              0.29614884256005175,
+              0.4856008597440756
+            ],
+            [
+              0.06072593304902178,
+              0.32247004447356603,
+              0.4863679999408297
+            ]
+          ],
+          "entry_residual": [
+            0.06944547327718063,
+            0.3514040755371074,
+            0.4801777483030495
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 42,
+        "request_id": 65
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017280945876714925,
+            0.03773647929181222,
+            0.03211043420448867
+          ],
+          "prefix_residuals": [
+            [
+              0.028332791794546737,
+              0.1933285819369123,
+              0.4238786893063425
+            ],
+            [
+              0.03549840808410927,
+              0.23569040823542875,
+              0.4310381817781002
+            ],
+            [
+              0.04459240517724743,
+              0.26159706009154393,
+              0.43366008051604005
+            ]
+          ],
+          "entry_residual": [
+            0.05667136376678131,
+            0.29181122266736736,
+            0.436986818125983
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 43,
+        "request_id": 66
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01086856362963232,
+            0.032294801120534046,
+            0.016084416076744268
+          ],
+          "prefix_residuals": [
+            [
+              0.04307374683075408,
+              0.20917368534073588,
+              0.4707494756091396
+            ],
+            [
+              0.0528723401948028,
+              0.2336188386451423,
+              0.4736780373466021
+            ],
+            [
+              0.059677350443813885,
+              0.24618642104827607,
+              0.4724138347771415
+            ]
+          ],
+          "entry_residual": [
+            0.06353810455204355,
+            0.2606250350263628,
+            0.471756649843894
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 44,
+        "request_id": 67
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.008288262129937763,
+            0.027967274810079486,
+            0.01725943005879363
+          ],
+          "prefix_residuals": [
+            [
+              0.014729919266316326,
+              0.10144600487844893,
+              0.4876697364369036
+            ],
+            [
+              0.030176035262468624,
+              0.13857272591238592,
+              0.5050908213524138
+            ],
+            [
+              0.04348192766289769,
+              0.17427816313301278,
+              0.5161663756938353
+            ]
+          ],
+          "entry_residual": [
+            0.041251447207617066,
+            0.2006745889290443,
+            0.5148661205811177
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 45,
+        "request_id": 68
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017338306417503467,
+            0.05443226296344018,
+            0.013242032054226471
+          ],
+          "prefix_residuals": [
+            [
+              0.0740987104531316,
+              0.29000642912167307,
+              0.477647412372338
+            ],
+            [
+              0.08076699058097317,
+              0.3176404865103783,
+              0.47958481213110016
+            ],
+            [
+              0.09008512172391138,
+              0.35430781293453045,
+              0.47718695181986326
+            ]
+          ],
+          "entry_residual": [
+            0.09529818005635003,
+            0.3883975994875766,
+            0.4771012479670331
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 46,
+        "request_id": 69
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.012041964023106314,
+            0.046375982871587465,
+            0.017502591745917853
+          ],
+          "prefix_residuals": [
+            [
+              0.05303398557032899,
+              0.21622840931611675,
+              0.45488377663877666
+            ],
+            [
+              0.06226993640855111,
+              0.24714639335506472,
+              0.46240146427715
+            ],
+            [
+              0.06306914387619932,
+              0.2789317321625198,
+              0.4670680548762687
+            ]
+          ],
+          "entry_residual": [
+            0.069596475208865,
+            0.3209229275039094,
+            0.46730942049481383
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 47,
+        "request_id": 70
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010021358991979463,
+            0.033475942586549665,
+            0.01973309475172498
+          ],
+          "prefix_residuals": [
+            [
+              0.06230570173389719,
+              0.22553801926305317,
+              0.463876755652513
+            ],
+            [
+              0.07707531891311627,
+              0.2568200433509833,
+              0.4664538799946259
+            ],
+            [
+              0.08424647040035195,
+              0.29190493090945946,
+              0.466859213112536
+            ]
+          ],
+          "entry_residual": [
+            0.08997232017675237,
+            0.32835671370945835,
+            0.4707617427949109
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 48,
+        "request_id": 71
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.02000508224569731,
+            0.048474542802479405,
+            0.019382814950442792
+          ],
+          "prefix_residuals": [
+            [
+              0.06515913576804165,
+              0.2534131646374506,
+              0.47391114716576815
+            ],
+            [
+              0.0733985986129165,
+              0.25349166103574855,
+              0.48565342388609095
+            ],
+            [
+              0.07725219802313796,
+              0.26914721114745627,
+              0.4913666700831244
+            ]
+          ],
+          "entry_residual": [
+            0.07863205008753178,
+            0.2983437612316913,
+            0.4849373331584823
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 49,
+        "request_id": 72
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.012317429749584968,
+            0.0421543037184509,
+            0.012221268317915868
+          ],
+          "prefix_residuals": [
+            [
+              0.06463998502993776,
+              0.27303290285219384,
+              0.4721086365162184
+            ],
+            [
+              0.07303017099972091,
+              0.3076380575658488,
+              0.48274387046090894
+            ],
+            [
+              0.08480138968090738,
+              0.34094754757860884,
+              0.4824361255521935
+            ]
+          ],
+          "entry_residual": [
+            0.09380117472280865,
+            0.36993755402486905,
+            0.4771751673320397
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 50,
+        "request_id": 73
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.00877673660009253,
+            0.03240766443159151,
+            0.017285688045315446
+          ],
+          "prefix_residuals": [
+            [
+              0.04885675180737661,
+              0.1946629135191618,
+              0.45110693151509673
+            ],
+            [
+              0.05847771350198249,
+              0.23378737763386032,
+              0.4664292956888131
+            ],
+            [
+              0.0565888215020072,
+              0.2637859473154846,
+              0.4617743564194636
+            ]
+          ],
+          "entry_residual": [
+            0.05842881263871955,
+            0.29088892223072316,
+            0.4379074729148234
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 51,
+        "request_id": 74
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.0203723818455369,
+            0.03963703187488993,
+            0.06864060049942133
+          ],
+          "prefix_residuals": [
+            [
+              0.04149290213034498,
+              0.0793724532580925,
+              0.04026000488413661
+            ],
+            [
+              0.0501134317335941,
+              0.10948323066939719,
+              0.037406760671252925
+            ],
+            [
+              0.055408296759921226,
+              0.13291416125477054,
+              0.036551752803283044
+            ]
+          ],
+          "entry_residual": [
+            0.05330723122212906,
+            0.12803282898119384,
+            0.03946272103279419
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 52,
+        "request_id": 75
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.006435986661310152,
+            0.015545968284828227,
+            0.02882482113654751
+          ],
+          "prefix_residuals": [
+            [
+              0.047974131327355174,
+              0.03362199238676577,
+              0.03404002571068848
+            ],
+            [
+              0.04819537467760121,
+              0.05051145378561886,
+              0.04241869668472764
+            ],
+            [
+              0.049474621852105306,
+              0.05897854740627569,
+              0.04360596718819859
+            ]
+          ],
+          "entry_residual": [
+            0.04543827492930667,
+            0.04378138507425022,
+            0.03730902265924707
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 53,
+        "request_id": 76
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.0064033839424383066,
+            0.013435735427612398,
+            0.10352883571621552
+          ],
+          "prefix_residuals": [
+            [
+              0.02143356695745329,
+              0.08742288343124689,
+              0.20384623944939428
+            ],
+            [
+              0.02224036839160036,
+              0.08750345349580818,
+              0.25087520087618526
+            ],
+            [
+              0.019771721896679844,
+              0.07057207472352936,
+              0.29620443302674687
+            ]
+          ],
+          "entry_residual": [
+            0.017910220988980076,
+            0.05474632690278816,
+            0.3622419397605738
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 54,
+        "request_id": 77
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.018203784395832114,
+            0.03365834032975101,
+            0.04804751326909984
+          ],
+          "prefix_residuals": [
+            [
+              0.036204612330788914,
+              0.02784523804217259,
+              0.09956757038527886
+            ],
+            [
+              0.03304187518166677,
+              0.0357733448946846,
+              0.11127193034958177
+            ],
+            [
+              0.023854938926897606,
+              0.058304786385862034,
+              0.1160160522259353
+            ]
+          ],
+          "entry_residual": [
+            0.020218874904879915,
+            0.05635653553303394,
+            0.11856120199021031
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 55,
+        "request_id": 78
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.010759305062837834,
+            0.017769069666615157,
+            0.054398170425078385
+          ],
+          "prefix_residuals": [
+            [
+              0.021706419191811994,
+              0.05865861756638193,
+              0.06516671963639831
+            ],
+            [
+              0.017197180919028544,
+              0.04404134364569814,
+              0.06425781604586789
+            ],
+            [
+              0.016400909323831894,
+              0.03193748174857403,
+              0.05729654598299616
+            ]
+          ],
+          "entry_residual": [
+            0.01621906168826496,
+            0.03242874268674769,
+            0.05484227659092
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 56,
+        "request_id": 79
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.024722058040208883,
+            0.020774192557277454,
+            0.012913202378449062
+          ],
+          "prefix_residuals": [
+            [
+              0.056701872471572344,
+              0.10543055683693273,
+              0.11136906915034239
+            ],
+            [
+              0.06178506089833984,
+              0.12022105248835366,
+              0.110911604654094
+            ],
+            [
+              0.06722219974763646,
+              0.13669797904450456,
+              0.10064511865183856
+            ]
+          ],
+          "entry_residual": [
+            0.07223040424011574,
+            0.141683165060194,
+            0.09122884682759091
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 57,
+        "request_id": 80
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.009990995510336675,
+            0.031631517094620344,
+            0.008833768450884266
+          ],
+          "prefix_residuals": [
+            [
+              0.0864982885218725,
+              0.12463258981969899,
+              0.0938118467688589
+            ],
+            [
+              0.09316684835960543,
+              0.13418395853805648,
+              0.10195259758901276
+            ],
+            [
+              0.09582055650707538,
+              0.14086931934842392,
+              0.0995763588168761
+            ]
+          ],
+          "entry_residual": [
+            0.0984413454075645,
+            0.1330780545303098,
+            0.09477497897708598
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 58,
+        "request_id": 81
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.009906207337190788,
+            0.03775902929946739,
+            0.040186004169497025
+          ],
+          "prefix_residuals": [
+            [
+              0.03897721234960424,
+              0.0895455615931558,
+              0.029934463284708668
+            ],
+            [
+              0.045437371366444636,
+              0.09384686958750338,
+              0.030524985966920104
+            ],
+            [
+              0.0388770058419207,
+              0.0744151910644288,
+              0.03300864999952796
+            ]
+          ],
+          "entry_residual": [
+            0.025305131405951996,
+            0.04849441376649819,
+            0.04112450026348996
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 59,
+        "request_id": 82
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.01007707489856335,
+            0.005844175805493404,
+            0.05409974216836505
+          ],
+          "prefix_residuals": [
+            [
+              0.009278454762181882,
+              0.06555403419647234,
+              0.09869788184179984
+            ],
+            [
+              0.010447859832714764,
+              0.06911224818794355,
+              0.1131600449834207
+            ],
+            [
+              0.019346610070156523,
+              0.0657411311053952,
+              0.11926048151343782
+            ]
+          ],
+          "entry_residual": [
+            0.027947164131127845,
+            0.06720126669324498,
+            0.12751301852034813
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 60,
+        "request_id": 83
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.013374638026295575,
+            0.04242429285863257,
+            0.0314734737716566
+          ],
+          "prefix_residuals": [
+            [
+              0.032671954810318676,
+              0.05445551341148263,
+              0.2186843493907718
+            ],
+            [
+              0.032755176891424584,
+              0.051326863078533395,
+              0.21701538794751118
+            ],
+            [
+              0.03586493358842375,
+              0.040106367756767486,
+              0.20392411194414384
+            ]
+          ],
+          "entry_residual": [
+            0.037842701576130365,
+            0.029240526702403985,
+            0.18602303385403895
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 61,
+        "request_id": 84
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.012379856923474914,
+            0.01783595511584194,
+            0.08582160834120273
+          ],
+          "prefix_residuals": [
+            [
+              0.008934145946402003,
+              0.028637815616249465,
+              0.15479410783198366
+            ],
+            [
+              0.011800461197624365,
+              0.01494753499688858,
+              0.16691908080095086
+            ],
+            [
+              0.013320483595384198,
+              0.032018756844687274,
+              0.21236832164813424
+            ]
+          ],
+          "entry_residual": [
+            0.014436428701207921,
+            0.04622191155094003,
+            0.2701359475384517
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 62,
+        "request_id": 85
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.017189319813264718,
+            0.07592769268938818,
+            0.08344867493040842
+          ],
+          "prefix_residuals": [
+            [
+              0.04682533520851559,
+              0.14387246890644872,
+              0.03955380114207485
+            ],
+            [
+              0.05578428631300661,
+              0.14637148481349752,
+              0.046298988972000354
+            ],
+            [
+              0.04655311290581115,
+              0.14165753277633358,
+              0.05159954506861231
+            ]
+          ],
+          "entry_residual": [
+            0.0277103688620557,
+            0.13123367726520302,
+            0.0436040363964082
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 63,
+        "request_id": 86
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.011152473164588918,
+            0.006993583780890898,
+            0.055855151730647326
+          ],
+          "prefix_residuals": [
+            [
+              0.02546120257210054,
+              0.06716561006928924,
+              0.031234485370830845
+            ],
+            [
+              0.029082615325596216,
+              0.06543192677943438,
+              0.0378649575368013
+            ],
+            [
+              0.026174811596215476,
+              0.06876136756689828,
+              0.02933977941329413
+            ]
+          ],
+          "entry_residual": [
+            0.02467462386291986,
+            0.07781712334027562,
+            0.03508781315206666
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 64,
+        "request_id": 87
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.007206185068732552,
+            0.012132763678313261,
+            0.11185803420718843
+          ],
+          "prefix_residuals": [
+            [
+              0.02437612871623382,
+              0.08027282544885263,
+              0.08140204872130752
+            ],
+            [
+              0.026935725582832904,
+              0.10222887410642834,
+              0.08237590015292218
+            ],
+            [
+              0.03122798517440097,
+              0.1028860129724621,
+              0.06964692224872504
+            ]
+          ],
+          "entry_residual": [
+            0.03554175249506199,
+            0.08158216290035879,
+            0.056119462070694626
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 65,
+        "request_id": 88
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "entry_disagreement",
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "tracking_residual": [
+            0.020708489521936543,
+            0.029574664384850003,
+            0.043295218283423476
+          ],
+          "prefix_residuals": [
+            [
+              0.030530097834768635,
+              0.11675869598587814,
+              0.09333970159710128
+            ],
+            [
+              0.025606867661515258,
+              0.1015521075599243,
+              0.08837566919373452
+            ],
+            [
+              0.02536884269495256,
+              0.09986097742047344,
+              0.09005465910297494
+            ]
+          ],
+          "entry_residual": [
+            0.029170522581103885,
+            0.10668617961792493,
+            0.09036688145127308
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 66,
+        "request_id": 89
+      },
+      {
+        "can_join": false,
+        "reasons": [
+          "missing_commitment_record",
+          "old_plan_budget_exhausted",
+          "prefix_disagreement",
+          "stale_or_future_state"
+        ],
+        "old_plan_budget_s": 0.0,
+        "commit_wait_s": null,
+        "metrics": {
+          "prefix_residuals": [
+            [
+              0.03346303153613117,
+              0.05630771662416267,
+              0.07284171687141128
+            ],
+            [
+              0.02626771958065936,
+              0.03552077686489847,
+              0.06740350863595579
+            ],
+            [
+              0.021553053334623956,
+              0.055084139128154984,
+              0.05432116254461872
+            ]
+          ],
+          "entry_residual": [
+            0.023214664494072005,
+            0.08829864637585973,
+            0.05048224912278315
+          ]
+        },
+        "experimental_only": true,
+        "chunk_id": 67,
+        "request_id": 90
+      }
+    ]
+  }
+]

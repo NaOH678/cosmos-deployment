@@ -1,0 +1,16 @@
+{
+  "invalid_padding_sentinel_max_diff": 0.0,
+  "masked_vs_trimmed_bf16_max_diff": 0.00390625,
+  "backend": "explicit CuDNNAttentionImpl",
+  "q_shape": [
+    2,
+    32,
+    2,
+    128
+  ],
+  "text_lengths": [
+    140,
+    19
+  ],
+  "gen_tokens": 32
+}

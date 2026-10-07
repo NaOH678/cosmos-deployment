@@ -1,0 +1,1661 @@
+{
+  "scope": "Full JPEG HTTP request pickle/exchange/unpickle; JPEG encoded once before timer. Recording and video latent capture disabled in all stages. No robot. Native18005 kept resident idle. Same5 observations in same order, each stage new server and session,5warm+20measured. ABBA to mitigate drift. Candidate combines first-frame helper, CPU domain validation, full GEN CUDA Graph.",
+  "jpeg_sha256": [
+    {
+      "head": "c19648a0b546f420f776e1aa7266ecf11b2194d288fbf0b3ff1dd3747c911223",
+      "right_wrist": "fce730631b997a44959e4051d26244ba56102300bd3d3215fefd9b4852396c3e"
+    },
+    {
+      "head": "15adf7eed4282b738f7da3c74cbcff1279acc8594487ae6dd0769227d3fff259",
+      "right_wrist": "d95a7b94f328be9c8de67a0a1100d02a006500f3434f3d8d8d929d13bbf615e9"
+    },
+    {
+      "head": "88cbdc20b9bc57d1153203f7de2df19ff05c458fafd3c3b3296ec18413a16836",
+      "right_wrist": "20689e07e2f302d871a847687e2440c4831842b4b005eb21d059835ddd9c9d7a"
+    },
+    {
+      "head": "9f5a630eabef963c2cf567ec3bb16f205d05a128e6fbed7350ac876b8f0fe5f1",
+      "right_wrist": "61b73e9d5da9dbde7044c054ff1ea7c33c6b303a943ada757d05541e15a08fc4"
+    },
+    {
+      "head": "1cd5f72c2af166e6956e5dacc1c366673d06d98bfeaaf52a0796db5c3c88bfe5",
+      "right_wrist": "3e939a67e50e8465427a3443dcc42cc5a7e4015006c94b500991b35aa742b53f"
+    }
+  ],
+  "stages": [
+    {
+      "index": 0,
+      "label": "baseline",
+      "samples": [
+        {
+          "index": 0,
+          "observation": 0,
+          "warmup": true,
+          "rtt_ms": 537.0833869092166,
+          "server_timing": {
+            "received_wall_time": 1791365344.4855921,
+            "inference_started_wall_time": 1791365344.4862285,
+            "inference_finished_wall_time": 1791365344.9802794,
+            "inference_ms": 465.19529400393367
+          }
+        },
+        {
+          "index": 1,
+          "observation": 1,
+          "warmup": true,
+          "rtt_ms": 496.9778920058161,
+          "server_timing": {
+            "received_wall_time": 1791365345.0230372,
+            "inference_started_wall_time": 1791365345.0233805,
+            "inference_finished_wall_time": 1791365345.4779806,
+            "inference_ms": 441.53588404878974
+          }
+        },
+        {
+          "index": 2,
+          "observation": 2,
+          "warmup": true,
+          "rtt_ms": 503.4313100622967,
+          "server_timing": {
+            "received_wall_time": 1791365345.522098,
+            "inference_started_wall_time": 1791365345.5235827,
+            "inference_finished_wall_time": 1791365345.9839985,
+            "inference_ms": 440.0676799705252
+          }
+        },
+        {
+          "index": 3,
+          "observation": 3,
+          "warmup": true,
+          "rtt_ms": 501.36300397571176,
+          "server_timing": {
+            "received_wall_time": 1791365346.0252414,
+            "inference_started_wall_time": 1791365346.0255413,
+            "inference_finished_wall_time": 1791365346.4856153,
+            "inference_ms": 447.1569180022925
+          }
+        },
+        {
+          "index": 4,
+          "observation": 4,
+          "warmup": true,
+          "rtt_ms": 461.42208902165294,
+          "server_timing": {
+            "received_wall_time": 1791365346.5275867,
+            "inference_started_wall_time": 1791365346.5280573,
+            "inference_finished_wall_time": 1791365346.9879758,
+            "inference_ms": 436.2616629805416
+          }
+        },
+        {
+          "index": 5,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 498.87497909367085,
+          "server_timing": {
+            "received_wall_time": 1791365346.9889114,
+            "inference_started_wall_time": 1791365346.989226,
+            "inference_finished_wall_time": 1791365347.445887,
+            "inference_ms": 444.79064701590687
+          }
+        },
+        {
+          "index": 6,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 504.9092270201072,
+          "server_timing": {
+            "received_wall_time": 1791365347.4894629,
+            "inference_started_wall_time": 1791365347.4905646,
+            "inference_finished_wall_time": 1791365347.952452,
+            "inference_ms": 438.7628569966182
+          }
+        },
+        {
+          "index": 7,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 499.6366259874776,
+          "server_timing": {
+            "received_wall_time": 1791365347.9959807,
+            "inference_started_wall_time": 1791365347.9972339,
+            "inference_finished_wall_time": 1791365348.4533024,
+            "inference_ms": 437.24676594138145
+          }
+        },
+        {
+          "index": 8,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 500.51137199625373,
+          "server_timing": {
+            "received_wall_time": 1791365348.4971023,
+            "inference_started_wall_time": 1791365348.4985778,
+            "inference_finished_wall_time": 1791365348.955119,
+            "inference_ms": 434.98160399030894
+          }
+        },
+        {
+          "index": 9,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 496.0495090344921,
+          "server_timing": {
+            "received_wall_time": 1791365348.9992585,
+            "inference_started_wall_time": 1791365349.0004537,
+            "inference_finished_wall_time": 1791365349.452814,
+            "inference_ms": 436.5692239953205
+          }
+        },
+        {
+          "index": 10,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 499.40769805107266,
+          "server_timing": {
+            "received_wall_time": 1791365349.4956315,
+            "inference_started_wall_time": 1791365349.4962275,
+            "inference_finished_wall_time": 1791365349.9536824,
+            "inference_ms": 439.77887998335063
+          }
+        },
+        {
+          "index": 11,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 498.43234999570996,
+          "server_timing": {
+            "received_wall_time": 1791365349.9970517,
+            "inference_started_wall_time": 1791365349.9982855,
+            "inference_finished_wall_time": 1791365350.452126,
+            "inference_ms": 436.67234701570123
+          }
+        },
+        {
+          "index": 12,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 508.35059001110494,
+          "server_timing": {
+            "received_wall_time": 1791365350.4970703,
+            "inference_started_wall_time": 1791365350.4982495,
+            "inference_finished_wall_time": 1791365350.9624908,
+            "inference_ms": 434.83955203555524
+          }
+        },
+        {
+          "index": 13,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 500.3452090313658,
+          "server_timing": {
+            "received_wall_time": 1791365351.0071063,
+            "inference_started_wall_time": 1791365351.0082936,
+            "inference_finished_wall_time": 1791365351.4646547,
+            "inference_ms": 439.41538594663143
+          }
+        },
+        {
+          "index": 14,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 496.08039495069534,
+          "server_timing": {
+            "received_wall_time": 1791365351.507825,
+            "inference_started_wall_time": 1791365351.5081325,
+            "inference_finished_wall_time": 1791365351.9613252,
+            "inference_ms": 436.0272279009223
+          }
+        },
+        {
+          "index": 15,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 505.2204329986125,
+          "server_timing": {
+            "received_wall_time": 1791365352.0061164,
+            "inference_started_wall_time": 1791365352.0072515,
+            "inference_finished_wall_time": 1791365352.4691596,
+            "inference_ms": 435.44649495743215
+          }
+        },
+        {
+          "index": 16,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 496.33220699615777,
+          "server_timing": {
+            "received_wall_time": 1791365352.5130827,
+            "inference_started_wall_time": 1791365352.5142817,
+            "inference_finished_wall_time": 1791365352.9680827,
+            "inference_ms": 436.81825906969607
+          }
+        },
+        {
+          "index": 17,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 499.28864499088377,
+          "server_timing": {
+            "received_wall_time": 1791365353.0112796,
+            "inference_started_wall_time": 1791365353.0125039,
+            "inference_finished_wall_time": 1791365353.4683442,
+            "inference_ms": 436.9511859258637
+          }
+        },
+        {
+          "index": 18,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 504.1286189807579,
+          "server_timing": {
+            "received_wall_time": 1791365353.512384,
+            "inference_started_wall_time": 1791365353.5137808,
+            "inference_finished_wall_time": 1791365353.974862,
+            "inference_ms": 438.54652903974056
+          }
+        },
+        {
+          "index": 19,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 501.40284292865545,
+          "server_timing": {
+            "received_wall_time": 1791365354.018159,
+            "inference_started_wall_time": 1791365354.0193248,
+            "inference_finished_wall_time": 1791365354.4780552,
+            "inference_ms": 436.64624891243875
+          }
+        },
+        {
+          "index": 20,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 509.01999697089195,
+          "server_timing": {
+            "received_wall_time": 1791365354.5214334,
+            "inference_started_wall_time": 1791365354.5225992,
+            "inference_finished_wall_time": 1791365354.9882276,
+            "inference_ms": 439.78280492592603
+          }
+        },
+        {
+          "index": 21,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 513.1606380455196,
+          "server_timing": {
+            "received_wall_time": 1791365355.032318,
+            "inference_started_wall_time": 1791365355.033585,
+            "inference_finished_wall_time": 1791365355.5032501,
+            "inference_ms": 447.21228000707924
+          }
+        },
+        {
+          "index": 22,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 523.9470159867778,
+          "server_timing": {
+            "received_wall_time": 1791365355.5473905,
+            "inference_started_wall_time": 1791365355.5486093,
+            "inference_finished_wall_time": 1791365356.0297182,
+            "inference_ms": 457.7914049150422
+          }
+        },
+        {
+          "index": 23,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 493.33184701390564,
+          "server_timing": {
+            "received_wall_time": 1791365356.071686,
+            "inference_started_wall_time": 1791365356.0721269,
+            "inference_finished_wall_time": 1791365356.5239933,
+            "inference_ms": 437.2958599124104
+          }
+        },
+        {
+          "index": 24,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 495.9879310335964,
+          "server_timing": {
+            "received_wall_time": 1791365356.5674443,
+            "inference_started_wall_time": 1791365356.5678403,
+            "inference_finished_wall_time": 1791365357.0217295,
+            "inference_ms": 435.93743501696736
+          }
+        }
+      ],
+      "rtt": {
+        "count": 20,
+        "p50_ms": 499.9909175094217,
+        "p95_ms": 513.6999569425825,
+        "p99_ms": 521.8976041779388,
+        "max_ms": 523.9470159867778
+      },
+      "exit_code": 0
+    },
+    {
+      "index": 1,
+      "label": "combined",
+      "samples": [
+        {
+          "index": 0,
+          "observation": 0,
+          "warmup": true,
+          "rtt_ms": 807.8830479644239,
+          "server_timing": {
+            "received_wall_time": 1791365374.2051904,
+            "inference_started_wall_time": 1791365374.2057977,
+            "inference_finished_wall_time": 1791365374.9703436,
+            "inference_ms": 751.983736990951
+          }
+        },
+        {
+          "index": 1,
+          "observation": 1,
+          "warmup": true,
+          "rtt_ms": 509.52544005122036,
+          "server_timing": {
+            "received_wall_time": 1791365375.0173724,
+            "inference_started_wall_time": 1791365375.0193536,
+            "inference_finished_wall_time": 1791365375.483882,
+            "inference_ms": 436.93854997400194
+          }
+        },
+        {
+          "index": 2,
+          "observation": 2,
+          "warmup": true,
+          "rtt_ms": 500.1304380130023,
+          "server_timing": {
+            "received_wall_time": 1791365375.529854,
+            "inference_started_wall_time": 1791365375.5325637,
+            "inference_finished_wall_time": 1791365375.9874573,
+            "inference_ms": 431.7096780287102
+          }
+        },
+        {
+          "index": 3,
+          "observation": 3,
+          "warmup": true,
+          "rtt_ms": 494.5649580331519,
+          "server_timing": {
+            "received_wall_time": 1791365376.0323787,
+            "inference_started_wall_time": 1791365376.034733,
+            "inference_finished_wall_time": 1791365376.484276,
+            "inference_ms": 436.3566169049591
+          }
+        },
+        {
+          "index": 4,
+          "observation": 4,
+          "warmup": true,
+          "rtt_ms": 449.2080269847065,
+          "server_timing": {
+            "received_wall_time": 1791365376.5269597,
+            "inference_started_wall_time": 1791365376.5275605,
+            "inference_finished_wall_time": 1791365376.9752934,
+            "inference_ms": 433.17196995485574
+          }
+        },
+        {
+          "index": 5,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 491.4420909481123,
+          "server_timing": {
+            "received_wall_time": 1791365376.9768238,
+            "inference_started_wall_time": 1791365376.977271,
+            "inference_finished_wall_time": 1791365377.4262593,
+            "inference_ms": 437.36554495990276
+          }
+        },
+        {
+          "index": 6,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 506.4482280286029,
+          "server_timing": {
+            "received_wall_time": 1791365377.4726925,
+            "inference_started_wall_time": 1791365377.4750786,
+            "inference_finished_wall_time": 1791365377.936275,
+            "inference_ms": 437.6986080314964
+          }
+        },
+        {
+          "index": 7,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 512.434049975127,
+          "server_timing": {
+            "received_wall_time": 1791365377.9827886,
+            "inference_started_wall_time": 1791365377.985174,
+            "inference_finished_wall_time": 1791365378.4525135,
+            "inference_ms": 446.7295870417729
+          }
+        },
+        {
+          "index": 8,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 498.2973620062694,
+          "server_timing": {
+            "received_wall_time": 1791365378.498549,
+            "inference_started_wall_time": 1791365378.4998758,
+            "inference_finished_wall_time": 1791365378.9539492,
+            "inference_ms": 432.8229839447886
+          }
+        },
+        {
+          "index": 9,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 493.5754119651392,
+          "server_timing": {
+            "received_wall_time": 1791365378.9984474,
+            "inference_started_wall_time": 1791365378.9992578,
+            "inference_finished_wall_time": 1791365379.44998,
+            "inference_ms": 434.36930200550705
+          }
+        },
+        {
+          "index": 10,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 488.59980900306255,
+          "server_timing": {
+            "received_wall_time": 1791365379.4922085,
+            "inference_started_wall_time": 1791365379.4925494,
+            "inference_finished_wall_time": 1791365379.9385846,
+            "inference_ms": 434.33163699228317
+          }
+        },
+        {
+          "index": 11,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 498.63662000279874,
+          "server_timing": {
+            "received_wall_time": 1791365379.9837084,
+            "inference_started_wall_time": 1791365379.9849255,
+            "inference_finished_wall_time": 1791365380.4409406,
+            "inference_ms": 436.24820897821337
+          }
+        },
+        {
+          "index": 12,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 500.32463599927723,
+          "server_timing": {
+            "received_wall_time": 1791365380.4849997,
+            "inference_started_wall_time": 1791365380.4864295,
+            "inference_finished_wall_time": 1791365380.9436352,
+            "inference_ms": 438.1149089895189
+          }
+        },
+        {
+          "index": 13,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 502.5883689522743,
+          "server_timing": {
+            "received_wall_time": 1791365380.987861,
+            "inference_started_wall_time": 1791365380.9889886,
+            "inference_finished_wall_time": 1791365381.4472268,
+            "inference_ms": 436.24257505871356
+          }
+        },
+        {
+          "index": 14,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 492.4834589473903,
+          "server_timing": {
+            "received_wall_time": 1791365381.4929907,
+            "inference_started_wall_time": 1791365381.4943151,
+            "inference_finished_wall_time": 1791365381.943768,
+            "inference_ms": 432.43153905496
+          }
+        },
+        {
+          "index": 15,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 500.2985510509461,
+          "server_timing": {
+            "received_wall_time": 1791365381.9879317,
+            "inference_started_wall_time": 1791365381.9891572,
+            "inference_finished_wall_time": 1791365382.4464717,
+            "inference_ms": 436.35363096836954
+          }
+        },
+        {
+          "index": 16,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 484.40094001125544,
+          "server_timing": {
+            "received_wall_time": 1791365382.4885106,
+            "inference_started_wall_time": 1791365382.4889061,
+            "inference_finished_wall_time": 1791365382.9309962,
+            "inference_ms": 433.8652390288189
+          }
+        },
+        {
+          "index": 17,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 502.3358800681308,
+          "server_timing": {
+            "received_wall_time": 1791365382.976006,
+            "inference_started_wall_time": 1791365382.9772568,
+            "inference_finished_wall_time": 1791365383.4353802,
+            "inference_ms": 436.19684304576367
+          }
+        },
+        {
+          "index": 18,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 497.5606210064143,
+          "server_timing": {
+            "received_wall_time": 1791365383.4808466,
+            "inference_started_wall_time": 1791365383.4820273,
+            "inference_finished_wall_time": 1791365383.9364283,
+            "inference_ms": 434.7481749719009
+          }
+        },
+        {
+          "index": 19,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 497.4457490025088,
+          "server_timing": {
+            "received_wall_time": 1791365383.9810913,
+            "inference_started_wall_time": 1791365383.982331,
+            "inference_finished_wall_time": 1791365384.4366796,
+            "inference_ms": 436.73130101524293
+          }
+        },
+        {
+          "index": 20,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 503.3709679264575,
+          "server_timing": {
+            "received_wall_time": 1791365384.4811375,
+            "inference_started_wall_time": 1791365384.4825816,
+            "inference_finished_wall_time": 1791365384.9424043,
+            "inference_ms": 443.4803279582411
+          }
+        },
+        {
+          "index": 21,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 494.02561702299863,
+          "server_timing": {
+            "received_wall_time": 1791365384.98616,
+            "inference_started_wall_time": 1791365384.9864469,
+            "inference_finished_wall_time": 1791365385.437462,
+            "inference_ms": 435.2562309941277
+          }
+        },
+        {
+          "index": 22,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 499.5445660315454,
+          "server_timing": {
+            "received_wall_time": 1791365385.4856234,
+            "inference_started_wall_time": 1791365385.4882565,
+            "inference_finished_wall_time": 1791365385.9429104,
+            "inference_ms": 434.48792898561805
+          }
+        },
+        {
+          "index": 23,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 490.7681900076568,
+          "server_timing": {
+            "received_wall_time": 1791365385.9873536,
+            "inference_started_wall_time": 1791365385.9878552,
+            "inference_finished_wall_time": 1791365386.4360228,
+            "inference_ms": 434.1850080527365
+          }
+        },
+        {
+          "index": 24,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 499.4662969838828,
+          "server_timing": {
+            "received_wall_time": 1791365386.4835463,
+            "inference_started_wall_time": 1791365386.486012,
+            "inference_finished_wall_time": 1791365386.9396167,
+            "inference_ms": 440.561537980102
+          }
+        }
+      ],
+      "rtt": {
+        "count": 20,
+        "p50_ms": 498.46699100453407,
+        "p95_ms": 506.7475191259291,
+        "p99_ms": 511.2967438052874,
+        "max_ms": 512.434049975127
+      },
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "label": "combined",
+      "samples": [
+        {
+          "index": 0,
+          "observation": 0,
+          "warmup": true,
+          "rtt_ms": 815.301671042107,
+          "server_timing": {
+            "received_wall_time": 1791365404.0807362,
+            "inference_started_wall_time": 1791365404.083497,
+            "inference_finished_wall_time": 1791365404.8532054,
+            "inference_ms": 747.8208449902013
+          }
+        },
+        {
+          "index": 1,
+          "observation": 1,
+          "warmup": true,
+          "rtt_ms": 499.54941601026803,
+          "server_timing": {
+            "received_wall_time": 1791365404.900707,
+            "inference_started_wall_time": 1791365404.9032028,
+            "inference_finished_wall_time": 1791365405.35658,
+            "inference_ms": 435.10980997234583
+          }
+        },
+        {
+          "index": 2,
+          "observation": 2,
+          "warmup": true,
+          "rtt_ms": 495.4285869607702,
+          "server_timing": {
+            "received_wall_time": 1791365405.4047294,
+            "inference_started_wall_time": 1791365405.407197,
+            "inference_finished_wall_time": 1791365405.8570552,
+            "inference_ms": 432.51769698690623
+          }
+        },
+        {
+          "index": 3,
+          "observation": 3,
+          "warmup": true,
+          "rtt_ms": 499.16123994626105,
+          "server_timing": {
+            "received_wall_time": 1791365405.9046638,
+            "inference_started_wall_time": 1791365405.9069977,
+            "inference_finished_wall_time": 1791365406.3602583,
+            "inference_ms": 431.82793201413006
+          }
+        },
+        {
+          "index": 4,
+          "observation": 4,
+          "warmup": true,
+          "rtt_ms": 454.83427098952234,
+          "server_timing": {
+            "received_wall_time": 1791365406.4062135,
+            "inference_started_wall_time": 1791365406.407432,
+            "inference_finished_wall_time": 1791365406.8599555,
+            "inference_ms": 428.0806699534878
+          }
+        },
+        {
+          "index": 5,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 478.5825660219416,
+          "server_timing": {
+            "received_wall_time": 1791365406.8613846,
+            "inference_started_wall_time": 1791365406.86166,
+            "inference_finished_wall_time": 1791365407.2978933,
+            "inference_ms": 429.63368899654597
+          }
+        },
+        {
+          "index": 6,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 492.38791305106133,
+          "server_timing": {
+            "received_wall_time": 1791365407.3431401,
+            "inference_started_wall_time": 1791365407.3443584,
+            "inference_finished_wall_time": 1791365407.7939358,
+            "inference_ms": 436.1079080263153
+          }
+        },
+        {
+          "index": 7,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 491.29684502258897,
+          "server_timing": {
+            "received_wall_time": 1791365407.8406806,
+            "inference_started_wall_time": 1791365407.8431213,
+            "inference_finished_wall_time": 1791365408.2892957,
+            "inference_ms": 433.1607549684122
+          }
+        },
+        {
+          "index": 8,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 497.008855920285,
+          "server_timing": {
+            "received_wall_time": 1791365408.3365922,
+            "inference_started_wall_time": 1791365408.337916,
+            "inference_finished_wall_time": 1791365408.7917104,
+            "inference_ms": 431.6076070535928
+          }
+        },
+        {
+          "index": 9,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 489.9684109259397,
+          "server_timing": {
+            "received_wall_time": 1791365408.8364542,
+            "inference_started_wall_time": 1791365408.8378735,
+            "inference_finished_wall_time": 1791365409.2844486,
+            "inference_ms": 433.5216339677572
+          }
+        },
+        {
+          "index": 10,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 494.93189703207463,
+          "server_timing": {
+            "received_wall_time": 1791365409.3294501,
+            "inference_started_wall_time": 1791365409.3306603,
+            "inference_finished_wall_time": 1791365409.7815764,
+            "inference_ms": 431.5108690643683
+          }
+        },
+        {
+          "index": 11,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 494.068282074295,
+          "server_timing": {
+            "received_wall_time": 1791365409.8273523,
+            "inference_started_wall_time": 1791365409.8285968,
+            "inference_finished_wall_time": 1791365410.279919,
+            "inference_ms": 428.13059501349926
+          }
+        },
+        {
+          "index": 12,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 498.8229740411043,
+          "server_timing": {
+            "received_wall_time": 1791365410.3245933,
+            "inference_started_wall_time": 1791365410.325797,
+            "inference_finished_wall_time": 1791365410.780493,
+            "inference_ms": 432.3221390368417
+          }
+        },
+        {
+          "index": 13,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 497.9104769881815,
+          "server_timing": {
+            "received_wall_time": 1791365410.8264816,
+            "inference_started_wall_time": 1791365410.8277316,
+            "inference_finished_wall_time": 1791365411.2812843,
+            "inference_ms": 433.19848005194217
+          }
+        },
+        {
+          "index": 14,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 524.9297809787095,
+          "server_timing": {
+            "received_wall_time": 1791365411.3275816,
+            "inference_started_wall_time": 1791365411.3287542,
+            "inference_finished_wall_time": 1791365411.8102276,
+            "inference_ms": 454.87053703982383
+          }
+        },
+        {
+          "index": 15,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 490.9230510238558,
+          "server_timing": {
+            "received_wall_time": 1791365411.8554988,
+            "inference_started_wall_time": 1791365411.8566315,
+            "inference_finished_wall_time": 1791365412.3043199,
+            "inference_ms": 427.85101605113596
+          }
+        },
+        {
+          "index": 16,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 491.85296590439975,
+          "server_timing": {
+            "received_wall_time": 1791365412.3495836,
+            "inference_started_wall_time": 1791365412.350764,
+            "inference_finished_wall_time": 1791365412.79842,
+            "inference_ms": 427.6813030010089
+          }
+        },
+        {
+          "index": 17,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 495.6360630458221,
+          "server_timing": {
+            "received_wall_time": 1791365412.8446658,
+            "inference_started_wall_time": 1791365412.846142,
+            "inference_finished_wall_time": 1791365413.298028,
+            "inference_ms": 431.18649907410145
+          }
+        },
+        {
+          "index": 18,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 493.2386690052226,
+          "server_timing": {
+            "received_wall_time": 1791365413.3435016,
+            "inference_started_wall_time": 1791365413.344769,
+            "inference_finished_wall_time": 1791365413.7943718,
+            "inference_ms": 430.0358599284664
+          }
+        },
+        {
+          "index": 19,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 490.51837204024196,
+          "server_timing": {
+            "received_wall_time": 1791365413.8400288,
+            "inference_started_wall_time": 1791365413.841326,
+            "inference_finished_wall_time": 1791365414.2889636,
+            "inference_ms": 429.4968390604481
+          }
+        },
+        {
+          "index": 20,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 493.38311899919063,
+          "server_timing": {
+            "received_wall_time": 1791365414.333709,
+            "inference_started_wall_time": 1791365414.3349245,
+            "inference_finished_wall_time": 1791365414.7851825,
+            "inference_ms": 430.2893029525876
+          }
+        },
+        {
+          "index": 21,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 479.4627099763602,
+          "server_timing": {
+            "received_wall_time": 1791365414.8274074,
+            "inference_started_wall_time": 1791365414.8277686,
+            "inference_finished_wall_time": 1791365415.2659168,
+            "inference_ms": 430.1877460675314
+          }
+        },
+        {
+          "index": 22,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 484.79239898733795,
+          "server_timing": {
+            "received_wall_time": 1791365415.310759,
+            "inference_started_wall_time": 1791365415.3120441,
+            "inference_finished_wall_time": 1791365415.7534668,
+            "inference_ms": 429.07464096788317
+          }
+        },
+        {
+          "index": 23,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 487.59915796108544,
+          "server_timing": {
+            "received_wall_time": 1791365415.7989454,
+            "inference_started_wall_time": 1791365415.8001392,
+            "inference_finished_wall_time": 1791365416.2442427,
+            "inference_ms": 431.8745010532439
+          }
+        },
+        {
+          "index": 24,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 495.4491719836369,
+          "server_timing": {
+            "received_wall_time": 1791365416.2899168,
+            "inference_started_wall_time": 1791365416.291113,
+            "inference_finished_wall_time": 1791365416.743735,
+            "inference_ms": 432.229261030443
+          }
+        }
+      ],
+      "rtt": {
+        "count": 20,
+        "p50_ms": 492.813291028142,
+        "p95_ms": 500.1283143879846,
+        "p99_ms": 519.9694876605645,
+        "max_ms": 524.9297809787095
+      },
+      "exit_code": 0
+    },
+    {
+      "index": 3,
+      "label": "baseline",
+      "samples": [
+        {
+          "index": 0,
+          "observation": 0,
+          "warmup": true,
+          "rtt_ms": 531.8717219633982,
+          "server_timing": {
+            "received_wall_time": 1791365433.8165433,
+            "inference_started_wall_time": 1791365433.8175294,
+            "inference_finished_wall_time": 1791365434.3060713,
+            "inference_ms": 464.3207089975476
+          }
+        },
+        {
+          "index": 1,
+          "observation": 1,
+          "warmup": true,
+          "rtt_ms": 498.4672541031614,
+          "server_timing": {
+            "received_wall_time": 1791365434.354021,
+            "inference_started_wall_time": 1791365434.3553348,
+            "inference_finished_wall_time": 1791365434.8101423,
+            "inference_ms": 437.8964389907196
+          }
+        },
+        {
+          "index": 2,
+          "observation": 2,
+          "warmup": true,
+          "rtt_ms": 505.20221097394824,
+          "server_timing": {
+            "received_wall_time": 1791365434.8561456,
+            "inference_started_wall_time": 1791365434.8575191,
+            "inference_finished_wall_time": 1791365435.3196967,
+            "inference_ms": 437.4018689850345
+          }
+        },
+        {
+          "index": 3,
+          "observation": 3,
+          "warmup": true,
+          "rtt_ms": 492.50356189440936,
+          "server_timing": {
+            "received_wall_time": 1791365435.3648896,
+            "inference_started_wall_time": 1791365435.3659904,
+            "inference_finished_wall_time": 1791365435.8159797,
+            "inference_ms": 435.0400709081441
+          }
+        },
+        {
+          "index": 4,
+          "observation": 4,
+          "warmup": true,
+          "rtt_ms": 468.3843400562182,
+          "server_timing": {
+            "received_wall_time": 1791365435.86136,
+            "inference_started_wall_time": 1791365435.8625505,
+            "inference_finished_wall_time": 1791365436.3285177,
+            "inference_ms": 438.5974439792335
+          }
+        },
+        {
+          "index": 5,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 496.907394961454,
+          "server_timing": {
+            "received_wall_time": 1791365436.3299575,
+            "inference_started_wall_time": 1791365436.3302076,
+            "inference_finished_wall_time": 1791365436.7843354,
+            "inference_ms": 438.7117719743401
+          }
+        },
+        {
+          "index": 6,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 502.3387490073219,
+          "server_timing": {
+            "received_wall_time": 1791365436.831024,
+            "inference_started_wall_time": 1791365436.8322048,
+            "inference_finished_wall_time": 1791365437.290101,
+            "inference_ms": 438.0592009983957
+          }
+        },
+        {
+          "index": 7,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 504.9906740896404,
+          "server_timing": {
+            "received_wall_time": 1791365437.3373916,
+            "inference_started_wall_time": 1791365437.338566,
+            "inference_finished_wall_time": 1791365437.7992482,
+            "inference_ms": 439.58306801505387
+          }
+        },
+        {
+          "index": 8,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 510.0959009723738,
+          "server_timing": {
+            "received_wall_time": 1791365437.8463194,
+            "inference_started_wall_time": 1791365437.8475602,
+            "inference_finished_wall_time": 1791365438.3132975,
+            "inference_ms": 432.54885100759566
+          }
+        },
+        {
+          "index": 9,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 493.35584102664143,
+          "server_timing": {
+            "received_wall_time": 1791365438.3598852,
+            "inference_started_wall_time": 1791365438.3601701,
+            "inference_finished_wall_time": 1791365438.8120303,
+            "inference_ms": 438.541810028255
+          }
+        },
+        {
+          "index": 10,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 504.0785549208522,
+          "server_timing": {
+            "received_wall_time": 1791365438.8576858,
+            "inference_started_wall_time": 1791365438.8591008,
+            "inference_finished_wall_time": 1791365439.3191156,
+            "inference_ms": 435.57364610023797
+          }
+        },
+        {
+          "index": 11,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 501.0126030538231,
+          "server_timing": {
+            "received_wall_time": 1791365439.3654099,
+            "inference_started_wall_time": 1791365439.366624,
+            "inference_finished_wall_time": 1791365439.8249576,
+            "inference_ms": 438.0509040784091
+          }
+        },
+        {
+          "index": 12,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 503.1866040080786,
+          "server_timing": {
+            "received_wall_time": 1791365439.8703268,
+            "inference_started_wall_time": 1791365439.871496,
+            "inference_finished_wall_time": 1791365440.3317506,
+            "inference_ms": 432.90729203727096
+          }
+        },
+        {
+          "index": 13,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 506.1053419485688,
+          "server_timing": {
+            "received_wall_time": 1791365440.3773346,
+            "inference_started_wall_time": 1791365440.3785121,
+            "inference_finished_wall_time": 1791365440.8404574,
+            "inference_ms": 437.28661502245814
+          }
+        },
+        {
+          "index": 14,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 507.1376139530912,
+          "server_timing": {
+            "received_wall_time": 1791365440.8872843,
+            "inference_started_wall_time": 1791365440.8884554,
+            "inference_finished_wall_time": 1791365441.35295,
+            "inference_ms": 438.84359498042613
+          }
+        },
+        {
+          "index": 15,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 507.2299959138036,
+          "server_timing": {
+            "received_wall_time": 1791365441.3982582,
+            "inference_started_wall_time": 1791365441.399435,
+            "inference_finished_wall_time": 1791365441.8626091,
+            "inference_ms": 440.3009640518576
+          }
+        },
+        {
+          "index": 16,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 500.13178994413465,
+          "server_timing": {
+            "received_wall_time": 1791365441.9093456,
+            "inference_started_wall_time": 1791365441.9106777,
+            "inference_finished_wall_time": 1791365442.3674512,
+            "inference_ms": 433.7205479387194
+          }
+        },
+        {
+          "index": 17,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 507.0971760433167,
+          "server_timing": {
+            "received_wall_time": 1791365442.4135165,
+            "inference_started_wall_time": 1791365442.4147131,
+            "inference_finished_wall_time": 1791365442.8790214,
+            "inference_ms": 439.50598197989166
+          }
+        },
+        {
+          "index": 18,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 506.86963100451976,
+          "server_timing": {
+            "received_wall_time": 1791365442.924492,
+            "inference_started_wall_time": 1791365442.925602,
+            "inference_finished_wall_time": 1791365443.3884943,
+            "inference_ms": 435.8137019444257
+          }
+        },
+        {
+          "index": 19,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 513.1800880189985,
+          "server_timing": {
+            "received_wall_time": 1791365443.4353094,
+            "inference_started_wall_time": 1791365443.4364564,
+            "inference_finished_wall_time": 1791365443.906756,
+            "inference_ms": 443.82618099916726
+          }
+        },
+        {
+          "index": 20,
+          "observation": 0,
+          "warmup": false,
+          "rtt_ms": 511.87996298540384,
+          "server_timing": {
+            "received_wall_time": 1791365443.9525297,
+            "inference_started_wall_time": 1791365443.9537122,
+            "inference_finished_wall_time": 1791365444.4220898,
+            "inference_ms": 435.2546780137345
+          }
+        },
+        {
+          "index": 21,
+          "observation": 1,
+          "warmup": false,
+          "rtt_ms": 500.0552129931748,
+          "server_timing": {
+            "received_wall_time": 1791365444.4684792,
+            "inference_started_wall_time": 1791365444.4701111,
+            "inference_finished_wall_time": 1791365444.9266462,
+            "inference_ms": 437.49903002753854
+          }
+        },
+        {
+          "index": 22,
+          "observation": 2,
+          "warmup": false,
+          "rtt_ms": 500.14613603707403,
+          "server_timing": {
+            "received_wall_time": 1791365444.9722352,
+            "inference_started_wall_time": 1791365444.9735289,
+            "inference_finished_wall_time": 1791365445.4301004,
+            "inference_ms": 435.0661450298503
+          }
+        },
+        {
+          "index": 23,
+          "observation": 3,
+          "warmup": false,
+          "rtt_ms": 500.8021319517866,
+          "server_timing": {
+            "received_wall_time": 1791365445.4764633,
+            "inference_started_wall_time": 1791365445.4775856,
+            "inference_finished_wall_time": 1791365445.93586,
+            "inference_ms": 436.12814089283347
+          }
+        },
+        {
+          "index": 24,
+          "observation": 4,
+          "warmup": false,
+          "rtt_ms": 498.012489057146,
+          "server_timing": {
+            "received_wall_time": 1791365445.9789658,
+            "inference_started_wall_time": 1791365445.9796765,
+            "inference_finished_wall_time": 1791365446.4343936,
+            "inference_ms": 438.5323530295864
+          }
+        }
+      ],
+      "rtt": {
+        "count": 20,
+        "p50_ms": 503.6325794644654,
+        "p95_ms": 511.94496923708357,
+        "p99_ms": 512.9330642626155,
+        "max_ms": 513.1800880189985
+      },
+      "exit_code": 0
+    }
+  ],
+  "parity": [
+    {
+      "stage": 1,
+      "index": 5,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 6,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 7,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 8,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 9,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 10,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 11,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 12,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 13,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 14,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 15,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 16,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 17,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 18,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 19,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 20,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 21,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 22,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 23,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 1,
+      "index": 24,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 5,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 6,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 7,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 8,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 9,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 10,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 11,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 12,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 13,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 14,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 15,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 16,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 17,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 18,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 19,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 20,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 21,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 22,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 23,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 2,
+      "index": 24,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 5,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 6,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 7,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 8,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 9,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 10,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 11,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 12,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 13,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 14,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 15,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 16,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 17,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 18,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 19,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 20,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 21,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 22,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 23,
+      "equal": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": 3,
+      "index": 24,
+      "equal": true,
+      "max_abs": 0.0
+    }
+  ],
+  "aggregate": {
+    "baseline": {
+      "count": 40,
+      "p50_ms": 501.2077229912393,
+      "p95_ms": 513.1616105441935,
+      "p99_ms": 519.7479140793439,
+      "max_ms": 523.9470159867778
+    },
+    "combined": {
+      "count": 40,
+      "p50_ms": 494.5000895531848,
+      "p95_ms": 506.7475191259291,
+      "p99_ms": 520.0564458873123,
+      "max_ms": 524.9297809787095
+    }
+  }
+}

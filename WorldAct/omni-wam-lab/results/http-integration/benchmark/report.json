@@ -1,0 +1,782 @@
+{
+  "note": "Offline authenticated HTTP policy benchmark. Never imports ROS or publishes commands.\n\nReplay decoded saved RGB through ONE JPEG encoding shared across endpoints.\nJPEG recompression changes pixels relative to original NPZ; comparisons are\nbetween these identical HTTP inputs, not bitwise against the original capture.",
+  "timing_scope": "RTT covers existing transport pickle encode, HTTP exchange and response unpickle; excludes observation/JPEG preparation, loop payload construction and robot scheduling",
+  "observation_preparation_ms": 14.309106976725161,
+  "observation_sha256": "23f1b7c870475a12b10cdcdf0a70d9777db32687c81b0e28be54cdb2f57f6a9d",
+  "jpeg_quality": 95,
+  "jpeg_sha256": {
+    "head": "763f1e3685871b89e95e7e6b5b36b21b1edd5907c1670ba9344f2a11ed1d918c",
+    "right_wrist": "5bf08a5c2a1fc5dedce6ba2dfecf9aed45aeac821fbeba6b5fc29037514d8d79"
+  },
+  "original_metadata": "wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.json",
+  "endpoints": [
+    {
+      "label": "native",
+      "url": "http://127.0.0.1:18005",
+      "session_id": "9d320e6aad7e41fbb561a728ef51d316",
+      "samples": [
+        {
+          "request_id": 7,
+          "rtt_ms": 672.0845700474456,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359873.845894,
+            "inference_started_wall_time": 1791359873.8461368,
+            "inference_finished_wall_time": 1791359874.4752777,
+            "inference_ms": 616.2477589678019
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 8,
+          "rtt_ms": 698.5696690389886,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359874.5307362,
+            "inference_started_wall_time": 1791359874.5316975,
+            "inference_finished_wall_time": 1791359875.1878393,
+            "inference_ms": 635.6117150280625
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 9,
+          "rtt_ms": 672.2131869755685,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359875.2297072,
+            "inference_started_wall_time": 1791359875.2301135,
+            "inference_finished_wall_time": 1791359875.860083,
+            "inference_ms": 619.040756020695
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 10,
+          "rtt_ms": 716.919191996567,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359875.9045208,
+            "inference_started_wall_time": 1791359875.9056678,
+            "inference_finished_wall_time": 1791359876.5790443,
+            "inference_ms": 645.7600729772821
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 11,
+          "rtt_ms": 691.7596469866112,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359876.6236234,
+            "inference_started_wall_time": 1791359876.6247547,
+            "inference_finished_wall_time": 1791359877.273419,
+            "inference_ms": 625.726820086129
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 12,
+          "rtt_ms": 694.8553530965,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359877.3173196,
+            "inference_started_wall_time": 1791359877.3184292,
+            "inference_finished_wall_time": 1791359877.970066,
+            "inference_ms": 633.115170057863
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 13,
+          "rtt_ms": 672.3644450539723,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359878.012741,
+            "inference_started_wall_time": 1791359878.0132532,
+            "inference_finished_wall_time": 1791359878.64325,
+            "inference_ms": 619.4532109657302
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 14,
+          "rtt_ms": 696.4101030025631,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359878.6883292,
+            "inference_started_wall_time": 1791359878.688802,
+            "inference_finished_wall_time": 1791359879.3432875,
+            "inference_ms": 635.7231369474903
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 15,
+          "rtt_ms": 670.405842945911,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359879.385726,
+            "inference_started_wall_time": 1791359879.386222,
+            "inference_finished_wall_time": 1791359880.0140688,
+            "inference_ms": 616.5673700161278
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 16,
+          "rtt_ms": 701.6953260172158,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359880.0597868,
+            "inference_started_wall_time": 1791359880.0609326,
+            "inference_finished_wall_time": 1791359880.718303,
+            "inference_ms": 637.1374009177089
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 17,
+          "rtt_ms": 704.6898300759494,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359880.7637565,
+            "inference_started_wall_time": 1791359880.7649155,
+            "inference_finished_wall_time": 1791359881.42624,
+            "inference_ms": 636.1119149951264
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 18,
+          "rtt_ms": 695.7458900287747,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359881.470777,
+            "inference_started_wall_time": 1791359881.4719622,
+            "inference_finished_wall_time": 1791359882.1247952,
+            "inference_ms": 634.753345977515
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 19,
+          "rtt_ms": 698.5615930752829,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359882.1688929,
+            "inference_started_wall_time": 1791359882.1700182,
+            "inference_finished_wall_time": 1791359882.8254023,
+            "inference_ms": 635.3917409433052
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 20,
+          "rtt_ms": 702.5696530472487,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359882.869822,
+            "inference_started_wall_time": 1791359882.8709605,
+            "inference_finished_wall_time": 1791359883.5300279,
+            "inference_ms": 633.4972468903288
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 21,
+          "rtt_ms": 706.8199960049242,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359883.574669,
+            "inference_started_wall_time": 1791359883.5758393,
+            "inference_finished_wall_time": 1791359884.238667,
+            "inference_ms": 635.9148169867694
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 22,
+          "rtt_ms": 700.2433190355077,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359884.2840533,
+            "inference_started_wall_time": 1791359884.284836,
+            "inference_finished_wall_time": 1791359884.9419029,
+            "inference_ms": 634.1769390273839
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 23,
+          "rtt_ms": 698.3494010055438,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359884.9859385,
+            "inference_started_wall_time": 1791359884.9866984,
+            "inference_finished_wall_time": 1791359885.6423316,
+            "inference_ms": 634.1119690332562
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 24,
+          "rtt_ms": 702.5955140125006,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359885.686982,
+            "inference_started_wall_time": 1791359885.688103,
+            "inference_finished_wall_time": 1791359886.3462021,
+            "inference_ms": 632.2331980336457
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 25,
+          "rtt_ms": 680.3689670050517,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359886.391932,
+            "inference_started_wall_time": 1791359886.393049,
+            "inference_finished_wall_time": 1791359887.0294044,
+            "inference_ms": 615.783808985725
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        },
+        {
+          "request_id": 26,
+          "rtt_ms": 701.7388449748978,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359887.073445,
+            "inference_started_wall_time": 1791359887.07417,
+            "inference_finished_wall_time": 1791359887.7339745,
+            "inference_ms": 638.5482409968972
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.0,
+          "reference_xyz_mean_m": 0.0,
+          "reference_rotation_max_deg": 2.4148365394514667e-06,
+          "reference_hand_max_deg": 0.0,
+          "reference_wire_exact": true
+        }
+      ],
+      "hello": {
+        "model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+        "action_rate_hz": 15.0
+      },
+      "rtt": {
+        "count": 20,
+        "p50_ms": 698.4554970404133,
+        "p95_ms": 707.3249558045063,
+        "p99_ms": 715.0003447581548,
+        "max_ms": 716.919191996567
+      },
+      "legacy24_timing_gate": {
+        "p99_below_400ms": false,
+        "p99_plus_50ms_below_7step_lead": false,
+        "all_samples_below_8step_alignment": false,
+        "note": "Timing criterion only; not robot/control readiness or quality approval"
+      }
+    },
+    {
+      "label": "omni_fp8",
+      "url": "http://127.0.0.1:18016",
+      "session_id": "8b0d8052535843eab192950d7d455414",
+      "samples": [
+        {
+          "request_id": 7,
+          "rtt_ms": 494.45345089770854,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359890.3611593,
+            "inference_started_wall_time": 1791359890.361431,
+            "inference_finished_wall_time": 1791359890.8141031,
+            "inference_ms": 438.9011359307915
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 8,
+          "rtt_ms": 498.46190901007503,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359890.856471,
+            "inference_started_wall_time": 1791359890.8568938,
+            "inference_finished_wall_time": 1791359891.3130894,
+            "inference_ms": 438.1799140246585
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 9,
+          "rtt_ms": 512.826113961637,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359891.3578985,
+            "inference_started_wall_time": 1791359891.35921,
+            "inference_finished_wall_time": 1791359891.828079,
+            "inference_ms": 439.46631206199527
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 10,
+          "rtt_ms": 503.1267940066755,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359891.8733149,
+            "inference_started_wall_time": 1791359891.874667,
+            "inference_finished_wall_time": 1791359892.3348362,
+            "inference_ms": 435.7935810694471
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 11,
+          "rtt_ms": 512.5329330330715,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359892.3789208,
+            "inference_started_wall_time": 1791359892.3802087,
+            "inference_finished_wall_time": 1791359892.8487496,
+            "inference_ms": 441.4809229783714
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 12,
+          "rtt_ms": 497.3245549481362,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359892.8924963,
+            "inference_started_wall_time": 1791359892.8928664,
+            "inference_finished_wall_time": 1791359893.3486226,
+            "inference_ms": 440.0589329889044
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 13,
+          "rtt_ms": 501.0418869787827,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359893.3919399,
+            "inference_started_wall_time": 1791359893.392847,
+            "inference_finished_wall_time": 1791359893.851695,
+            "inference_ms": 437.74647603277117
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 14,
+          "rtt_ms": 493.53713903110474,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359893.8933604,
+            "inference_started_wall_time": 1791359893.8937447,
+            "inference_finished_wall_time": 1791359894.3444602,
+            "inference_ms": 438.815806992352
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 15,
+          "rtt_ms": 510.3427489520982,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359894.3901534,
+            "inference_started_wall_time": 1791359894.3914118,
+            "inference_finished_wall_time": 1791359894.8590636,
+            "inference_ms": 438.37423401419073
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 16,
+          "rtt_ms": 509.95221792254597,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359894.902903,
+            "inference_started_wall_time": 1791359894.9041188,
+            "inference_finished_wall_time": 1791359895.3706312,
+            "inference_ms": 438.87323304079473
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 17,
+          "rtt_ms": 521.8008459778503,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359895.4154556,
+            "inference_started_wall_time": 1791359895.4170964,
+            "inference_finished_wall_time": 1791359895.8959072,
+            "inference_ms": 440.9638869110495
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 18,
+          "rtt_ms": 494.5766030577943,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359895.9373662,
+            "inference_started_wall_time": 1791359895.9377186,
+            "inference_finished_wall_time": 1791359896.3908372,
+            "inference_ms": 437.80951702501625
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 19,
+          "rtt_ms": 509.372822009027,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359896.4352245,
+            "inference_started_wall_time": 1791359896.436406,
+            "inference_finished_wall_time": 1791359896.9030437,
+            "inference_ms": 439.8193369852379
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 20,
+          "rtt_ms": 513.3247619960457,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359896.9472299,
+            "inference_started_wall_time": 1791359896.9486668,
+            "inference_finished_wall_time": 1791359897.4181955,
+            "inference_ms": 441.46401598118246
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 21,
+          "rtt_ms": 519.2878419766203,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359897.4631777,
+            "inference_started_wall_time": 1791359897.4643688,
+            "inference_finished_wall_time": 1791359897.9403286,
+            "inference_ms": 440.59823907446116
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 22,
+          "rtt_ms": 513.2700488902628,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359897.9852192,
+            "inference_started_wall_time": 1791359897.9864168,
+            "inference_finished_wall_time": 1791359898.4560487,
+            "inference_ms": 441.0984709393233
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 23,
+          "rtt_ms": 509.4891929766163,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359898.4996717,
+            "inference_started_wall_time": 1791359898.5004632,
+            "inference_finished_wall_time": 1791359898.9667096,
+            "inference_ms": 443.07365000713617
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 24,
+          "rtt_ms": 505.3212969796732,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359899.0120971,
+            "inference_started_wall_time": 1791359899.0133262,
+            "inference_finished_wall_time": 1791359899.4756827,
+            "inference_ms": 438.0019580712542
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 25,
+          "rtt_ms": 517.1517810085788,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359899.520337,
+            "inference_started_wall_time": 1791359899.5217397,
+            "inference_finished_wall_time": 1791359899.9957948,
+            "inference_ms": 442.3893881030381
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        },
+        {
+          "request_id": 26,
+          "rtt_ms": 510.169381974265,
+          "request_bytes": 175992,
+          "response_bytes": 17684,
+          "server_timing": {
+            "received_wall_time": 1791359900.0402787,
+            "inference_started_wall_time": 1791359900.0415869,
+            "inference_finished_wall_time": 1791359900.507205,
+            "inference_ms": 436.2421550322324
+          },
+          "repeat_max_abs": 0.0,
+          "reference_xyz_max_m": 0.027570588049180375,
+          "reference_xyz_mean_m": 0.01728792420218457,
+          "reference_rotation_max_deg": 4.8103726165368235,
+          "reference_hand_max_deg": 8.195907592773438,
+          "reference_wire_exact": false
+        }
+      ],
+      "hello": {
+        "model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+        "action_rate_hz": 15.0
+      },
+      "rtt": {
+        "count": 20,
+        "p50_ms": 509.72070544958115,
+        "p95_ms": 519.4134921766818,
+        "p99_ms": 521.3233752176166,
+        "max_ms": 521.8008459778503
+      },
+      "legacy24_timing_gate": {
+        "p99_below_400ms": false,
+        "p99_plus_50ms_below_7step_lead": false,
+        "all_samples_below_8step_alignment": true,
+        "note": "Timing criterion only; not robot/control readiness or quality approval"
+      }
+    }
+  ]
+}

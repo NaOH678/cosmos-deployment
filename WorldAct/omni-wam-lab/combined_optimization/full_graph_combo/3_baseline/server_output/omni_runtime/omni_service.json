@@ -1,0 +1,212 @@
+{
+  "backend": "vllm-omni",
+  "quantization": "fp8",
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+  "conversion": {
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-hf",
+    "base_components": "/home/pjlab/ros2_ws/worktrees/WorldAct/models/cosmos3-edge-droid/cosmos3-edge-droid",
+    "weight_count": 549,
+    "all_weights_serialized_exactly": true,
+    "base_transformer_weights_used": false,
+    "ema_manifest": {
+      "checkpoint": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000",
+      "config": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml",
+      "config_sha256": "f16c9b08b3a72f04a5b0a15483a7ad13435dba7963fd438e4d924e288c1aa715",
+      "ema": true,
+      "config_only": false,
+      "action_chunk_size": 32,
+      "fps": 15.0,
+      "native_action_dim": 27,
+      "domain_name": "singlerighthand"
+    }
+  },
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "source_sha256": {
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/WorldAct-sft/cosmos_framework/inference/robot_policy/omni_http.py": "8b5442c727b819a45f3ed3e99f8392cc44713a29b549712daf5ac53e2ffbf853",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/wam_adapter.py": "65dee913dedf010423b841aa19ec4152cbe5e534b10ae546dc9960888c4ecccd",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py": "9fd8a3b90f8a779758476571c275eb7b0e9a483913c273392a4a7130951731c9"
+  },
+  "first_frame_only": true,
+  "config": {
+    "deployment": {
+      "protocol_version": 2,
+      "schema_version": 2,
+      "model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+      "mode": "right",
+      "arm_command_mode": "eef",
+      "action_space": "eef",
+      "camera_names": [
+        "head",
+        "right_wrist"
+      ],
+      "robot_layout": {
+        "action_dim": 54,
+        "action_layout": [
+          {
+            "eef": [
+              0,
+              7
+            ],
+            "hand": [
+              7,
+              27
+            ],
+            "side": "left"
+          },
+          {
+            "eef": [
+              27,
+              34
+            ],
+            "hand": [
+              34,
+              54
+            ],
+            "side": "right"
+          }
+        ],
+        "arm_dof": 14,
+        "arm_dof_per_side": 7,
+        "eef_dim": 14,
+        "eef_dof_per_side": 7,
+        "hand_dof": 40,
+        "hand_dof_per_side": 20,
+        "n_sides": 2,
+        "qpos_layout": [
+          {
+            "arm": [
+              0,
+              7
+            ],
+            "hand": [
+              7,
+              27
+            ],
+            "side": "left"
+          },
+          {
+            "arm": [
+              27,
+              34
+            ],
+            "hand": [
+              34,
+              54
+            ],
+            "side": "right"
+          }
+        ],
+        "sides": [
+          "left",
+          "right"
+        ],
+        "state_dim": 54,
+        "units": {
+          "action.eef.position": "metre",
+          "action.eef.quaternion": "xyzw",
+          "action.hand": "degree",
+          "qpos.arm": "radian",
+          "qpos.hand": "radian"
+        }
+      },
+      "active_hand_sides": [
+        "right"
+      ],
+      "zero_filled_hand_sides": [
+        "left"
+      ],
+      "action_rate_hz": 15.0,
+      "wire_chunk_size": 32,
+      "startup_handoff": false
+    },
+    "model": {
+      "service_mode": "full",
+      "checkpoint_path": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000",
+      "checkpoint_sha256": null,
+      "config_file": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml",
+      "experiment": "action_policy_singlerighthand_edge",
+      "experiment_overrides": [],
+      "output_dir": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/full_graph_combo/3_baseline/server_output",
+      "credential_path": "credentials/gcp_checkpoint.secret",
+      "sampler": "unipc",
+      "task": "make a sandwich",
+      "domain_name": "singlerighthand",
+      "seed": 0,
+      "guidance": 3.0,
+      "num_steps": 4,
+      "shift": 5.0,
+      "trajectory_smoothing": "binomial5",
+      "resolution": "480",
+      "native_action_dim": 27,
+      "native_chunk_size": 32,
+      "max_action_dim": 64,
+      "use_ema_weights": true,
+      "use_cuda_graphs": false,
+      "warmup": true
+    },
+    "image_preprocessing": {
+      "codec": "jpeg",
+      "input_color_space": "bgr8",
+      "model_color_space": "rgb",
+      "composition": "right_wrist_over_head",
+      "keep_aspect_ratio": true,
+      "padding": "reflection",
+      "warmup_shapes": {
+        "head": [
+          480,
+          640,
+          3
+        ],
+        "right_wrist": [
+          480,
+          640,
+          3
+        ]
+      }
+    },
+    "timestamps": {
+      "max_image_source_skew_s": 0.25
+    },
+    "coordinate_frames": {
+      "native_action_type": "absolute",
+      "observation_right_eef": "right_chest",
+      "model_right_eef": "right_chest",
+      "wire_right_eef": "right_chest",
+      "model_to_wire_transform": "identity",
+      "quaternion_order": "xyzw"
+    },
+    "safety": {
+      "max_eef_step_m": 0.15,
+      "max_eef_step_deg": 75.0,
+      "max_arm_joint_step_deg": 75.0,
+      "max_hand_step_deg": 75.0,
+      "quaternion_min_norm": 1e-06,
+      "small_motion_max_eef_m": 0.01,
+      "small_motion_max_eef_deg": 5.0,
+      "small_motion_max_arm_joint_deg": 5.0,
+      "small_motion_max_hand_deg": 5.0
+    },
+    "auth": {
+      "api_key_env": "COSMOS_POLICY_API_KEY",
+      "api_key_file": null
+    },
+    "service": {
+      "host": "127.0.0.1",
+      "port": 18026,
+      "endpoint": "/v1/robot-policy",
+      "max_request_bytes": 16777216,
+      "max_response_bytes": 4194304,
+      "max_sessions": 8,
+      "session_ttl_s": 120.0,
+      "max_inflight_inferences": 1,
+      "inference_timeout_s": 30.0
+    }
+  },
+  "request_recording_dir": null,
+  "video_latent_dir": null
+}

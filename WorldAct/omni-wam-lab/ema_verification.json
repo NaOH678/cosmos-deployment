@@ -1,0 +1,38 @@
+[
+  {
+    "source_key": "net_ema.action2llm.fc.weight",
+    "export_key": "model.net.action2llm.fc.weight",
+    "shape": [
+      32,
+      131072
+    ],
+    "exact_after_export_dtype": true
+  },
+  {
+    "source_key": "net_ema.llm2action.fc.weight",
+    "export_key": "model.net.llm2action.fc.weight",
+    "shape": [
+      32,
+      131072
+    ],
+    "exact_after_export_dtype": true
+  },
+  {
+    "source_key": "net_ema.language_model.model.layers.0.mlp_moe_gen.up_proj.weight",
+    "export_key": "model.net.language_model.model.layers.0.mlp_moe_gen.up_proj.weight",
+    "shape": [
+      9216,
+      2048
+    ],
+    "exact_after_export_dtype": true
+  },
+  {
+    "source_key": "net_ema.language_model.model.layers.27.mlp_moe_gen.up_proj.weight",
+    "export_key": "model.net.language_model.model.layers.27.mlp_moe_gen.up_proj.weight",
+    "shape": [
+      9216,
+      2048
+    ],
+    "exact_after_export_dtype": true
+  }
+]

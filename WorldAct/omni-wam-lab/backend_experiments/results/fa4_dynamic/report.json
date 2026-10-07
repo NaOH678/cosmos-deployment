@@ -1,0 +1,165 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "quantization": "fp8",
+  "attention": "FLASH_ATTN",
+  "first_frame_only": true,
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": true,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "warmup": true,
+      "end_to_end_ms": 2160.617699031718
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "end_to_end_ms": 445.966099970974
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "end_to_end_ms": 448.30468005966395
+    },
+    {
+      "index": 3,
+      "warmup": true,
+      "end_to_end_ms": 441.7443930869922
+    },
+    {
+      "index": 4,
+      "warmup": true,
+      "end_to_end_ms": 449.2245310684666
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "end_to_end_ms": 448.7172970548272
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "end_to_end_ms": 451.0791170177981
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "end_to_end_ms": 445.6461680820212
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "end_to_end_ms": 450.58113790582865
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "end_to_end_ms": 449.2994350148365
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "end_to_end_ms": 451.0222610551864
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "end_to_end_ms": 449.3980809347704
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "end_to_end_ms": 453.17752996925265
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "end_to_end_ms": 446.78643194492906
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "end_to_end_ms": 448.0504631064832
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "end_to_end_ms": 451.58539700787514
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "end_to_end_ms": 451.0577640030533
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "end_to_end_ms": 447.32695794664323
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "end_to_end_ms": 448.162327054888
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "end_to_end_ms": 449.44647303782403
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "end_to_end_ms": 445.2523859217763
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "end_to_end_ms": 444.26642695907503
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "end_to_end_ms": 441.7963579762727
+    },
+    {
+      "index": 23,
+      "warmup": false,
+      "end_to_end_ms": 442.89139600005
+    },
+    {
+      "index": 24,
+      "warmup": false,
+      "end_to_end_ms": 447.3133090650663
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "p50_ms": 448.4398120548576,
+  "p95_ms": 451.665003655944
+}

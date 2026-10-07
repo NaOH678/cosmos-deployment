@@ -1,0 +1,68 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/source"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "corpus": null,
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "full_gen_graph": true,
+  "quantization": "fp8",
+  "attention": "CUDNN_ATTN",
+  "first_frame_only": true,
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": true,
+  "compile_mode": "default",
+  "graph_clone": false,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 860.5246500810608
+    },
+    {
+      "index": 1,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 421.87590489629656
+    },
+    {
+      "index": 2,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 418.3443649671972
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "inductor_inner_cudagraphs": false,
+  "max_memory_allocated_bytes": 5497448448,
+  "max_memory_reserved_bytes": 5995757568,
+  "p50_ms": 420.11013493174687,
+  "p95_ms": 421.6993278998416
+}

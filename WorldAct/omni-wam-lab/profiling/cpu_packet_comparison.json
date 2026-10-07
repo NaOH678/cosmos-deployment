@@ -1,0 +1,113 @@
+{
+  "scope": "CPU camera arrays -> full Omni packet. Original native _build_batch with only image_size cuda transfer removed in BOTH variants. No GPU context, model, network or latent recording; timings do not include eliminated GPU roundtrip. 4 torch threads; 5 observations x40 interleaved repeats after5warmups each. Concurrent backend GPU work may contend for CPU.",
+  "records": [
+    {
+      "sequence": 1,
+      "equal": {
+        "first_frame": true,
+        "action": true,
+        "image_size": true,
+        "metadata": true
+      },
+      "timings": {
+        "baseline": {
+          "p50_ms": 6.393866962753236,
+          "p95_ms": 7.238534704083577
+        },
+        "first_frame": {
+          "p50_ms": 2.5437320000492036,
+          "p95_ms": 2.971204806817695
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "equal": {
+        "first_frame": true,
+        "action": true,
+        "image_size": true,
+        "metadata": true
+      },
+      "timings": {
+        "baseline": {
+          "p50_ms": 6.177732546348125,
+          "p95_ms": 6.619477266212925
+        },
+        "first_frame": {
+          "p50_ms": 2.4848805041983724,
+          "p95_ms": 2.9442574246786535
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "equal": {
+        "first_frame": true,
+        "action": true,
+        "image_size": true,
+        "metadata": true
+      },
+      "timings": {
+        "baseline": {
+          "p50_ms": 6.282341491896659,
+          "p95_ms": 6.6117352806031695
+        },
+        "first_frame": {
+          "p50_ms": 2.4656240129843354,
+          "p95_ms": 2.5946724985260516
+        }
+      }
+    },
+    {
+      "sequence": 19,
+      "equal": {
+        "first_frame": true,
+        "action": true,
+        "image_size": true,
+        "metadata": true
+      },
+      "timings": {
+        "baseline": {
+          "p50_ms": 7.999336055945605,
+          "p95_ms": 8.510091522475697
+        },
+        "first_frame": {
+          "p50_ms": 4.227437020745128,
+          "p95_ms": 4.475510935299093
+        }
+      }
+    },
+    {
+      "sequence": 25,
+      "equal": {
+        "first_frame": true,
+        "action": true,
+        "image_size": true,
+        "metadata": true
+      },
+      "timings": {
+        "baseline": {
+          "p50_ms": 6.312181998509914,
+          "p95_ms": 6.5855951339472085
+        },
+        "first_frame": {
+          "p50_ms": 2.4480950087308884,
+          "p95_ms": 2.614328486379236
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline": {
+      "p50_ms": 6.332248507533222,
+      "p95_ms": 8.088619424961507
+    },
+    "first_frame": {
+      "p50_ms": 2.5351105141453445,
+      "p95_ms": 4.268305224832147
+    }
+  },
+  "avoided_full_video_allocation_bytes": 39638016,
+  "physical_first_frame_bytes": 1201152,
+  "production_recommendation": "Factor native compose/pad/prompt/action into shared helper with frame count explicit. For Omni return first frame directly and keep image_size on CPU. Never expose expanded video as actual future frames to model."
+}

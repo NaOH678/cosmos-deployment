@@ -1,0 +1,182 @@
+{
+  "format_version": 1,
+  "recording_run_id": null,
+  "enabled": true,
+  "created_wall_ns": 1791365883630248847,
+  "source_path": "/home/pjlab/ros2_ws/worktrees/WorldAct/WorldAct-sft/cosmos_framework/inference/robot_policy/recording.py",
+  "config": {
+    "deployment": {
+      "protocol_version": 2,
+      "schema_version": 2,
+      "model_id": "singlerighthand-edge-droid-50k-retrain-v1-iter-000040000",
+      "mode": "right",
+      "arm_command_mode": "eef",
+      "action_space": "eef",
+      "camera_names": [
+        "head",
+        "right_wrist"
+      ],
+      "robot_layout": {
+        "action_dim": 54,
+        "action_layout": [
+          {
+            "eef": [
+              0,
+              7
+            ],
+            "hand": [
+              7,
+              27
+            ],
+            "side": "left"
+          },
+          {
+            "eef": [
+              27,
+              34
+            ],
+            "hand": [
+              34,
+              54
+            ],
+            "side": "right"
+          }
+        ],
+        "arm_dof": 14,
+        "arm_dof_per_side": 7,
+        "eef_dim": 14,
+        "eef_dof_per_side": 7,
+        "hand_dof": 40,
+        "hand_dof_per_side": 20,
+        "n_sides": 2,
+        "qpos_layout": [
+          {
+            "arm": [
+              0,
+              7
+            ],
+            "hand": [
+              7,
+              27
+            ],
+            "side": "left"
+          },
+          {
+            "arm": [
+              27,
+              34
+            ],
+            "hand": [
+              34,
+              54
+            ],
+            "side": "right"
+          }
+        ],
+        "sides": [
+          "left",
+          "right"
+        ],
+        "state_dim": 54,
+        "units": {
+          "action.eef.position": "metre",
+          "action.eef.quaternion": "xyzw",
+          "action.hand": "degree",
+          "qpos.arm": "radian",
+          "qpos.hand": "radian"
+        }
+      },
+      "active_hand_sides": [
+        "right"
+      ],
+      "zero_filled_hand_sides": [
+        "left"
+      ],
+      "action_rate_hz": 15.0,
+      "wire_chunk_size": 32,
+      "startup_handoff": false
+    },
+    "model": {
+      "service_mode": "full",
+      "checkpoint_path": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000",
+      "checkpoint_sha256": null,
+      "config_file": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml",
+      "experiment": "action_policy_singlerighthand_edge",
+      "experiment_overrides": [],
+      "output_dir": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/production_validation/0_production/server_output",
+      "sampler": "unipc",
+      "task": "make a sandwich",
+      "domain_name": "singlerighthand",
+      "seed": 0,
+      "guidance": 3.0,
+      "num_steps": 4,
+      "shift": 5.0,
+      "trajectory_smoothing": "binomial5",
+      "resolution": "480",
+      "native_action_dim": 27,
+      "native_chunk_size": 32,
+      "max_action_dim": 64,
+      "use_ema_weights": true,
+      "use_cuda_graphs": false,
+      "warmup": true
+    },
+    "image_preprocessing": {
+      "codec": "jpeg",
+      "input_color_space": "bgr8",
+      "model_color_space": "rgb",
+      "composition": "right_wrist_over_head",
+      "keep_aspect_ratio": true,
+      "padding": "reflection",
+      "warmup_shapes": {
+        "head": [
+          480,
+          640,
+          3
+        ],
+        "right_wrist": [
+          480,
+          848,
+          3
+        ]
+      }
+    },
+    "coordinate_frames": {
+      "native_action_type": "absolute",
+      "observation_right_eef": "right_chest",
+      "model_right_eef": "right_chest",
+      "wire_right_eef": "right_chest",
+      "model_to_wire_transform": "identity",
+      "quaternion_order": "xyzw"
+    },
+    "timestamps": {
+      "max_image_source_skew_s": 0.25
+    },
+    "safety": {
+      "max_eef_step_m": 0.15,
+      "max_eef_step_deg": 75.0,
+      "max_arm_joint_step_deg": 75.0,
+      "max_hand_step_deg": 75.0,
+      "quaternion_min_norm": 1e-06,
+      "small_motion_max_eef_m": 0.01,
+      "small_motion_max_eef_deg": 5.0,
+      "small_motion_max_arm_joint_deg": 5.0,
+      "small_motion_max_hand_deg": 5.0
+    }
+  },
+  "units": {
+    "state": "native 27D: EEF xyz metres, quaternion xyzw, hand radians; joint profile: arm and hand radians",
+    "raw_actions": "native model output, condition row removed, before smoothing/normalization",
+    "images": "decoded RGB uint8, original camera dimensions"
+  },
+  "queue_capacity": 16,
+  "runtime": {
+    "torch": "2.13.0+cu130",
+    "cuda_build": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "timing_note": "Recording adds no CUDA synchronization; model_ms uses existing adapter synchronization. Record enqueue/snapshot time is excluded from adapter_total_ms.",
+  "source_sha256": {
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/WorldAct-sft/cosmos_framework/inference/robot_policy/recording.py": "c4c076b4bfdb064608b087b5aa347360d23a0abbc29372c7ac29adaebc0133c5",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/WorldAct-sft/cosmos_framework/inference/robot_policy/adapters.py": "26563612485358ea0b2154ed9b56377081d67f77ee1529e4d5993b49e6526e1b"
+  }
+}

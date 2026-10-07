@@ -1,0 +1,84 @@
+{
+  "hardware": "RTX 5090 single GPU",
+  "checkpoint": "50k-retrain-v1-0831/iter_000040000 EMA",
+  "sampling": {
+    "steps": 4,
+    "guidance": 3,
+    "shift": 5,
+    "frames": 33,
+    "actions": 32,
+    "seed": 0
+  },
+  "input": "fixtures/observation_01.npz; same saved observation freshly inferred",
+  "native_complete_call_ms": {
+    "p50": 621.9320914824493,
+    "p95": 630.0367349933367
+  },
+  "native_model_ms": {
+    "p50": 616.0664419876412,
+    "p95": 622.3256430530455
+  },
+  "experiments": [
+    {
+      "experiment": "bf16-compiled",
+      "p50_ms": 638.3430904825218,
+      "p95_ms": 641.1210739810485,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/bf16-compiled/report.json"
+    },
+    {
+      "experiment": "bf16-compiled-fixed",
+      "p50_ms": 630.9752669767477,
+      "p95_ms": 633.6417453770991,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/bf16-compiled-fixed/report.json"
+    },
+    {
+      "experiment": "bf16-full-static",
+      "p50_ms": 639.5825269864872,
+      "p95_ms": 640.8622330462094,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/bf16-full-static/report.json"
+    },
+    {
+      "experiment": "bf16-first-frame",
+      "p50_ms": 590.210221009329,
+      "p95_ms": 592.1120368409902,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/bf16-first-frame/report.json"
+    },
+    {
+      "experiment": "fp8-first-frame",
+      "p50_ms": 440.5390474712476,
+      "p95_ms": 444.1364416270517,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/fp8-first-frame/report.json"
+    },
+    {
+      "experiment": "fp8-first-frame-audit",
+      "p50_ms": 441.6335010319017,
+      "p95_ms": 446.8407138250768,
+      "warmup": 5,
+      "measured_requests": 20,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/fp8-first-frame-audit/report.json"
+    }
+  ],
+  "fp8_latency_reduction_vs_native": 0.2899007671734456,
+  "first_frame_optimization_all_25_outputs_bitwise_equal": true,
+  "timing_scope": "Warm offline call to CPU action result, excluding initialization, compilation, saved result writes, HTTP and ROS. Native starts with raw camera arrays; Omni starts with prepared packet and includes packet read. Not exactly identical preprocessing boundaries.",
+  "conditions": "OMP_NUM_THREADS=4; tests sequential; original production server remained resident; desktop active; no exclusive-GPU guarantee.",
+  "limitations": [
+    "One fixed observation; does not measure task success or diverse input latency.",
+    "Omni vs native numerical parity remains unresolved; FP8 adds quantization differences.",
+    "Full static compile still has Tensor.item graph breaks and was slower than regional.",
+    "FP8 emitted DeepGEMM PDL initialization warning; actual FP8 tensors and online linear methods verified, not claiming DeepGEMM used."
+  ],
+  "runtime_audit": "fp8-first-frame-audit/runtime.json",
+  "robot_actions_sent": false,
+  "production_service_changed": false
+}

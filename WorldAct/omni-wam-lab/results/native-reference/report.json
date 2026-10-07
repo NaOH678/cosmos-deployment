@@ -1,0 +1,51 @@
+{
+  "config": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/local5090_services/20261007T004610546291Z_4w_standalone/server.yaml",
+  "model": {
+    "service_mode": "full",
+    "checkpoint_path": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/iter_000040000",
+    "checkpoint_sha256": null,
+    "config_file": "/home/pjlab/ros2_ws/worktrees/WorldAct/model_ch/real_ckpt/singlerighthand-edge-droid-50k-retrain-v1-0831/config.deploy.yaml",
+    "experiment": "action_policy_singlerighthand_edge",
+    "experiment_overrides": [],
+    "output_dir": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/local5090_services/20261007T004610546291Z_4w_standalone/outputs",
+    "credential_path": "credentials/gcp_checkpoint.secret",
+    "sampler": "unipc",
+    "task": "make a sandwich",
+    "domain_name": "singlerighthand",
+    "seed": 0,
+    "guidance": 3.0,
+    "num_steps": 4,
+    "shift": 5.0,
+    "trajectory_smoothing": "binomial5",
+    "resolution": "480",
+    "native_action_dim": 27,
+    "native_chunk_size": 32,
+    "max_action_dim": 64,
+    "use_ema_weights": true,
+    "use_cuda_graphs": false,
+    "warmup": false
+  },
+  "observation": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+  "runs": [
+    {
+      "index": 0,
+      "warmup": true,
+      "model_ms": 4568.156872061081
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "model_ms": 620.5776099814102
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "model_ms": 620.6095580710098
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "model_ms": 626.7950010951608
+    }
+  ]
+}

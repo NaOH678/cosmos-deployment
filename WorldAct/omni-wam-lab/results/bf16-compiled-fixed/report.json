@@ -1,0 +1,162 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": true,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "warmup": true,
+      "end_to_end_ms": 783.0652670236304
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "end_to_end_ms": 626.2628969270736
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "end_to_end_ms": 624.9851409811527
+    },
+    {
+      "index": 3,
+      "warmup": true,
+      "end_to_end_ms": 627.8836650308222
+    },
+    {
+      "index": 4,
+      "warmup": true,
+      "end_to_end_ms": 649.8267389833927
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "end_to_end_ms": 631.2582809478045
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "end_to_end_ms": 627.7119369478896
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "end_to_end_ms": 628.3248789841309
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "end_to_end_ms": 629.5624979538843
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "end_to_end_ms": 628.872554982081
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "end_to_end_ms": 630.9389169327915
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "end_to_end_ms": 625.8136439137161
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "end_to_end_ms": 631.1486130580306
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "end_to_end_ms": 631.5488449763507
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "end_to_end_ms": 630.4897570516914
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "end_to_end_ms": 631.0116170207039
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "end_to_end_ms": 628.230795962736
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "end_to_end_ms": 628.623673110269
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "end_to_end_ms": 633.068653056398
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "end_to_end_ms": 633.3609509747475
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "end_to_end_ms": 631.1701179947704
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "end_to_end_ms": 632.7523411018774
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "end_to_end_ms": 638.9768390217796
+    },
+    {
+      "index": 23,
+      "warmup": false,
+      "end_to_end_ms": 632.58549105376
+    },
+    {
+      "index": 24,
+      "warmup": false,
+      "end_to_end_ms": 630.6261530844495
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "p50_ms": 630.9752669767477,
+  "p95_ms": 633.6417453770991
+}

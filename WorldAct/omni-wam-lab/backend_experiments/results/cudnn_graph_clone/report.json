@@ -1,0 +1,229 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "quantization": "fp8",
+  "attention": "CUDNN_ATTN",
+  "first_frame_only": true,
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": false,
+  "compile_mode": "reduce-overhead",
+  "graph_clone": true,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 2693.7458210159093
+    },
+    {
+      "index": 1,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 459.5310470322147
+    },
+    {
+      "index": 2,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 455.13030991423875
+    },
+    {
+      "index": 3,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 462.30471099261194
+    },
+    {
+      "index": 4,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 462.2839599614963
+    },
+    {
+      "index": 5,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 453.12956895213574
+    },
+    {
+      "index": 6,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 456.4713080180809
+    },
+    {
+      "index": 7,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 454.40454699564725
+    },
+    {
+      "index": 8,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 467.49558101873845
+    },
+    {
+      "index": 9,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 473.59597007744014
+    },
+    {
+      "index": 10,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 478.91333408188075
+    },
+    {
+      "index": 11,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 471.7947089811787
+    },
+    {
+      "index": 12,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 465.2811969863251
+    },
+    {
+      "index": 13,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 463.5563320480287
+    },
+    {
+      "index": 14,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 474.76367105264217
+    },
+    {
+      "index": 15,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 467.3022129572928
+    },
+    {
+      "index": 16,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 474.98858894687146
+    },
+    {
+      "index": 17,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 463.0348230712116
+    },
+    {
+      "index": 18,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 457.29333406779915
+    },
+    {
+      "index": 19,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 470.1217180117965
+    },
+    {
+      "index": 20,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 472.7325940039009
+    },
+    {
+      "index": 21,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 457.701671984978
+    },
+    {
+      "index": 22,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 456.9337390130386
+    },
+    {
+      "index": 23,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 454.2472379980609
+    },
+    {
+      "index": 24,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 458.18415004760027
+    },
+    {
+      "index": 25,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": true,
+      "end_to_end_ms": 1244.8433439712971
+    },
+    {
+      "index": 26,
+      "packet": "WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+      "warmup": false,
+      "profiled": true,
+      "end_to_end_ms": 1210.9705039765686
+    }
+  ],
+  "status": "started",
+  "numerical_parity_verified": false
+}

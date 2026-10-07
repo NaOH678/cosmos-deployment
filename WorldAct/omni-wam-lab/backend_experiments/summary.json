@@ -1,0 +1,84 @@
+{
+  "scope": "Offline packet-to-CPU raw action latency; four UniPC steps CFG3 FP8 4w EMA; 5 warmup and20 measurements; no HTTP/recording; production idle resident",
+  "results": {
+    "cudnn_dynamic": {
+      "p50_ms": 440.18295651767403,
+      "p95_ms": 442.68854440306313,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/cudnn_dynamic/report.json"
+    },
+    "fa4_dynamic": {
+      "p50_ms": 448.4398120548576,
+      "p95_ms": 451.665003655944,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/fa4_dynamic/report.json"
+    },
+    "cudnn_static": {
+      "p50_ms": 455.6216604541987,
+      "p95_ms": 463.40379940811545,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/cudnn_static/report.json"
+    },
+    "corpus_graph_clone": {
+      "p50_ms": 442.24797055358067,
+      "p95_ms": 452.2810655471403,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/corpus_graph_clone/report.json"
+    },
+    "corpus_fa4": {
+      "p50_ms": 447.9362344718538,
+      "p95_ms": 453.12850599293597,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/corpus_fa4/report.json"
+    },
+    "corpus_cudnn": {
+      "p50_ms": 441.18727947352454,
+      "p95_ms": 445.83603614009917,
+      "report": "WorldAct/omni-wam-lab/backend_experiments/results/corpus_cudnn/report.json"
+    }
+  },
+  "corpus_order": [
+    "corpus_graph_clone",
+    "corpus_fa4",
+    "corpus_cudnn"
+  ],
+  "numerical_checks": {
+    "corpus_graph_clone": {
+      "max_abs_action_diff": 0.1603562831878662,
+      "mean_position_distance_m": 0.03175054118037224,
+      "max_position_distance_m": 0.06538271903991699,
+      "bitwise_equal_to_no_graph_cudnn": false,
+      "repeat_same_input_after_four_other_inputs_max_abs_diff": 0.0,
+      "first_vs_second_observation_max_abs_diff": 0.7325460910797119
+    },
+    "corpus_fa4": {
+      "max_abs_action_diff": 0.23226404190063477,
+      "mean_position_distance_m": 0.034883733838796616,
+      "max_position_distance_m": 0.09007857739925385,
+      "bitwise_equal_to_no_graph_cudnn": false,
+      "repeat_same_input_after_four_other_inputs_max_abs_diff": 0.0,
+      "first_vs_second_observation_max_abs_diff": 0.6886343955993652
+    },
+    "corpus_cudnn": {
+      "max_abs_action_diff": 0.0,
+      "mean_position_distance_m": 0.0,
+      "max_position_distance_m": 0.0,
+      "bitwise_equal_to_no_graph_cudnn": true,
+      "repeat_same_input_after_four_other_inputs_max_abs_diff": 0.0,
+      "first_vs_second_observation_max_abs_diff": 0.7138227224349976
+    }
+  },
+  "graph_evidence": {
+    "trace": "WorldAct/omni-wam-lab/backend_experiments/results/cudnn_graph_clone/traces/20261007-164215_backend/trace_rank0.json.gz",
+    "counts": {
+      "cudaGraphLaunch": 448,
+      "cuGraphLaunch": 0,
+      "cudaStreamBeginCapture": 0,
+      "cudaStreamEndCapture": 0
+    },
+    "scope": "two profiled requests; trace export completed, slow key_averages postprocessing terminated; debug timings invalid"
+  },
+  "recommendation": "Retain cuDNN dynamic regional compile: no tested alternative shows meaningful speed improvement. CUDA Graph clone candidate actually replays but adds lifecycle complexity without speed gain. Do not deploy graph candidate.",
+  "limitations": [
+    "No broad statistical confidence interval; GPU desktop and original idle resident service present.",
+    "Initial fixed-input static run slower, clean corpus graph versus cuDNN difference small.",
+    "FP8 quality unchanged by this test, not task success validation.",
+    "Graph debug profile timings invalid, profile postprocessing interrupted only after trace export.",
+    "No true whole-denoising-loop graph implemented; tested per-generation-layer graph."
+  ]
+}

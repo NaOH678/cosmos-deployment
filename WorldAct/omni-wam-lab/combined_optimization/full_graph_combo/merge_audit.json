@@ -1,0 +1,18 @@
+{
+  "no_gpu_used": true,
+  "inputs": {
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/source/vllm_omni/diffusion/models/cosmos3/transformer_cosmos3.py": "064e5d28f5f320f5648f485de3c0a703496546bf1f690aac2912dc994ed2810f",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/profiling/domain_sync_candidate/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py": "b8e55c170e99f61d99226e6c98f3d7c24edb4994cbe09ba252d892e948112fce",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/full_gen_graph_impl.py": "dacc6d7a5e958bccad6fd3917d7cb53aff6df3916a50b2ff7f48709dd508bf7e"
+  },
+  "merged": {
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/full_graph_combo/source/vllm_omni/diffusion/models/cosmos3/transformer_cosmos3.py": "4da783564bd7c19141acc90b5d3322f7cfe031e15c344145474c635e981f0089",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/full_graph_combo/source/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py": "b8e55c170e99f61d99226e6c98f3d7c24edb4994cbe09ba252d892e948112fce",
+    "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/combined_optimization/full_graph_combo/candidate_lab/full_gen_graph_impl.py": "dacc6d7a5e958bccad6fd3917d7cb53aff6df3916a50b2ff7f48709dd508bf7e"
+  },
+  "assertions": {
+    "domain_fastpath": true,
+    "full_graph_dispatch": true,
+    "copied_not_symlink": true
+  }
+}

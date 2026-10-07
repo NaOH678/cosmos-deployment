@@ -1,0 +1,55 @@
+{
+  "http": {
+    "baseline": {
+      "count": 40,
+      "p50_ms": 501.2077229912393,
+      "p95_ms": 513.1616105441935,
+      "p99_ms": 519.7479140793439,
+      "max_ms": 523.9470159867778
+    },
+    "combined": {
+      "count": 40,
+      "p50_ms": 494.5000895531848,
+      "p95_ms": 506.7475191259291,
+      "p99_ms": 520.0564458873123,
+      "max_ms": 524.9297809787095
+    }
+  },
+  "server": {
+    "baseline": {
+      "server_model_ms": {
+        "p50": 437.29123746743426,
+        "p95": 444.9117286654655
+      },
+      "server_adapter_wall_ms": {
+        "p50": 458.30392837524414,
+        "p95": 469.69677209854126
+      }
+    },
+    "combined": {
+      "server_model_ms": {
+        "p50": 433.69343649828807,
+        "p95": 443.6427909124177
+      },
+      "server_adapter_wall_ms": {
+        "p50": 451.16865634918213,
+        "p95": 461.50357723236084
+      }
+    }
+  },
+  "all_60_wire_pairs_equal": true,
+  "max_wire_abs_diff": 0.0,
+  "cold_shape_note": "Service synthetic warmup uses3138GEN tokens; real observation3399 requires new140/19 graphs. All timed samples follow5realHTTP warmups, excludes capture. Production must warm actual shape.",
+  "caveats": [
+    "Recording off; JPEG encode excluded; full HTTP transport included.",
+    "40requests/variant acrossABBA; one candidate tail524.93ms not better than baseline max523.95ms.",
+    "Compared to previous two-optimization benchmark, no controlled same-run proof of extra graph gain.",
+    "Original18005 server resident idle, desktop GPU resources shared."
+  ],
+  "phase_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

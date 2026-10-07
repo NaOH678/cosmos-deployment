@@ -1,0 +1,74 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "eager": true,
+  "samples": [
+    {
+      "index": 0,
+      "warmup": true,
+      "end_to_end_ms": 847.670761984773
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "end_to_end_ms": 705.8596819406375
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "end_to_end_ms": 707.6890351017937
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "end_to_end_ms": 710.003181011416
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "end_to_end_ms": 708.2184460014105
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "end_to_end_ms": 705.34390991088
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "end_to_end_ms": 706.5755599178374
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "end_to_end_ms": 709.2381060356274
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "p50_ms": 707.9537405516021,
+  "p95_ms": 709.8119122674689
+}

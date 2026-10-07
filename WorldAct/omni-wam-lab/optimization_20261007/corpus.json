@@ -1,0 +1,42 @@
+{
+  "run_id": "20261007T080926Z-4fdfb8bc",
+  "config": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server_deployment.yaml",
+  "observations": [
+    {
+      "sequence": 1,
+      "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000001.npz",
+      "metadata": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000001.json",
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "source_sha256": "eebbff498a3fc4555bcdb1ae4ae328658a5ceef30cbfa8b18406b06b9652573e"
+    },
+    {
+      "sequence": 7,
+      "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000007.npz",
+      "metadata": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000007.json",
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "source_sha256": "cda357e52917623d63b48df948e3da788b6630282a662bf1f6f7a75a114e5b6d"
+    },
+    {
+      "sequence": 13,
+      "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000013.npz",
+      "metadata": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000013.json",
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "source_sha256": "1d4fdfc4dc5b162ba42d5080480b8012dacc1bd646a08df9b337acd2b168f5a9"
+    },
+    {
+      "sequence": 19,
+      "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000019.npz",
+      "metadata": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000019.json",
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "source_sha256": "5233beff54a1d8366c1430d82f17978dd992300670a9851fbecce22e248d02f5"
+    },
+    {
+      "sequence": 25,
+      "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000025.npz",
+      "metadata": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000025.json",
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "source_sha256": "dfe4ca5f995b36a0715b4cdf419aa18fe28675dd2d7abbbe6dfa7cc457799ccc"
+    }
+  ],
+  "note": "Five chronological observations from the first task-completed Omni FP8 robot run. Reuse same inputs across offline performance candidates."
+}

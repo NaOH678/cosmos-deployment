@@ -1,0 +1,63 @@
+Independent read-only review, 2026-10-07. No GPU or implementation edits.
+Primary source: https://arxiv.org/html/2608.01880v1 sections3,4,5.1.
+
+Paper definitions (brief paraphrase): H is predicted horizon; s is number of
+executed frames before triggering the next inference; d includes capture through
+command dispatch; d_est estimates that delay. New prediction starts at its delay
+offset. Overlap is H-s, with H-s-d_est available after the delay region. Their
+example is H24,10Hz,s4,d_est8, using measured median latency. async+blend weights
+outgoing and incoming predictions after inference. The explicit decaying weight
+formula is described under the separate during-denoising method, not a fully
+specified async+blend implementation. Multiple-camera clock mapping, in-flight
+concurrency, exact post-hoc weight shape and interpolation commitments are not
+specified sufficiently to claim one unique literal implementation.
+
+Recommendations for THIS CODE (engineering choices, not claims about paper):
+1. Keep H=32 and policy15Hz; do not truncate old prediction at24 before constructing
+   overlap. Translating their0.4s cadence gives s6, not copying4 numerically.
+   d_est must come from our capture-to-dispatch timing; do not inherit their8frames
+   at10Hz. Our~0.5s complete delay suggests order8frames, but measure image age too.
+   Boundaries use exact phase, not floor/ceil independently in several locations.
+2. Snapshot ROS_now and monotonic_now together. Convert each camera source stamp
+   by mono_capture=mono_now-(ROS_now-source_stamp). Store individual clocks/ages.
+   deployment_node.py:1231 _store uses ROS/header stamps; direct cameras:1525
+   carries frame.timestamp, so verify producer clock domain before conversion.
+   Reject/diagnose future stamps, ROS clock jumps, unknown simulated clock mapping.
+   Do not subtract ROS epoch timestamps from monotonic directly.
+3. Current observation_created_at at2745 is build-start monotonic, before JPEG.
+   It excludes age of captured images already in cache. source_timestamps at2007
+   records image times, and traces at2757 report ages but alignment uses created_at.
+   Include capture age in new action's time origin. State and camera timestamps may
+   differ: record all; a single timestamp does not magically synchronize them.
+   Paper has no multiple-camera reference rule. Choose explicitly and document:
+   oldest camera is conservative for age budgeting, but not exact fusion timing.
+4. Old/new blend inputs must be actual future trajectory samples at the SAME
+   absolute execution time. Current deployment_protocol.py:346 blend_action_prefix
+   uses a constant last-target anchor, so it is not trajectory-overlap weighting.
+   Use common scalar weight for xyz, quaternion SLERP, and hand vector, keeping
+   units and quaternion normalization. Separate8/2 curves are not common weighting.
+   A linear old-weight decay across uncommitted overlap is a defensible minimal
+   choice, but label it chosen because paper doesn't specify post-hoc curve.
+5. 120Hz interpolation current->peek_next means next endpoint is already committed.
+   deployment_node.py:4765-4845 samples that segment continuously. Preserve current
+   endpoint/time and peek_next endpoint/time; blend only after that deadline.
+   Existing early_splice guard3630-3647 waits until committed head is due and keeps
+   it. Reuse compare-and-replace sequence token; avoid rewriting endpoint midsegment.
+   Even weight0 at activation doesn't guarantee velocity continuity; blending is
+   not a velocity or acceleration bound.
+6. Single in-flight scheduling ambiguity when s<d:
+   If trigger counts original chunk indices, a received chunk already advanced to
+   d>=s must trigger immediately when capacity is free. Effective observation-start
+   cadence is then response-bound, approx max(s,d), not requested s.
+   If implementation waits s frames AFTER activation, cadence is instead d+s.
+   These are different algorithms. Neither should be silently described as literal
+   paper without declaring scheduling interpretation. Derive old/new overlap from
+   actual prediction origins; nominal H-s is wrong when request delayed by busy GPU.
+   Record requested s, actual origin delta/s_effective, pending trigger, latency,
+   alignment index, retained committed deadline, overlap samples and weights.
+7. Keep one in-flight, latest unissued observation, no queue of stale snapshots.
+   On blocked trigger, remember need-to-request but acquire fresh snapshot only
+   after capacity becomes free. Late response must align at future committed
+   boundary, not response receipt, and count extra interpolation wait in d.
+   If no valid overlap remains, paper does not prescribe recovery; define explicit
+   hold/re-request fallback instead of manufacturing same-time correspondence.

@@ -1,0 +1,55 @@
+Read-only review: native WAM batched CFG, 2026-10-07
+No GPU used, no shared production/candidate files edited.
+
+1. Actual FP8 activation scales are PER TOKEN, not per batch tensor.
+Runtime profiling/fp8_baseline/runtime.json identifies 336
+vllm.model_executor.layers.quantization.online.fp8.Fp8PerTensorOnlineLinearMethod.
+Installed vllm/model_executor/layers/quantization/online/fp8.py:163-180 explains:
+weights kFp8StaticTensorSym, but CUTLASS activation kFp8DynamicTokenSym.
+The class name refers to weight quantization, not activation quantization.
+Runtime proof in trace_rank0.json.gz _C::cutlass_scaled_mm Input Dims:
+GEN x [3399,2048], activation scale [3399,1], weight scale [1] (2240 calls);
+GEN MLP x [3399,9216], activation scale [3399,1] (448 calls);
+UND x [140,2048]/[19,2048], scale [140,1]/[19,1].
+Thus batching does not itself introduce shared cond/uncond activation amax.
+Different GEMM shapes, accumulation/rounding and downstream propagated changes
+still warrant output checks. Do not claim bitwise equality before measuring.
+
+2. Text padding cannot simply be added without attention masking.
+transformer_cosmos3.py:1917-1924 explicitly rejects differing real text lengths.
+CrossAttention._forward_local:763-773 concatenates text and generated KV and
+calls attention with NO mask. Zero padded keys still affect softmax denominator.
+Minimum low-risk candidate: UND separately -> cache each branch;
+GEN QKV+MLP batched B=2, but each attention uses its real UND prefix independently.
+This reuses existing mask-free cuDNN kernels and preserves text semantics.
+Full B=2 masked attention is possible via AttentionMetadata.attn_mask;
+cudnn_attn.py:97-140 supports it, but kernel speed must be measured.
+If padded UND is followed by GEN, mask must exclude only short-UND middle gap,
+not GEN. valid_kv_length extra currently accepts a single integer, insufficient
+for two different branch lengths. Bool mask True means valid key in SDPA.
+
+3. RoPE must be branch-specific.
+transformer_cosmos3.py:1660-1680 derives media_temporal_offset from real text len.
+Concatenate each branch cached_freqs_gen across B; never broadcast cond freqs
+for uncond. UND KV already contains branch-specific RoPE and norm.
+Avoid rerunning _prepare_gen with fake equal lengths to rebuild those caches.
+
+4. CFG and state invariants.
+Batch all applicable latent/noise masks/time embedding/domain ids consistently.
+Split video and action prediction tensors separately along batch; retain CFG
+formula uncond + guidance*(cond-uncond), then ONE scheduler step on B=1 state.
+Maintain first-frame and action-state reinjection after scheduler as before.
+Don't maintain two independent scheduler histories or consume additional RNG.
+Reset temporary attention length/mask attributes and caches in finally so next
+request/batch-size1 cannot inherit stale branch metadata.
+
+5. Suggested CPU boundary tests for current build_candidate.py.
+Use unequal text lengths 140/19 plus short synthetic 3/1; use large nonzero
+sentinel padding so missing/wrong masks cannot accidentally pass.
+Compare split local attention against independent reference branches in fp32.
+Check masked variant against split variant, including GEN columns all valid.
+Assert B=2, length count=2, each 0<length<=padded UND length; reject malformed.
+Assert concatenated freqs each row matches its original branch.
+Test tuple (video,action) split/recombine and cfg_scale=1,3.
+Check request cleanup and baseline B=1 path after candidate invocation.
+Full numerical parity and speed still need GPU tests owned by backend agent.

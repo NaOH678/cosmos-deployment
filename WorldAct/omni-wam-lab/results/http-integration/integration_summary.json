@@ -1,0 +1,95 @@
+{
+  "scope": "Offline HTTP replay only; no ROS or actuator commands. Existing native server remains on 18005; temporary Omni test server 18016 was stopped.",
+  "stack": {
+    "vllm": "0.31.0",
+    "vllm_omni_revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "linear_kernel": "CutlassFP8ScaledMMLinearKernel",
+    "attention": "CUDNN_ATTN",
+    "compiled_gen_layers": 28
+  },
+  "config": "4w EMA, UniPC4, CFG3, shift5, 32 actions, binomial5; same native request preprocessing/postprocessing",
+  "benchmark": [
+    {
+      "label": "native",
+      "session_id": "9d320e6aad7e41fbb561a728ef51d316",
+      "rtt": {
+        "count": 20,
+        "p50_ms": 698.4554970404133,
+        "p95_ms": 707.3249558045063,
+        "p99_ms": 715.0003447581548,
+        "max_ms": 716.919191996567
+      }
+    },
+    {
+      "label": "omni_fp8",
+      "session_id": "8b0d8052535843eab192950d7d455414",
+      "rtt": {
+        "count": 20,
+        "p50_ms": 509.72070544958115,
+        "p95_ms": 519.4134921766818,
+        "p99_ms": 521.3233752176166,
+        "max_ms": 521.8008459778503
+      }
+    }
+  ],
+  "benchmark_report": "benchmark/report.json",
+  "probe": {
+    "session_id": "offline-omni-live-input-validation",
+    "unauthorized_status": 401,
+    "four_requests_finite_32x27": true,
+    "identities_preserved": true,
+    "left_arm_held": true,
+    "state_change_output_max_abs": 9.635318756103516,
+    "image_change_output_max_abs": 43.275787353515625,
+    "repeat_original_max_abs": 0.0,
+    "rtt_ms": [
+      540.8058320172131,
+      488.41586301568896,
+      498.2411649543792,
+      513.6247869813815
+    ],
+    "robot_commands_sent": false
+  },
+  "recording_audit": {
+    "requests": 29,
+    "latents": 29,
+    "all_matched_by_session_and_request_id": true,
+    "all_latents_finite": true,
+    "latent_shapes": [
+      [
+        1,
+        48,
+        9,
+        44,
+        34
+      ]
+    ],
+    "request_recording": {
+      "enqueued": 29,
+      "written": 29,
+      "dropped": 0,
+      "errors": 0,
+      "stats_errors": 0,
+      "pending": 0,
+      "closed": true,
+      "drained": true
+    },
+    "latent_recording": {
+      "enqueued": 29,
+      "written": 29,
+      "dropped": 0,
+      "errors": 0
+    }
+  },
+  "tests": {
+    "native_dependency_environment": "7 passed",
+    "omni_environment_live_bridge_contracts": "2 passed",
+    "note": "Full native noise-reference test imports optional native storage packages absent from Omni env; run in native env rather than installing unrelated training dependencies."
+  },
+  "control_configuration_unchanged": "single24_sequential_blend8_hand2",
+  "not_verified": [
+    "Robot task success with FP8",
+    "Full numerical equivalence of Omni and native backends"
+  ],
+  "latency_note": "Both endpoints sequentially used the same HTTP client, JPEG bytes, sampler and saved observation. 5 warmup +20 measured each. Desktop and inactive other service resident. Omni observation and latent capture enabled."
+}

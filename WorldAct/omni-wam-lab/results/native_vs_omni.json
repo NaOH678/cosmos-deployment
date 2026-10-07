@@ -1,0 +1,10 @@
+{
+  "position_m_mean": 0.025355146167195072,
+  "position_m_max": 0.04823651052411699,
+  "orientation_deg_mean": 2.847666499776138,
+  "orientation_deg_max": 5.632082784165886,
+  "hand_native_units_mae": 0.014396341511746869,
+  "hand_native_units_max": 0.07098603248596191,
+  "max_abs_all": 0.07098603248596191,
+  "note": "Offline numerical differences; not a task-success or robot-safety assessment."
+}

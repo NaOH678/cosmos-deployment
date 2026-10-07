@@ -1,0 +1,17 @@
+{
+  "session_id": "offline-omni-live-input-validation",
+  "unauthorized_status": 401,
+  "four_requests_finite_32x27": true,
+  "identities_preserved": true,
+  "left_arm_held": true,
+  "state_change_output_max_abs": 9.635318756103516,
+  "image_change_output_max_abs": 43.275787353515625,
+  "repeat_original_max_abs": 0.0,
+  "rtt_ms": [
+    540.8058320172131,
+    488.41586301568896,
+    498.2411649543792,
+    513.6247869813815
+  ],
+  "robot_commands_sent": false
+}

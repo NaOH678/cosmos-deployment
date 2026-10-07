@@ -1,0 +1,76 @@
+{
+  "graphs": [
+    {
+      "key": "((1, 3138, 2048), 'torch.bfloat16', (torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128])), (torch.Size([1, 3138, 1, 128]), torch.Size([1, 3138, 1, 128])))",
+      "hidden_shape": [
+        1,
+        3138,
+        2048
+      ],
+      "text_length": 140,
+      "gen_layers": 28,
+      "warmup_capture_ms": 159.01119692716748,
+      "replays_at_capture_audit_snapshot": 20,
+      "output_shape": [
+        1,
+        3138,
+        2048
+      ]
+    },
+    {
+      "key": "((1, 3138, 2048), 'torch.bfloat16', (torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128])), (torch.Size([1, 3138, 1, 128]), torch.Size([1, 3138, 1, 128])))",
+      "hidden_shape": [
+        1,
+        3138,
+        2048
+      ],
+      "text_length": 19,
+      "gen_layers": 28,
+      "warmup_capture_ms": 151.17711294442415,
+      "replays_at_capture_audit_snapshot": 20,
+      "output_shape": [
+        1,
+        3138,
+        2048
+      ]
+    },
+    {
+      "key": "((1, 3399, 2048), 'torch.bfloat16', (torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128]), torch.Size([1, 140, 8, 128])), (torch.Size([1, 3399, 1, 128]), torch.Size([1, 3399, 1, 128])))",
+      "hidden_shape": [
+        1,
+        3399,
+        2048
+      ],
+      "text_length": 140,
+      "gen_layers": 28,
+      "warmup_capture_ms": 159.2042549746111,
+      "replays_at_capture_audit_snapshot": 1,
+      "output_shape": [
+        1,
+        3399,
+        2048
+      ]
+    },
+    {
+      "key": "((1, 3399, 2048), 'torch.bfloat16', (torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128]), torch.Size([1, 19, 8, 128])), (torch.Size([1, 3399, 1, 128]), torch.Size([1, 3399, 1, 128])))",
+      "hidden_shape": [
+        1,
+        3399,
+        2048
+      ],
+      "text_length": 19,
+      "gen_layers": 28,
+      "warmup_capture_ms": 157.1005400037393,
+      "replays_at_capture_audit_snapshot": 0,
+      "output_shape": [
+        1,
+        3399,
+        2048
+      ]
+    }
+  ],
+  "memory_allocated_bytes": 5084903424,
+  "memory_reserved_bytes": 5769265152,
+  "max_memory_allocated_bytes": 5490496512,
+  "max_memory_reserved_bytes": 6186598400
+}

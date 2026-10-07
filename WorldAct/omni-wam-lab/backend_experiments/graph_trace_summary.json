@@ -1,0 +1,10 @@
+{
+  "trace": "WorldAct/omni-wam-lab/backend_experiments/results/cudnn_graph_clone/traces/20261007-164215_backend/trace_rank0.json.gz",
+  "counts": {
+    "cudaGraphLaunch": 448,
+    "cuGraphLaunch": 0,
+    "cudaStreamBeginCapture": 0,
+    "cudaStreamEndCapture": 0
+  },
+  "scope": "two profiled requests; trace export completed, slow key_averages postprocessing terminated; debug timings invalid"
+}

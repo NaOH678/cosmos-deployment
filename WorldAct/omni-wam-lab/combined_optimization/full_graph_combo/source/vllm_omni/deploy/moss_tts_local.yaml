@@ -1,0 +1,9 @@
+# CUDA MRV2/C64 default with full-quota private MPS.
+# Automatic selection uses C128 on >=140 GiB CUDA GPUs, or this C64 profile
+# on smaller/unknown-memory GPUs. Missing MPS selects moss_tts_local_mrv2.yaml.
+# Non-CUDA platforms retain V1. Explicit deploy configs override selection.
+base_config: moss_tts_local_mrv2.yaml
+
+platforms:
+  cuda:
+    cuda_mps: true

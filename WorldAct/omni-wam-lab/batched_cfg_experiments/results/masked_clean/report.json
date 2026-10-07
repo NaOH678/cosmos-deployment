@@ -1,0 +1,229 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/batched_cfg_experiments/source"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+  "corpus": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/corpus.json",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/server/run_1791360579991528731_f48a6604/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "batched_cfg": true,
+  "cfg_attention": "masked",
+  "quantization": "fp8",
+  "attention": "CUDNN_ATTN",
+  "first_frame_only": true,
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": true,
+  "compile_mode": "default",
+  "graph_clone": false,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 2085.2798650739715
+    },
+    {
+      "index": 1,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 472.91648003738374
+    },
+    {
+      "index": 2,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 461.05436503421515
+    },
+    {
+      "index": 3,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 469.08538695424795
+    },
+    {
+      "index": 4,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "warmup": true,
+      "profiled": false,
+      "end_to_end_ms": 468.3535969816148
+    },
+    {
+      "index": 5,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 467.83262805547565
+    },
+    {
+      "index": 6,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 466.84076299425215
+    },
+    {
+      "index": 7,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 465.60757502447814
+    },
+    {
+      "index": 8,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 462.8281859913841
+    },
+    {
+      "index": 9,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 467.3668600153178
+    },
+    {
+      "index": 10,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 468.9686499768868
+    },
+    {
+      "index": 11,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 469.4984080269933
+    },
+    {
+      "index": 12,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 471.48138796910644
+    },
+    {
+      "index": 13,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 469.40945798996836
+    },
+    {
+      "index": 14,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 477.3313489276916
+    },
+    {
+      "index": 15,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 472.77882194612175
+    },
+    {
+      "index": 16,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 472.72467403672636
+    },
+    {
+      "index": 17,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 471.5097158914432
+    },
+    {
+      "index": 18,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 472.82714198809117
+    },
+    {
+      "index": 19,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 467.48267696239054
+    },
+    {
+      "index": 20,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 473.9679010817781
+    },
+    {
+      "index": 21,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_07.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 471.7859219526872
+    },
+    {
+      "index": 22,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_13.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 478.33666403312236
+    },
+    {
+      "index": 23,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_19.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 474.00464094243944
+    },
+    {
+      "index": 24,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_25.npz",
+      "warmup": false,
+      "profiled": false,
+      "end_to_end_ms": 466.541241039522
+    },
+    {
+      "index": 25,
+      "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/optimization_20261007/observation_01.npz",
+      "warmup": false,
+      "profiled": true,
+      "end_to_end_ms": 471.2415370158851
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "max_memory_allocated_bytes": 5416815104,
+  "max_memory_reserved_bytes": 6503268352,
+  "p50_ms": 470.48989799804986,
+  "p95_ms": 477.3816146829631
+}

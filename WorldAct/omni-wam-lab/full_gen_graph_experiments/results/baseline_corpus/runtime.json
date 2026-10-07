@@ -1,0 +1,44 @@
+{
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "parameter_dtypes": {
+    "torch.bfloat16": 208,
+    "torch.float8_e4m3fn": 336,
+    "torch.float32": 340
+  },
+  "quant_methods": {
+    "vllm.model_executor.layers.quantization.online.fp8.Fp8PerTensorOnlineLinearMethod": 336
+  },
+  "attention_implementations": {},
+  "compiled_forward_modules": [
+    "gen_layers.0",
+    "gen_layers.1",
+    "gen_layers.2",
+    "gen_layers.3",
+    "gen_layers.4",
+    "gen_layers.5",
+    "gen_layers.6",
+    "gen_layers.7",
+    "gen_layers.8",
+    "gen_layers.9",
+    "gen_layers.10",
+    "gen_layers.11",
+    "gen_layers.12",
+    "gen_layers.13",
+    "gen_layers.14",
+    "gen_layers.15",
+    "gen_layers.16",
+    "gen_layers.17",
+    "gen_layers.18",
+    "gen_layers.19",
+    "gen_layers.20",
+    "gen_layers.21",
+    "gen_layers.22",
+    "gen_layers.23",
+    "gen_layers.24",
+    "gen_layers.25",
+    "gen_layers.26",
+    "gen_layers.27"
+  ]
+}

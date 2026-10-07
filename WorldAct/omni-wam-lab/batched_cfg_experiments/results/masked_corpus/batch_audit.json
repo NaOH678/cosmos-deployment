@@ -1,0 +1,19 @@
+{
+  "gen_batch": 2,
+  "gen_shape": [
+    2,
+    3399,
+    2048
+  ],
+  "gen_layers": 28,
+  "gen_step_calls": 4,
+  "text_lengths": [
+    140,
+    19
+  ],
+  "rope_batch": 2,
+  "attention_mode": "masked",
+  "max_memory_allocated_bytes": 5416815104,
+  "max_memory_reserved_bytes": 6503268352,
+  "padding_masked": true
+}

@@ -1,0 +1,12 @@
+{
+  "cond": {
+    "native_len": 140,
+    "omni_len": 140,
+    "equal": true
+  },
+  "uncond": {
+    "native_len": 19,
+    "omni_len": 19,
+    "equal": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "requests": 29,
+  "latents": 29,
+  "all_matched_by_session_and_request_id": true,
+  "all_latents_finite": true,
+  "latent_shapes": [
+    [
+      1,
+      48,
+      9,
+      44,
+      34
+    ]
+  ],
+  "request_recording": {
+    "enqueued": 29,
+    "written": 29,
+    "dropped": 0,
+    "errors": 0,
+    "stats_errors": 0,
+    "pending": 0,
+    "closed": true,
+    "drained": true
+  },
+  "latent_recording": {
+    "enqueued": 29,
+    "written": 29,
+    "dropped": 0,
+    "errors": 0
+  }
+}

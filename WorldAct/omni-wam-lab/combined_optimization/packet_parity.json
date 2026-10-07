@@ -1,0 +1,52 @@
+[
+  {
+    "sequence": 1,
+    "all_equal": true,
+    "sha256": {
+      "first_frame": "6ae46f7a38a815b717e6c9abae713b1b22a6317e19d17c3bf2880de70bf1ca29",
+      "action": "0afadbeb547abe9cc02ac869b63b6be31a1c3aeac06d178e5420a9673ead0d52",
+      "image_size": "4eaa7cf41b20533d7005680f60b8ff340cca855960582236af1c36f4b92a7bfa",
+      "metadata": "b5b3c7d893a93ae33e080d3418685867cb18ab6d38aee1afe2536b642ae246ed"
+    }
+  },
+  {
+    "sequence": 7,
+    "all_equal": true,
+    "sha256": {
+      "first_frame": "1f42a19689e295a359dab244ea7ac8a605ebea05f763f035e7b16854c68be524",
+      "action": "8fcbbae0c437c89eaa28a7ac948b70eee883c3b816317903994c337e17c7c794",
+      "image_size": "4eaa7cf41b20533d7005680f60b8ff340cca855960582236af1c36f4b92a7bfa",
+      "metadata": "b5b3c7d893a93ae33e080d3418685867cb18ab6d38aee1afe2536b642ae246ed"
+    }
+  },
+  {
+    "sequence": 13,
+    "all_equal": true,
+    "sha256": {
+      "first_frame": "1a4d3e9d2eb616cbdbcad5bd6db1b50c868b16e19dc7e6d5ba60e5e9d53163a8",
+      "action": "0b3baf1c9aff8007984a800f36269d00b85a5480ea58f0bffeea9e5285973681",
+      "image_size": "4eaa7cf41b20533d7005680f60b8ff340cca855960582236af1c36f4b92a7bfa",
+      "metadata": "b5b3c7d893a93ae33e080d3418685867cb18ab6d38aee1afe2536b642ae246ed"
+    }
+  },
+  {
+    "sequence": 19,
+    "all_equal": true,
+    "sha256": {
+      "first_frame": "fe62384abb078cbe36a11344b6d8a8ecbb620ac05c956793c37e4a535527d5fb",
+      "action": "945e51c969e4f29745c63d4e2d2be140a22c2fca5cb90931c7be1f48c41f775e",
+      "image_size": "4eaa7cf41b20533d7005680f60b8ff340cca855960582236af1c36f4b92a7bfa",
+      "metadata": "b5b3c7d893a93ae33e080d3418685867cb18ab6d38aee1afe2536b642ae246ed"
+    }
+  },
+  {
+    "sequence": 25,
+    "all_equal": true,
+    "sha256": {
+      "first_frame": "269ab3886d3a0b3f2946accc393f6026b2c7d968eabc01e565b32f027eec7ca2",
+      "action": "aba3ce1f8813fc2c29078b8324b00a95c47cb209ad065cd5b17a0fe3602520a3",
+      "image_size": "4eaa7cf41b20533d7005680f60b8ff340cca855960582236af1c36f4b92a7bfa",
+      "metadata": "b5b3c7d893a93ae33e080d3418685867cb18ab6d38aee1afe2536b642ae246ed"
+    }
+  }
+]

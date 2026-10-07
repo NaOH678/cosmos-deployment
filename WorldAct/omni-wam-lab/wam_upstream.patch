@@ -1,0 +1,140 @@
+--- a/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py
++++ b/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py
+@@ -1492,6 +1492,15 @@
+         request_id: str | None = None,
+     ) -> RoboLabPolicyInputs | None:
+         extra = sp.extra_args if isinstance(sp.extra_args, dict) else {}
++        self._wam_seed = None
++        if extra.get("wam_packet") is not None or extra.get("wam_observation") is not None:
++            from wam_adapter import build_inputs, record_runtime
++            record_runtime(self.transformer)
++            inputs = build_inputs(extra.get("wam_observation", extra.get("wam_packet")))
++            inputs.observation["_wam_capture_metadata"] = extra.get("wam_capture_metadata")
++            inputs.observation["_wam_flush_latents"] = bool(extra.get("wam_flush_latents"))
++            self._wam_seed = inputs.seed
++            return inputs
+         obs = extra.get("robot_obs")
+         if obs is None:
+             obs = extra.get("observation")
+@@ -1659,6 +1668,13 @@
+         pipeline_start: float,
+         session_id: str | None = None,
+     ) -> DiffusionOutput:
++        if inputs.observation.get("_wam_flush_latents"):
++            from wam_adapter import flush_latents, finish_output
++            flush_latents()
++            return finish_output(DiffusionOutput(output={
++                "payload": {"actions": inputs.action_tensor[None, :, :27]},
++                "metadata": {"actions": {}, "internal": {}},
++            }))
+         if self.is_distilled_model:
+             raise self._distilled_unsupported_error("RoboLab/action policy requests are unsupported.")
+         if not getattr(self.transformer, "action_gen", False):
+@@ -1712,7 +1728,7 @@
+                 "Cosmos3 RoboLab action video tensor must have shape [1, 3, T, H, W] "
+                 f"or [3, T, H, W], got {tuple(action_video_tensor.shape)}."
+             )
+-        if action_video_tensor.shape[2] < num_frames:
++        if action_video_tensor.shape[2] < num_frames and not inputs.observation.get("_wam_native"):
+             pad = action_video_tensor[:, :, -1:].repeat(1, 1, num_frames - action_video_tensor.shape[2], 1, 1)
+             action_video_tensor = torch.cat([action_video_tensor, pad], dim=2)
+         elif action_video_tensor.shape[2] > num_frames:
+@@ -1752,7 +1768,7 @@
+         )
+ 
+         scheduler = build_robolab_unipc_scheduler(num_inference_steps, flow_shift_target, self.device)
+-        _, action_latents = self.diffuse(
++        video_latents, action_latents = self.diffuse(
+             latents=latents,
+             timesteps=scheduler.timesteps,
+             cond_ids=cond_ids,
+@@ -1778,6 +1794,10 @@
+         if _is_rank_zero():
+             logger.info("Total pipeline time: %.2fs", time.time() - pipeline_start)
+ 
++        if inputs.observation.get("_wam_native"):
++            from wam_adapter import capture_latents
++            capture_latents(video_latents, inputs.observation.get("_wam_capture_metadata"))
++
+         action = action_latents[:, :, :raw_action_dim].detach().cpu()
+         action_output: dict[str, Any] = {
+             "payload": {
+@@ -1793,14 +1813,20 @@
+                     "action_only_output": True,
+                 },
+                 "internal": {
+-                    "robolab_action_postprocess": make_robolab_action_postprocess_inputs(inputs),
++                    **({} if inputs.observation.get("_wam_native") else {
++                        "robolab_action_postprocess": make_robolab_action_postprocess_inputs(inputs)
++                    }),
+                 },
+             },
+         }
+-        return DiffusionOutput(
++        result = DiffusionOutput(
+             output=action_output,
+             stage_durations=self.stage_durations if hasattr(self, "stage_durations") else None,
+         )
++        if inputs.observation.get("_wam_native"):
++            from wam_adapter import finish_output
++            return finish_output(result)
++        return result
+ 
+     @staticmethod
+     def _truthy(value) -> bool:
+@@ -2599,7 +2625,9 @@
+         else:
+             H_lat, W_lat = latent_hw
+ 
+-        noise = randn_tensor(
++        from wam_adapter import native_or_torch_noise
++        noise = native_or_torch_noise(
++            getattr(self, "_wam_seed", None),
+             (1, C, T_lat, H_lat, W_lat),
+             generator=generator,
+             device=self.device,
+@@ -2681,6 +2709,8 @@
+         if raw_action_dim <= 0 or raw_action_dim > action_dim:
+             raise ValueError(f"Cosmos3 raw_action_dim must be in [1, {action_dim}], got {raw_action_dim}.")
+ 
++        if getattr(self, "_wam_seed", None) is not None:
++            clean_action = clean_action.to(torch.bfloat16)
+         clean_action = clean_action.to(device=self.device, dtype=self.sampling_dtype).unsqueeze(0)
+         if condition_indexes is None:
+             condition_mask = build_action_condition_mask(
+@@ -2696,7 +2726,9 @@
+                 device=self.device,
+                 dtype=self.sampling_dtype,
+             )
+-        noise = randn_tensor(
++        from wam_adapter import native_or_torch_noise
++        noise = native_or_torch_noise(
++            getattr(self, "_wam_seed", None),
+             (1, action_chunk_size, action_dim),
+             generator=generator,
+             device=self.device,
+--- a/vllm_omni/diffusion/attention/backends/cudnn_attn.py
++++ b/vllm_omni/diffusion/attention/backends/cudnn_attn.py
+@@ -3,6 +3,10 @@
+ 
+ import torch
+ from torch.nn.attention import SDPBackend, sdpa_kernel
++
++# Resolve pybind enum attributes outside Dynamo tracing.
++_WAM_MATH_BACKEND = SDPBackend.MATH
++_WAM_CUDNN_BACKEND = SDPBackend.CUDNN_ATTENTION
+ 
+ from vllm_omni.diffusion.attention.backends.abstract import (
+     AttentionBackend,
+@@ -120,9 +124,9 @@
+                     f"support key/value sequence length {kv_seq_len}. "
+                     "Select TORCH_SDPA or another backend for this shape."
+                 )
+-            backends = [SDPBackend.MATH]
++            backends = [_WAM_MATH_BACKEND]
+         else:
+-            backends = [SDPBackend.CUDNN_ATTENTION]
++            backends = [_WAM_CUDNN_BACKEND]
+         with sdpa_kernel(backends):
+             output = torch.nn.functional.scaled_dot_product_attention(
+                 query,

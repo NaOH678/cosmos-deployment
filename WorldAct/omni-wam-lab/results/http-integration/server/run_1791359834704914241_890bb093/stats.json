@@ -1,0 +1,10 @@
+{
+  "enqueued": 29,
+  "written": 29,
+  "dropped": 0,
+  "errors": 0,
+  "stats_errors": 0,
+  "pending": 0,
+  "closed": true,
+  "drained": true
+}

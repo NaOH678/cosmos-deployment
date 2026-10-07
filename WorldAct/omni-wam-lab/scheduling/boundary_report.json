@@ -1,0 +1,979 @@
+[
+  {
+    "trace": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261007T080926Z-4fdfb8bc/client/deployment_trace_20261007_160943_92885a87.jsonl",
+    "limitations": "Targets only. Negative cosine is not a failed grasp or necessarily an undesirable retry. No counterfactual inference: changing observation timing changes model outputs.",
+    "publish_gaps_above100ms": {
+      "count": 24,
+      "median": 575.4632104653865,
+      "p95": 589.4465289602522,
+      "max": 590.6474249204621
+    },
+    "boundaries": 24,
+    "negative_reset_vs_travel_count": 9,
+    "metrics": {
+      "raw_boundary_distance_m": {
+        "count": 24,
+        "median": 0.007907246761407997,
+        "p95": 0.017100553527364053,
+        "max": 0.022050708932005857
+      },
+      "index1_arm_change_by_postprocessing_m": {
+        "count": 24,
+        "median": 0.012225542346333454,
+        "p95": 0.023040258234693363,
+        "max": 0.03268969365616698
+      },
+      "index1_hand_change_by_postprocessing_deg": {
+        "count": 24,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "observation_age_at_activation_ms": {
+        "count": 24,
+        "median": 442.5460050115362,
+        "p95": 455.13485039700754,
+        "max": 455.43171803001314
+      }
+    },
+    "rows": [
+      {
+        "chunk_id": 2,
+        "request_id": 26,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.008854705728814624,
+        "reset_vs_chunk_travel_cosine": -0.922020138734594,
+        "index1_arm_change_by_postprocessing_m": 0.007945824027531911,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 453.34698003716767
+      },
+      {
+        "chunk_id": 3,
+        "request_id": 27,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.014165862238271158,
+        "reset_vs_chunk_travel_cosine": 0.42569731166619423,
+        "index1_arm_change_by_postprocessing_m": 0.010507625550925805,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 455.29598789289594
+      },
+      {
+        "chunk_id": 4,
+        "request_id": 28,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.022050708932005857,
+        "reset_vs_chunk_travel_cosine": 0.011985704485372473,
+        "index1_arm_change_by_postprocessing_m": 0.03268969365616698,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 443.67175502702594
+      },
+      {
+        "chunk_id": 5,
+        "request_id": 29,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.008188652915775285,
+        "reset_vs_chunk_travel_cosine": 0.6261257185130021,
+        "index1_arm_change_by_postprocessing_m": 0.014650652442679652,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 445.6990279722959
+      },
+      {
+        "chunk_id": 6,
+        "request_id": 30,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.017618440225439277,
+        "reset_vs_chunk_travel_cosine": 0.767831109683224,
+        "index1_arm_change_by_postprocessing_m": 0.023898629505374674,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 433.87216003611684
+      },
+      {
+        "chunk_id": 7,
+        "request_id": 31,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.011960995829426052,
+        "reset_vs_chunk_travel_cosine": 0.13641057046620048,
+        "index1_arm_change_by_postprocessing_m": 0.018176154367499347,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 441.64793589152396
+      },
+      {
+        "chunk_id": 8,
+        "request_id": 32,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.004778647764056294,
+        "reset_vs_chunk_travel_cosine": 0.6108272486886047,
+        "index1_arm_change_by_postprocessing_m": 0.00912524671531912,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 439.67535195406526
+      },
+      {
+        "chunk_id": 9,
+        "request_id": 33,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.01381575638356987,
+        "reset_vs_chunk_travel_cosine": 0.2937210893604345,
+        "index1_arm_change_by_postprocessing_m": 0.013670428076955995,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 440.55960897821933
+      },
+      {
+        "chunk_id": 10,
+        "request_id": 34,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.011657568137769705,
+        "reset_vs_chunk_travel_cosine": 0.035141366206449844,
+        "index1_arm_change_by_postprocessing_m": 0.013281953411256693,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 433.4912300109863
+      },
+      {
+        "chunk_id": 11,
+        "request_id": 35,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.005951396952233656,
+        "reset_vs_chunk_travel_cosine": -0.24762135113910888,
+        "index1_arm_change_by_postprocessing_m": 0.010465181106998164,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 439.52441995497793
+      },
+      {
+        "chunk_id": 12,
+        "request_id": 36,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.005197196587205844,
+        "reset_vs_chunk_travel_cosine": -0.3590918885518053,
+        "index1_arm_change_by_postprocessing_m": 0.010953517860097841,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 441.909369896166
+      },
+      {
+        "chunk_id": 13,
+        "request_id": 37,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.003609724378769628,
+        "reset_vs_chunk_travel_cosine": 0.6620097508762479,
+        "index1_arm_change_by_postprocessing_m": 0.0088216822296519,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 448.83839797694236
+      },
+      {
+        "chunk_id": 14,
+        "request_id": 38,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.005756593711025472,
+        "reset_vs_chunk_travel_cosine": 0.5838764799100783,
+        "index1_arm_change_by_postprocessing_m": 0.008555164443369406,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 450.04591904580593
+      },
+      {
+        "chunk_id": 15,
+        "request_id": 39,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.010618781440370846,
+        "reset_vs_chunk_travel_cosine": -0.7523634334851221,
+        "index1_arm_change_by_postprocessing_m": 0.015751612148760218,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 455.43171803001314
+      },
+      {
+        "chunk_id": 16,
+        "request_id": 40,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.008545867735169126,
+        "reset_vs_chunk_travel_cosine": 0.21952168693141594,
+        "index1_arm_change_by_postprocessing_m": 0.01488619856471911,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 439.65728499460965
+      },
+      {
+        "chunk_id": 17,
+        "request_id": 41,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.00762584060704071,
+        "reset_vs_chunk_travel_cosine": 0.8669468145965289,
+        "index1_arm_change_by_postprocessing_m": 0.016522808356153582,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 440.2688159607351
+      },
+      {
+        "chunk_id": 18,
+        "request_id": 42,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.01055764430695752,
+        "reset_vs_chunk_travel_cosine": -0.6581028702311816,
+        "index1_arm_change_by_postprocessing_m": 0.009236504173327924,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 454.2217379203066
+      },
+      {
+        "chunk_id": 19,
+        "request_id": 43,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.010858543825437043,
+        "reset_vs_chunk_travel_cosine": -0.3363841019902423,
+        "index1_arm_change_by_postprocessing_m": 0.013985796290097247,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 441.20471796486527
+      },
+      {
+        "chunk_id": 20,
+        "request_id": 44,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.006167365135362488,
+        "reset_vs_chunk_travel_cosine": -0.6136189519486634,
+        "index1_arm_change_by_postprocessing_m": 0.0128897837614296,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 448.64993495866656
+      },
+      {
+        "chunk_id": 21,
+        "request_id": 45,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.002844885433723629,
+        "reset_vs_chunk_travel_cosine": -0.6282478888828633,
+        "index1_arm_change_by_postprocessing_m": 0.009008914171572596,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 436.45555002149194
+      },
+      {
+        "chunk_id": 22,
+        "request_id": 46,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.0056051944586871915,
+        "reset_vs_chunk_travel_cosine": -0.8191659142236313,
+        "index1_arm_change_by_postprocessing_m": 0.006848341877595763,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 442.5176109652966
+      },
+      {
+        "chunk_id": 23,
+        "request_id": 47,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.0055506497755979526,
+        "reset_vs_chunk_travel_cosine": 0.16674282876527155,
+        "index1_arm_change_by_postprocessing_m": 0.00992005396619055,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 447.33711099252105
+      },
+      {
+        "chunk_id": 24,
+        "request_id": 48,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.006598274040605627,
+        "reset_vs_chunk_travel_cosine": 0.590762378669356,
+        "index1_arm_change_by_postprocessing_m": 0.014900936719064442,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 447.0192020526156
+      },
+      {
+        "chunk_id": 25,
+        "request_id": 49,
+        "skip": 0,
+        "raw_boundary_distance_m": 0.005663610531676536,
+        "reset_vs_chunk_travel_cosine": 0.9648270176434125,
+        "index1_arm_change_by_postprocessing_m": 0.01156130093123731,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 442.57439905777574
+      }
+    ]
+  },
+  {
+    "trace": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T211440Z-574ff3db/client/deployment_trace_20261007_051442_cef431bf.jsonl",
+    "limitations": "Targets only. Negative cosine is not a failed grasp or necessarily an undesirable retry. No counterfactual inference: changing observation timing changes model outputs.",
+    "publish_gaps_above100ms": {
+      "count": 0
+    },
+    "boundaries": 66,
+    "negative_reset_vs_travel_count": 58,
+    "metrics": {
+      "raw_boundary_distance_m": {
+        "count": 66,
+        "median": 0.06999193572024151,
+        "p95": 0.1026378463199945,
+        "max": 0.10639974300249756
+      },
+      "index1_arm_change_by_postprocessing_m": {
+        "count": 66,
+        "median": 0.05751545222291344,
+        "p95": 0.08592630799415488,
+        "max": 0.09646272857497436
+      },
+      "index1_hand_change_by_postprocessing_deg": {
+        "count": 66,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "observation_age_at_activation_ms": {
+        "count": 66,
+        "median": 724.9429142684676,
+        "p95": 725.0248501077294,
+        "max": 725.0587255693972
+      }
+    },
+    "rows": [
+      {
+        "chunk_id": 2,
+        "request_id": 25,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.020498446199879086,
+        "reset_vs_chunk_travel_cosine": 0.3946894041893354,
+        "index1_arm_change_by_postprocessing_m": 0.014021594980410354,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 599.6794579550624
+      },
+      {
+        "chunk_id": 3,
+        "request_id": 26,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.06475245946648431,
+        "reset_vs_chunk_travel_cosine": -0.5117230354925221,
+        "index1_arm_change_by_postprocessing_m": 0.05263731177298539,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.055334973149
+      },
+      {
+        "chunk_id": 4,
+        "request_id": 27,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10268733664925567,
+        "reset_vs_chunk_travel_cosine": -0.9660920579475523,
+        "index1_arm_change_by_postprocessing_m": 0.07814406071996773,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9289258616045
+      },
+      {
+        "chunk_id": 5,
+        "request_id": 28,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03599268382709042,
+        "reset_vs_chunk_travel_cosine": -0.7972496016940562,
+        "index1_arm_change_by_postprocessing_m": 0.023826688600565558,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.5403738925233
+      },
+      {
+        "chunk_id": 6,
+        "request_id": 29,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03514901057614494,
+        "reset_vs_chunk_travel_cosine": 0.6940181357250063,
+        "index1_arm_change_by_postprocessing_m": 0.019687110667246745,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9724308494478
+      },
+      {
+        "chunk_id": 7,
+        "request_id": 30,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0647569614839575,
+        "reset_vs_chunk_travel_cosine": -0.9059488640012409,
+        "index1_arm_change_by_postprocessing_m": 0.04338983655654483,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9205618863925
+      },
+      {
+        "chunk_id": 8,
+        "request_id": 31,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.00624845842051696,
+        "reset_vs_chunk_travel_cosine": 0.21500632112120321,
+        "index1_arm_change_by_postprocessing_m": 0.0037750182028258865,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9165438115597
+      },
+      {
+        "chunk_id": 9,
+        "request_id": 32,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08424848798700771,
+        "reset_vs_chunk_travel_cosine": -0.9559153693133511,
+        "index1_arm_change_by_postprocessing_m": 0.0748470926681322,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9642937676981
+      },
+      {
+        "chunk_id": 10,
+        "request_id": 33,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08795150670659956,
+        "reset_vs_chunk_travel_cosine": -0.9944218403510577,
+        "index1_arm_change_by_postprocessing_m": 0.08284049043237673,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9881977913901
+      },
+      {
+        "chunk_id": 11,
+        "request_id": 34,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09447029430575371,
+        "reset_vs_chunk_travel_cosine": -0.9830792522133923,
+        "index1_arm_change_by_postprocessing_m": 0.08395074161954276,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.7529627056792
+      },
+      {
+        "chunk_id": 12,
+        "request_id": 35,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.06900741970638345,
+        "reset_vs_chunk_travel_cosine": -0.6995982453548402,
+        "index1_arm_change_by_postprocessing_m": 0.050180038220176734,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9631937593222
+      },
+      {
+        "chunk_id": 13,
+        "request_id": 36,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10248937533221097,
+        "reset_vs_chunk_travel_cosine": 0.4558671695277195,
+        "index1_arm_change_by_postprocessing_m": 0.09646272857497436,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0091827008873
+      },
+      {
+        "chunk_id": 14,
+        "request_id": 37,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03838035605055301,
+        "reset_vs_chunk_travel_cosine": -0.31751481704804746,
+        "index1_arm_change_by_postprocessing_m": 0.02848603999605621,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.6034336276352
+      },
+      {
+        "chunk_id": 15,
+        "request_id": 38,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.030266794754230116,
+        "reset_vs_chunk_travel_cosine": -0.5476495333991729,
+        "index1_arm_change_by_postprocessing_m": 0.0218266953304172,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9746896559373
+      },
+      {
+        "chunk_id": 16,
+        "request_id": 39,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07532335640151912,
+        "reset_vs_chunk_travel_cosine": -0.8573751915109683,
+        "index1_arm_change_by_postprocessing_m": 0.05968252585026136,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0183395808563
+      },
+      {
+        "chunk_id": 17,
+        "request_id": 40,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.024695800143630348,
+        "reset_vs_chunk_travel_cosine": -0.8632269996354996,
+        "index1_arm_change_by_postprocessing_m": 0.019951590726403585,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8366755666211
+      },
+      {
+        "chunk_id": 18,
+        "request_id": 41,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03984215540797668,
+        "reset_vs_chunk_travel_cosine": -0.9711271471885851,
+        "index1_arm_change_by_postprocessing_m": 0.02452218434416781,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0001096399501
+      },
+      {
+        "chunk_id": 19,
+        "request_id": 42,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0237996658938004,
+        "reset_vs_chunk_travel_cosine": 0.21282243728894387,
+        "index1_arm_change_by_postprocessing_m": 0.016041762498527068,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8984535690397
+      },
+      {
+        "chunk_id": 20,
+        "request_id": 43,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0458916497639239,
+        "reset_vs_chunk_travel_cosine": -0.6364468500694913,
+        "index1_arm_change_by_postprocessing_m": 0.04064841028752175,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9856935814023
+      },
+      {
+        "chunk_id": 21,
+        "request_id": 44,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09095315444801386,
+        "reset_vs_chunk_travel_cosine": -0.9971255613758438,
+        "index1_arm_change_by_postprocessing_m": 0.07662627349084446,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9501994810998
+      },
+      {
+        "chunk_id": 22,
+        "request_id": 45,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09584518773017095,
+        "reset_vs_chunk_travel_cosine": -0.9627634496109074,
+        "index1_arm_change_by_postprocessing_m": 0.08042031010297873,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.92773050908
+      },
+      {
+        "chunk_id": 23,
+        "request_id": 46,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08236054327692968,
+        "reset_vs_chunk_travel_cosine": -0.9467927175606139,
+        "index1_arm_change_by_postprocessing_m": 0.06989450099050341,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8810795135796
+      },
+      {
+        "chunk_id": 24,
+        "request_id": 47,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08412601760123892,
+        "reset_vs_chunk_travel_cosine": -0.989663195611738,
+        "index1_arm_change_by_postprocessing_m": 0.07022909938076857,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9047524528578
+      },
+      {
+        "chunk_id": 25,
+        "request_id": 48,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10120398580313758,
+        "reset_vs_chunk_travel_cosine": -0.9905238465382488,
+        "index1_arm_change_by_postprocessing_m": 0.08682571813905872,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8595653800294
+      },
+      {
+        "chunk_id": 26,
+        "request_id": 49,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10361329889037053,
+        "reset_vs_chunk_travel_cosine": -0.9805492360639069,
+        "index1_arm_change_by_postprocessing_m": 0.08255840987312027,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8754004249349
+      },
+      {
+        "chunk_id": 27,
+        "request_id": 50,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08063324673060966,
+        "reset_vs_chunk_travel_cosine": -0.9545463738697861,
+        "index1_arm_change_by_postprocessing_m": 0.06772720334046238,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.5897683314979
+      },
+      {
+        "chunk_id": 28,
+        "request_id": 51,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.05336997015599608,
+        "reset_vs_chunk_travel_cosine": -0.9130286477422764,
+        "index1_arm_change_by_postprocessing_m": 0.0458435230002474,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.6687383158132
+      },
+      {
+        "chunk_id": 29,
+        "request_id": 52,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10586361294881928,
+        "reset_vs_chunk_travel_cosine": -0.9964894735403121,
+        "index1_arm_change_by_postprocessing_m": 0.09159392621501768,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9877083813772
+      },
+      {
+        "chunk_id": 30,
+        "request_id": 53,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08337554461137078,
+        "reset_vs_chunk_travel_cosine": -0.9931689980153061,
+        "index1_arm_change_by_postprocessing_m": 0.07305232416552117,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9474882846698
+      },
+      {
+        "chunk_id": 31,
+        "request_id": 54,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09268423004426041,
+        "reset_vs_chunk_travel_cosine": -0.9669853702747885,
+        "index1_arm_change_by_postprocessing_m": 0.08363460267118009,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9965103110299
+      },
+      {
+        "chunk_id": 32,
+        "request_id": 55,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09429616891927692,
+        "reset_vs_chunk_travel_cosine": -0.9836910752754147,
+        "index1_arm_change_by_postprocessing_m": 0.07942945926081078,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9567402759567
+      },
+      {
+        "chunk_id": 33,
+        "request_id": 56,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0897859923725189,
+        "reset_vs_chunk_travel_cosine": -0.9891749556132727,
+        "index1_arm_change_by_postprocessing_m": 0.073120773810046,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9383402522653
+      },
+      {
+        "chunk_id": 34,
+        "request_id": 57,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08904707830189504,
+        "reset_vs_chunk_travel_cosine": -0.9781081886257883,
+        "index1_arm_change_by_postprocessing_m": 0.07416519201283465,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.962754175067
+      },
+      {
+        "chunk_id": 35,
+        "request_id": 58,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07603337528489391,
+        "reset_vs_chunk_travel_cosine": -0.9863664808315208,
+        "index1_arm_change_by_postprocessing_m": 0.0700125855689397,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0256291590631
+      },
+      {
+        "chunk_id": 36,
+        "request_id": 59,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09279493794288017,
+        "reset_vs_chunk_travel_cosine": -0.820371797389019,
+        "index1_arm_change_by_postprocessing_m": 0.07718935463168675,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.70123518724
+      },
+      {
+        "chunk_id": 37,
+        "request_id": 60,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.016995316588036023,
+        "reset_vs_chunk_travel_cosine": 0.5501349347193253,
+        "index1_arm_change_by_postprocessing_m": 0.010915938860867133,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.976756144315
+      },
+      {
+        "chunk_id": 38,
+        "request_id": 61,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.031033313045928126,
+        "reset_vs_chunk_travel_cosine": 0.366103476388158,
+        "index1_arm_change_by_postprocessing_m": 0.030361470417223903,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.937194143422
+      },
+      {
+        "chunk_id": 39,
+        "request_id": 62,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.031820941047452055,
+        "reset_vs_chunk_travel_cosine": -0.15933522737788608,
+        "index1_arm_change_by_postprocessing_m": 0.028554008826694538,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9740641564131
+      },
+      {
+        "chunk_id": 40,
+        "request_id": 63,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.06560265132012018,
+        "reset_vs_chunk_travel_cosine": -0.5705420242345922,
+        "index1_arm_change_by_postprocessing_m": 0.059021437131413466,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.7705750633031
+      },
+      {
+        "chunk_id": 41,
+        "request_id": 64,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0943339157059169,
+        "reset_vs_chunk_travel_cosine": -0.9798206144810306,
+        "index1_arm_change_by_postprocessing_m": 0.08014888014407572,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0039700884372
+      },
+      {
+        "chunk_id": 42,
+        "request_id": 65,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0650075034274432,
+        "reset_vs_chunk_travel_cosine": -0.9581669721516735,
+        "index1_arm_change_by_postprocessing_m": 0.05601806077212092,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0345629872754
+      },
+      {
+        "chunk_id": 43,
+        "request_id": 66,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0489023091750845,
+        "reset_vs_chunk_travel_cosine": -0.9430147603477624,
+        "index1_arm_change_by_postprocessing_m": 0.03965839830320351,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.7829779516906
+      },
+      {
+        "chunk_id": 44,
+        "request_id": 67,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07154800004370315,
+        "reset_vs_chunk_travel_cosine": -0.8470556418383423,
+        "index1_arm_change_by_postprocessing_m": 0.05901284367370596,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9230860034004
+      },
+      {
+        "chunk_id": 45,
+        "request_id": 68,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.029122612882721933,
+        "reset_vs_chunk_travel_cosine": -0.6357203521529422,
+        "index1_arm_change_by_postprocessing_m": 0.03504688169468101,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9985130038112
+      },
+      {
+        "chunk_id": 46,
+        "request_id": 69,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09572225085882227,
+        "reset_vs_chunk_travel_cosine": -0.9984832598423831,
+        "index1_arm_change_by_postprocessing_m": 0.08185304589562888,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0225129537284
+      },
+      {
+        "chunk_id": 47,
+        "request_id": 70,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07508286519219583,
+        "reset_vs_chunk_travel_cosine": -0.9817665315022407,
+        "index1_arm_change_by_postprocessing_m": 0.061440996010136605,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.4947449071333
+      },
+      {
+        "chunk_id": 48,
+        "request_id": 71,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09354350959285446,
+        "reset_vs_chunk_travel_cosine": -0.9923523318200064,
+        "index1_arm_change_by_postprocessing_m": 0.07982460990794946,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9985228991136
+      },
+      {
+        "chunk_id": 49,
+        "request_id": 72,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08692946547801898,
+        "reset_vs_chunk_travel_cosine": -0.9918837314173163,
+        "index1_arm_change_by_postprocessing_m": 0.07607712604243272,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0092648901045
+      },
+      {
+        "chunk_id": 50,
+        "request_id": 73,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08428739186932015,
+        "reset_vs_chunk_travel_cosine": -0.9593904001920115,
+        "index1_arm_change_by_postprocessing_m": 0.07306297041203817,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8126068152487
+      },
+      {
+        "chunk_id": 51,
+        "request_id": 74,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.06295494901030851,
+        "reset_vs_chunk_travel_cosine": -0.9548456320452465,
+        "index1_arm_change_by_postprocessing_m": 0.0558347656804639,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8895708471537
+      },
+      {
+        "chunk_id": 52,
+        "request_id": 75,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07561583527853072,
+        "reset_vs_chunk_travel_cosine": -0.8532279398375929,
+        "index1_arm_change_by_postprocessing_m": 0.061586846212065276,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9991578282788
+      },
+      {
+        "chunk_id": 53,
+        "request_id": 76,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.0592366002677937,
+        "reset_vs_chunk_travel_cosine": -0.9344699596761415,
+        "index1_arm_change_by_postprocessing_m": 0.04762141964375832,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9639728106558
+      },
+      {
+        "chunk_id": 54,
+        "request_id": 77,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.016198268222469923,
+        "reset_vs_chunk_travel_cosine": -0.6245348856827982,
+        "index1_arm_change_by_postprocessing_m": 0.013712916918044273,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.7569398023188
+      },
+      {
+        "chunk_id": 55,
+        "request_id": 78,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03827719139862551,
+        "reset_vs_chunk_travel_cosine": -0.5909439977274205,
+        "index1_arm_change_by_postprocessing_m": 0.02442438668092908,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9857407296076
+      },
+      {
+        "chunk_id": 56,
+        "request_id": 79,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03234745659684721,
+        "reset_vs_chunk_travel_cosine": -0.48402970923017896,
+        "index1_arm_change_by_postprocessing_m": 0.0186502004434658,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0070297159255
+      },
+      {
+        "chunk_id": 57,
+        "request_id": 80,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.09473955017794525,
+        "reset_vs_chunk_travel_cosine": -0.5137948375745913,
+        "index1_arm_change_by_postprocessing_m": 0.07736968316786501,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0107537256554
+      },
+      {
+        "chunk_id": 58,
+        "request_id": 81,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.10639974300249756,
+        "reset_vs_chunk_travel_cosine": -0.8944920094915366,
+        "index1_arm_change_by_postprocessing_m": 0.08658483011902558,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.867055658251
+      },
+      {
+        "chunk_id": 59,
+        "request_id": 82,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.023107209243297056,
+        "reset_vs_chunk_travel_cosine": 0.7292435709849205,
+        "index1_arm_change_by_postprocessing_m": 0.027756845750327924,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8684616060928
+      },
+      {
+        "chunk_id": 60,
+        "request_id": 83,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.012302102426779185,
+        "reset_vs_chunk_travel_cosine": -0.9649649160843848,
+        "index1_arm_change_by_postprocessing_m": 0.007933784588228705,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.9139106133953
+      },
+      {
+        "chunk_id": 61,
+        "request_id": 84,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.047533039866677174,
+        "reset_vs_chunk_travel_cosine": -0.8019220917730424,
+        "index1_arm_change_by_postprocessing_m": 0.02830487499894175,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8988666106015
+      },
+      {
+        "chunk_id": 62,
+        "request_id": 85,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.016284372120041572,
+        "reset_vs_chunk_travel_cosine": -0.10693822980043427,
+        "index1_arm_change_by_postprocessing_m": 0.016532506707155413,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8098655836657
+      },
+      {
+        "chunk_id": 63,
+        "request_id": 86,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.08620975050325835,
+        "reset_vs_chunk_travel_cosine": -0.8658792528802823,
+        "index1_arm_change_by_postprocessing_m": 0.06266488401524298,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.01713456586
+      },
+      {
+        "chunk_id": 64,
+        "request_id": 87,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.03251801116999564,
+        "reset_vs_chunk_travel_cosine": -0.9173382390509291,
+        "index1_arm_change_by_postprocessing_m": 0.027392745108158374,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 725.0587255693972
+      },
+      {
+        "chunk_id": 65,
+        "request_id": 88,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.021093963610552092,
+        "reset_vs_chunk_travel_cosine": -0.741236204439389,
+        "index1_arm_change_by_postprocessing_m": 0.024021735107959716,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.7821234632283
+      },
+      {
+        "chunk_id": 66,
+        "request_id": 89,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.07097645173409955,
+        "reset_vs_chunk_travel_cosine": -0.9697553507311694,
+        "index1_arm_change_by_postprocessing_m": 0.04625849900384301,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.8522985028103
+      },
+      {
+        "chunk_id": 67,
+        "request_id": 90,
+        "skip": 6,
+        "raw_boundary_distance_m": 0.029137814875101208,
+        "reset_vs_chunk_travel_cosine": -0.6550621305130249,
+        "index1_arm_change_by_postprocessing_m": 0.020774290077216817,
+        "index1_hand_change_by_postprocessing_deg": 0.0,
+        "observation_age_at_activation_ms": 724.978547426872
+      }
+    ]
+  }
+]

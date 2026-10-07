@@ -1,0 +1,164 @@
+{
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "model": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/artifacts/4w-ema-omni",
+  "packet": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/fixtures/observation_01.npz",
+  "input_metadata": {
+    "schema": "wam-native-v1",
+    "source": "/home/pjlab/ros2_ws/worktrees/wuji-hand-teleop-pipeline/datasets/tianji_wuji/diagnostics/cosmos_runs/20261006T170056Z-19319a40/server/run_1791306073424884356_be920b4d/00000001.npz",
+    "prompt": "{\"cinematography\": {\"framing\": \"This video contains concatenated views from multiple camera perspectives. The upper view is from the right wrist-mounted camera. The lower view is from the head-mounted third-person camera.\"}, \"actions\": [{\"time\": \"0:00-0:02\", \"description\": \"make a sandwich.\"}], \"duration\": \"2s\", \"fps\": 15.0, \"resolution\": {\"H\": 736, \"W\": 544}, \"aspect_ratio\": \"3,4\"}",
+    "domain_id": 26,
+    "fps": 15.0,
+    "raw_action_dim": 27,
+    "num_frames": 33,
+    "num_inference_steps": 4,
+    "guidance_scale": 3.0,
+    "flow_shift": 5.0,
+    "seed": 0,
+    "action_condition_indexes": [
+      0
+    ],
+    "action_start_frame_offset": 0
+  },
+  "precision": "bfloat16",
+  "quantization": "fp8",
+  "first_frame_only": true,
+  "eager": false,
+  "compile_granularity": "regional",
+  "compile_dynamic": true,
+  "omp_num_threads": "4",
+  "samples": [
+    {
+      "index": 0,
+      "warmup": true,
+      "end_to_end_ms": 582.2831370169297
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "end_to_end_ms": 441.91386294551194
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "end_to_end_ms": 438.77144204452634
+    },
+    {
+      "index": 3,
+      "warmup": true,
+      "end_to_end_ms": 439.6015669917688
+    },
+    {
+      "index": 4,
+      "warmup": true,
+      "end_to_end_ms": 439.2379180062562
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "end_to_end_ms": 437.7634159754962
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "end_to_end_ms": 440.08527393452823
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "end_to_end_ms": 439.6028640912846
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "end_to_end_ms": 442.8202010458335
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "end_to_end_ms": 445.5286640441045
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "end_to_end_ms": 442.7719109226018
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "end_to_end_ms": 446.7671869788319
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "end_to_end_ms": 442.18301493674517
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "end_to_end_ms": 440.1118110399693
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "end_to_end_ms": 442.04963999800384
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "end_to_end_ms": 448.2377239037305
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "end_to_end_ms": 441.811447031796
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "end_to_end_ms": 441.4555550320074
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "end_to_end_ms": 439.9142100010067
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "end_to_end_ms": 439.3395900260657
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "end_to_end_ms": 438.98234399966896
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "end_to_end_ms": 442.27895501535386
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "end_to_end_ms": 443.2566019240767
+    },
+    {
+      "index": 23,
+      "warmup": false,
+      "end_to_end_ms": 440.7005939865485
+    },
+    {
+      "index": 24,
+      "warmup": false,
+      "end_to_end_ms": 440.675294958055
+    }
+  ],
+  "status": "completed",
+  "numerical_parity_verified": false,
+  "p50_ms": 441.6335010319017,
+  "p95_ms": 446.8407138250768
+}

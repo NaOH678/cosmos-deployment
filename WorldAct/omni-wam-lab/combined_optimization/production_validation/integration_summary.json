@@ -1,0 +1,69 @@
+{
+  "scope": "Actual production cosmos_framework.inference.robot_policy.omni_http on isolated18026, record+video latent enabled, no ROS/robot. Original18005 preserved.",
+  "rtt": {
+    "count": 20,
+    "p50_ms": 492.95093544060364,
+    "p95_ms": 500.07519478094764,
+    "p99_ms": 501.76892695599236,
+    "max_ms": 502.19235999975353
+  },
+  "exact_wire_vs_prior_unmodified_baseline": true,
+  "max_wire_abs_diff": 0.0,
+  "matched_requests": 20,
+  "observation_recording": {
+    "enqueued": 25,
+    "written": 25,
+    "dropped": 0,
+    "errors": 0,
+    "stats_errors": 0,
+    "pending": 0,
+    "closed": true,
+    "drained": true
+  },
+  "latent_recording": {
+    "enqueued": 25,
+    "written": 25,
+    "dropped": 0,
+    "errors": 0
+  },
+  "latent_tensor": {
+    "shape": [
+      1,
+      48,
+      9,
+      44,
+      34
+    ],
+    "dtype": "float32",
+    "finite": true
+  },
+  "ready_graphs": [
+    {
+      "hidden_shape": [
+        1,
+        3399,
+        2048
+      ],
+      "text_length": 140
+    },
+    {
+      "hidden_shape": [
+        1,
+        3399,
+        2048
+      ],
+      "text_length": 19
+    }
+  ],
+  "capture_count": 2,
+  "all_captures_before_ready": true,
+  "unwarmed_shape_warning_count": 0,
+  "first_measured_graph_cold": false,
+  "owned_server_exit_code": 0,
+  "notes": [
+    "RTT has no controlled recording-ON baseline in this run; speedup attribution uses earlier ABBA, not this timing alone.",
+    "Firstframe and graph enabled by default for new Omni backend; existing running process unchanged.",
+    "WAM_CPU_FIRST_FRAME_PACKET=0 reverts packet path, WAM_FULL_GEN_GRAPH=0 disables full graph.",
+    "Configured wrist warmup480x848 matches all5recorded observations; other input sizes may require cold graph capture and emit warning."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "phase": "omni_fp8_http_integrated_offline_verified_operator_trial_pending",
+  "ready_for_robot": false,
+  "native_service_changed": false,
+  "completed": [
+    "upstream_pinned",
+    "4w_ema_hf_export",
+    "omni_weight_conversion_549_tensors",
+    "direct_dcp_ema_spot_check_4_tensors",
+    "native_observation_packet",
+    "wam_pipeline_adapter",
+    "cpu_contract_tests_5_passed",
+    "native_noise_initialization_parity",
+    "native_preprocessing_elementwise_parity",
+    "omni_loader_mapping_548_parameters_no_collisions",
+    "tokenizer_vocabulary_template_and_config_parity",
+    "isolated_environment_installed",
+    "cuda_available_in_new_environment",
+    "real_omni_pipeline_import_passed",
+    "real_omni_input_contract_import_passed",
+    "model_loaded_on_5090",
+    "single_observation_generation_32x27",
+    "warm_bf16_eager_benchmark_6_requests",
+    "fresh_native_reference",
+    "native_cond_uncond_text_tokens_exact_match",
+    "native_complete_call_timed_20_requests",
+    "regional_compile_audited",
+    "cudnn_enum_graph_break_fixed",
+    "full_static_compile_benchmarked",
+    "first_frame_preprocessing_bitwise_verified_25_outputs",
+    "fp8_benchmarked_twice_20_requests",
+    "336_fp8_linear_layers_and_28_compiled_gen_layers_verified",
+    "existing_protocol_v2_http_integration",
+    "same_jpeg_native_vs_omni_http_replay",
+    "auth_live_image_state_and_repeat_checks",
+    "29_observation_and_latent_pairs_drained_without_loss",
+    "parameterized_existing_launcher_backend_flag"
+  ],
+  "pending": [
+    "condition_latent_and_first_step_velocity_comparison",
+    "resolve_output_numerical_difference",
+    "operator_robot_trial_with_fp8",
+    "resolve_remaining_native_omni_numerical_difference"
+  ],
+  "upstream": {
+    "repository": "https://github.com/vllm-project/vllm-omni",
+    "revision": "d5a3380103df2fc827f095c60dbfb6e1c5655fd3",
+    "source": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/vllm-omni-d5a3380103df2fc827f095c60dbfb6e1c5655fd3"
+  },
+  "files": {
+    "convert_wam.py": "c3adc2031822c984c2b223e2122b0b5c176e1bab3c7abfc00d31870c12c684de",
+    "export_wam.py": "bb5671295bc53f0ec6ba21084e859de3440c8535705e1168c3153fd1dd8aeb70",
+    "benchmark_native.py": "591b8982b001345b24c2b5d0a09fbcff6e46cb1dcea604f1479daab3e3b0a663",
+    "test_omni_service.py": "af252779208697f447f3eb0e08b56f535f5fb34c737e2fcb8b39510d6d164160",
+    "test_wam_adapter.py": "abf8daeb59faa0e2f61702fd80ad8cc0641a4cf2be6963af485c099ce583fab5",
+    "wam_adapter.py": "65dee913dedf010423b841aa19ec4152cbe5e534b10ae546dc9960888c4ecccd",
+    "prepare_observation.py": "0c8059e73d9b12d1124728ae5d66d1225d75128ad4cb5eacbeb3dc507df2cbce",
+    "benchmark_wam.py": "c09fe75e5ee108a6d91b0466b64834d6c9982692735663861078c04abd33a9ec",
+    "compare_actions.py": "4c4414c9a359463121624c0d61abc1284a01ab0adc0cb08f216d0129612e7e82"
+  },
+  "patched_pipeline_sha256": "9fd8a3b90f8a779758476571c275eb7b0e9a483913c273392a4a7130951731c9",
+  "results": {
+    "omni_warm_end_to_end_p50_ms": 707.9537405516021,
+    "omni_warm_end_to_end_p95_ms": 709.8119122674689,
+    "native_model_ms": [
+      620.61,
+      626.8
+    ],
+    "timing_comparison_note": "Different timing boundaries; not exclusive-GPU benchmarking. Existing inference service remained resident.",
+    "same_input_omni_8_runs_bitwise_identical": true,
+    "native_vs_omni": {
+      "position_m_mean": 0.025355146167195072,
+      "position_m_max": 0.04823651052411699,
+      "orientation_deg_mean": 2.847666499776138,
+      "orientation_deg_max": 5.632082784165886,
+      "hand_native_units_mae": 0.014396341511746869,
+      "hand_native_units_max": 0.07098603248596191,
+      "max_abs_all": 0.07098603248596191,
+      "note": "Offline numerical differences; not a task-success or robot-safety assessment."
+    },
+    "speed_summary": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/speed_summary.json",
+    "http_integration_summary": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/results/http-integration/integration_summary.json"
+  },
+  "native_source_change_note": "Added optional omni_http module; native model implementation and active service unchanged. Existing launcher gained backend selection."
+}

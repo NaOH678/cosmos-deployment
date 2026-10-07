@@ -1,0 +1,302 @@
+{
+  "conditions": {
+    "model": "4w EMA",
+    "quantization": "vLLM CUTLASS FP8 weights; activation per-token",
+    "attention": "strict CUDNN_ATTN BF16",
+    "sampler": "4 UniPC steps, CFG3, shift5",
+    "input": "five real observation packets rotating;5 warmup20 measured",
+    "scope": "packet->CPU raw actions, no HTTP or production recording",
+    "production_service": "idle native port18005 retained",
+    "official_reference": "https://raw.githubusercontent.com/NVIDIA/cosmos-framework/main/cosmos_framework/model/generator/omni_mot_model.py"
+  },
+  "runs": {
+    "serial_corpus": {
+      "p50_ms": 441.5895955171436,
+      "p95_ms": 444.1426408069674,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/batched_cfg_experiments/results/serial_corpus/report.json",
+      "peak_memory_allocated_bytes": null,
+      "peak_memory_reserved_bytes": null,
+      "same_input_repeat_after_four_other_inputs_max_abs": 0.0,
+      "different_input_first_vs_second_max_abs": 0.7138227224349976
+    },
+    "split_corpus": {
+      "p50_ms": 439.0617750468664,
+      "p95_ms": 449.36891105608083,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/batched_cfg_experiments/results/split_corpus/report.json",
+      "peak_memory_allocated_bytes": 5416815104,
+      "peak_memory_reserved_bytes": 6503268352,
+      "batch_evidence": {
+        "gen_batch": 2,
+        "gen_shape": [
+          2,
+          3399,
+          2048
+        ],
+        "gen_layers": 28,
+        "gen_step_calls": 4,
+        "text_lengths": [
+          140,
+          19
+        ],
+        "rope_batch": 2,
+        "attention_mode": "split",
+        "max_memory_allocated_bytes": 5381873152,
+        "max_memory_reserved_bytes": 6503268352,
+        "padding_handling": "slice_to_real_length"
+      },
+      "same_input_repeat_after_four_other_inputs_max_abs": 0.0,
+      "different_input_first_vs_second_max_abs": 0.7558637857437134
+    },
+    "masked_clean": {
+      "p50_ms": 470.48989799804986,
+      "p95_ms": 477.3816146829631,
+      "report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/batched_cfg_experiments/results/masked_clean/report.json",
+      "peak_memory_allocated_bytes": 5416815104,
+      "peak_memory_reserved_bytes": 6503268352,
+      "batch_evidence": {
+        "gen_batch": 2,
+        "gen_shape": [
+          2,
+          3399,
+          2048
+        ],
+        "gen_layers": 28,
+        "gen_step_calls": 4,
+        "text_lengths": [
+          140,
+          19
+        ],
+        "rope_batch": 2,
+        "attention_mode": "masked",
+        "max_memory_allocated_bytes": 5381873152,
+        "max_memory_reserved_bytes": 6503268352,
+        "padding_handling": "explicit_boolean_key_mask"
+      },
+      "same_input_repeat_after_four_other_inputs_max_abs": 0.0,
+      "different_input_first_vs_second_max_abs": 0.7381370663642883
+    }
+  },
+  "output_comparison": {
+    "split_corpus": {
+      "position_m_mean": 0.03416993460929331,
+      "position_m_max": 0.07915056906696945,
+      "orientation_deg_mean": 3.8557464401787676,
+      "orientation_deg_max": 7.303495849242505,
+      "hand_native_units_mae": 0.0199215858761454,
+      "hand_native_units_max": 0.1310064196586609,
+      "all_action_max_abs": 0.1310064196586609,
+      "branch_predictions": {
+        "1": {
+          "cond_0": {
+            "max_abs": 0.5625,
+            "mean_abs": 0.0242695864289999,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "cond_1": {
+            "max_abs": 0.046875,
+            "mean_abs": 0.0029615832027047873,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          },
+          "uncond_0": {
+            "max_abs": 0.6640625,
+            "mean_abs": 0.02442999742925167,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "uncond_1": {
+            "max_abs": 0.03125,
+            "mean_abs": 0.003009447595104575,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          }
+        },
+        "4": {
+          "cond_0": {
+            "max_abs": 4.9375,
+            "mean_abs": 0.12958161532878876,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "cond_1": {
+            "max_abs": 0.1875,
+            "mean_abs": 0.009611107409000397,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          },
+          "uncond_0": {
+            "max_abs": 4.8671875,
+            "mean_abs": 0.1298389732837677,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "uncond_1": {
+            "max_abs": 0.15625,
+            "mean_abs": 0.009602283127605915,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          }
+        }
+      }
+    },
+    "masked_clean": {
+      "position_m_mean": 0.032610886663536454,
+      "position_m_max": 0.09729983432745862,
+      "orientation_deg_mean": 3.75254193401325,
+      "orientation_deg_max": 9.045039684748005,
+      "hand_native_units_mae": 0.019341767417499794,
+      "hand_native_units_max": 0.13551199436187744,
+      "all_action_max_abs": 0.13551199436187744,
+      "branch_predictions": {
+        "1": {
+          "cond_0": {
+            "max_abs": 0.5625,
+            "mean_abs": 0.0242695864289999,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "cond_1": {
+            "max_abs": 0.046875,
+            "mean_abs": 0.0029615832027047873,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          },
+          "uncond_0": {
+            "max_abs": 0.453125,
+            "mean_abs": 0.02534358575940132,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "uncond_1": {
+            "max_abs": 0.03125,
+            "mean_abs": 0.003204548032954335,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          }
+        },
+        "4": {
+          "cond_0": {
+            "max_abs": 4.83984375,
+            "mean_abs": 0.10215521603822708,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "cond_1": {
+            "max_abs": 0.078125,
+            "mean_abs": 0.007815178483724594,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          },
+          "uncond_0": {
+            "max_abs": 4.9609375,
+            "mean_abs": 0.10283317416906357,
+            "reference_shape": [
+              1,
+              48,
+              9,
+              44,
+              34
+            ]
+          },
+          "uncond_1": {
+            "max_abs": 0.0859375,
+            "mean_abs": 0.007664699573069811,
+            "reference_shape": [
+              1,
+              33,
+              64
+            ]
+          }
+        }
+      }
+    }
+  },
+  "padding_gpu_test": {
+    "invalid_padding_sentinel_max_diff": 0.0,
+    "masked_vs_trimmed_bf16_max_diff": 0.00390625,
+    "backend": "explicit CuDNNAttentionImpl",
+    "q_shape": [
+      2,
+      32,
+      2,
+      128
+    ],
+    "text_lengths": [
+      140,
+      19
+    ],
+    "gen_tokens": 32
+  },
+  "conclusion": "No meaningful acceleration: split-attention median saves ~2.5ms but P95 worsens; full masked B2 is slower. Keep current production serial CFG.",
+  "limitations": [
+    "Numerical differences already appear at first denoising step; root cause not fully localized. Do not automatically attribute to FP8 scale/rounding.",
+    "GPU padding sentinel proves padding exclusion for tested kernel case, not whole-model equivalence.",
+    "All output differences are offline prediction differences, not actual task error or measured success rates.",
+    "Serial peak allocator statistics were not captured in this run; compare batch candidates absolute peak only.",
+    "Standalone experiment supports WAM B1 per branch, TP/SP/CFG parallel1 and no cache-dit; not production-ready.",
+    "masked_corpus older run had per-request audit I/O; final comparison exclusively uses masked_clean with audit only first warmup."
+  ],
+  "source_hashes": {
+    "batched_cfg_impl.py": "8d644483eeaae3f27ebf08ea84cb4d17bd2773221aa701039c91020a96fb8beb",
+    "benchmark_cfg.py": "1d860ad80608c3a3a7c4ac052b35e40bbd0582777c0ee8d498f9770277390575",
+    "source/vllm_omni/diffusion/models/cosmos3/pipeline_cosmos3.py": "f16f15a5e8f4b5205814d9560f94a7aabbccc9da9375d1b4224d678cfd6ba11b",
+    "source/vllm_omni/diffusion/models/cosmos3/transformer_cosmos3.py": "abc0b10320811e8b25866e199683284c2ef680252f1247bd0342ab926661d87b"
+  }
+}

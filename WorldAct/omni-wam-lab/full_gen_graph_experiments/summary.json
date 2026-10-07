@@ -1,0 +1,65 @@
+{
+  "scope": "Prepared five-real-observation corpus -> CPU raw actions; excludes HTTP and production recording; 5 warmups +20 measured each, extra2 graph profile requests excluded",
+  "conditions": {
+    "checkpoint": "4w EMA",
+    "quantization": "FP8 linear, BF16 cuDNN attention",
+    "sampler": "4 UniPC steps CFG3 shift5",
+    "compile": "unchanged default dynamic regional; inner compiler CUDA Graphs disabled",
+    "production": "native port18005 resident idle; not stopped; no robot controls"
+  },
+  "baseline": {
+    "p50_ms": 440.3008754597977,
+    "p95_ms": 443.199857394211,
+    "max_memory_allocated_bytes": 5416807936,
+    "max_memory_reserved_bytes": 6467616768
+  },
+  "full_gen_graph": {
+    "p50_ms": 432.4756995192729,
+    "p95_ms": 435.85938960895874,
+    "max_memory_allocated_bytes": 5497448448,
+    "max_memory_reserved_bytes": 5995757568
+  },
+  "p50_reduction_ms": 7.825175940524787,
+  "p50_reduction_percent": 1.7772337909510416,
+  "cold_first_request_ms": {
+    "baseline": 588.052373030223,
+    "graph": 865.1448079617694
+  },
+  "capture_cost_including_three_warmups_ms": {
+    "140": 166.1473229760304,
+    "19": 155.78659903258085
+  },
+  "actual_profile": {
+    "trace": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/results/graph_corpus/traces/20261007-172649_backend/trace_rank0.json.gz",
+    "requests": 2,
+    "cudaGraphLaunch_calls": 16,
+    "launches_per_request": 8.0,
+    "expected": 8,
+    "inner_inductor_cudagraphs": false
+  },
+  "output_validation": {
+    "all_25_pairs_bitwise_equal": true,
+    "all_actions_max_abs_diff": 0.0,
+    "graph_same_input_after_four_other_inputs_max_abs": 0.0,
+    "graph_different_input_0_vs_1_max_abs": 0.7138227224349976
+  },
+  "capture_design": "Two stable complete 28-layer GEN+norm graphs, lengths140/19; each call updates hidden, every KV tensor and RoPE; original UND, preprocess, postprocess, CFG and sampler unchanged",
+  "limitations": [
+    "One serial then graph experiment order; modest speed benefit needs matched HTTP confirmation.",
+    "Only fixed WAM shapes and five observations tested; exact equality on these inputs is not a general floating-point equivalence proof.",
+    "The fixed old-fixture smoke was418-422ms; do not quote that instead of new-corpus formal432.48ms.",
+    "Cold capture reported includes3 GPU warmups and graph construction, not only cudaStreamBeginCapture interval.",
+    "Prototype graph cache has no eviction and excludes concurrent/model-weight hot-swapping; not yet production-ready.",
+    "Memory maxima include initialization/warmup and are not standalone graph private-pool sizes."
+  ],
+  "artifacts": {
+    "baseline_report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/results/baseline_corpus/report.json",
+    "graph_report": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/results/graph_corpus/report.json",
+    "audit": "/home/pjlab/ros2_ws/worktrees/WorldAct/omni-wam-lab/full_gen_graph_experiments/results/graph_corpus/full_gen_audit.json"
+  },
+  "source_hashes": {
+    "full_gen_graph_impl.py": "dacc6d7a5e958bccad6fd3917d7cb53aff6df3916a50b2ff7f48709dd508bf7e",
+    "benchmark_full_gen.py": "9e58650e0c5b4a527104a4706146a4cd5087c9331af45389e360df048e9c34f5",
+    "source/vllm_omni/diffusion/models/cosmos3/transformer_cosmos3.py": "064e5d28f5f320f5648f485de3c0a703496546bf1f690aac2912dc994ed2810f"
+  }
+}
