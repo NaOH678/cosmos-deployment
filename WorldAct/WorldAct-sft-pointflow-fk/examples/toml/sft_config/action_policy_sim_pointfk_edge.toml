@@ -1,0 +1,43 @@
+[job]
+task = "vfm"
+experiment = "action_policy_sim_pointfk_edge"
+project = "cosmos3_action"
+group = "action_sft"
+name = "action_policy_sim_pointfk_edge"
+wandb_mode = "offline"
+
+[model]
+precision = "bfloat16"
+[model.parallelism]
+data_parallel_shard_degree = 8
+data_parallel_replicate_degree = 1
+[model.activation_checkpointing]
+mode = "selective"
+save_ops_regex = ["_flash_attn.*forward"]
+save_mm_shapes = [[2048,2048],[2048,1024]]
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+[model.compile]
+enabled = true
+compile_dynamic = true
+
+[optimizer]
+lr = 2.0e-5
+[scheduler]
+cycle_lengths = [20000]
+f_max = [1.0]
+f_min = [0.0]
+f_start = [0.0]
+warm_up_steps = [50]
+[dataloader_train]
+max_samples_per_batch = 16
+[trainer]
+max_iter = 20000
+logging_iter = 10
+grad_accum_iter = 1
+[trainer.callbacks.compile_tokenizer]
+enabled = false
+warmup_resolutions = ["480"]
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+save_iter = 500

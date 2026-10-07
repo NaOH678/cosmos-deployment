@@ -1,0 +1,15 @@
+# Reproducible experiment code, summaries and report media are versioned.
+# Large intermediate arrays and local runtime artifacts remain on disk.
+*.npy
+*.npz
+*.log
+*.zip
+**/.git/
+**/local_assets/
+/da3_chunk_fix/utils3d
+/da3_chunk_fix/meshes
+/da3_chunk_fix/source
+/da3_chunk_fix/Track4World/checkpoints
+/da3_chunk_fix/run/sam2_masks
+/sandwich_fixed/run/sam2_masks/episode_0013_20260731_133649
+/experiment_report/pointflow_fk_experiment_report.html

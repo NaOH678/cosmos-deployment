@@ -1,0 +1,12 @@
+{
+  "manifest": "/path/to/task21-cache/manifest.json",
+  "runtime_joint_names": null,
+  "checkpoint_path": "/path/to/training-run/checkpoints/iter_XXXXXXXXX/model",
+  "execution_horizon": 4,
+  "num_steps": 4,
+  "guidance": 3.0,
+  "seed": 42,
+  "use_ema_weights": true,
+  "output_dir": "/path/to/inference-output",
+  "config_file": "/path/to/training-run/config.yaml"
+}

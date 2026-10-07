@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: OpenMDW-1.1
+
+# Nano-Policy-DROID (16B) single-right-hand policy SFT. This is intentionally
+# separate from the Edge (4B) recipe so their topology and outputs cannot mix.
+
+[job]
+task       = "vfm"
+experiment = "action_policy_singlerighthand_nano"
+project    = "cosmos3_action"
+group      = "action_sft"
+name       = "action_policy_singlerighthand_nano"
+wandb_mode = "offline"
+
+[model]
+precision = "bfloat16"
+
+[model.parallelism]
+data_parallel_shard_degree     = 8
+data_parallel_replicate_degree = 1
+
+[model.compile]
+enabled = false
+
+[model.activation_checkpointing]
+mode           = "full"
+save_ops_regex = ["fmha"]
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+[optimizer]
+lr = 2.0e-5
+
+[scheduler]
+cycle_lengths = [10000]
+f_max          = [1.0]
+f_min          = [0.0]
+f_start        = [0.0]
+warm_up_steps  = [100]
+
+[dataloader_train]
+# Per-rank microbatch. Eight FSDP ranks and no accumulation give an effective
+# global sample count of 256, matching the existing Edge run.
+max_samples_per_batch = 32
+
+[trainer]
+max_iter        = 10000
+logging_iter    = 10
+grad_accum_iter = 1
+
+[trainer.callbacks.compile_tokenizer]
+enabled            = false
+warmup_resolutions = ["480"]
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+save_iter = 500

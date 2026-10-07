@@ -1,0 +1,18 @@
+policy_name: Cosmos
+host: 127.0.0.1
+port: 9000
+worldact_root: /home/fangkaipeng/dexmanip_scj/WorldAct-pointflow-fk
+# Supply your baseline artifacts. Do not substitute the 10-episode v2 statistics.
+checkpoint_path: null
+contract_path: null
+training_config_path: null
+allow_dcp_checkpoint: false
+experiment: null
+experiment_overrides: []
+output_dir: outputs/cosmos_local/model
+execute_steps: 4
+sampler: unipc
+num_steps: 4
+guidance: 3.0
+shift: 5.0
+seed: 0

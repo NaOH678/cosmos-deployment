@@ -1,0 +1,120 @@
+# Protocol-v2 deployment manifest for the 27D single-right-hand Cosmos policy.
+# Replace model_id and checkpoint_path together when switching model artifacts.
+deployment:
+  protocol_version: 2
+  schema_version: 2
+  model_id: cosmos-sandwich-right-debug-v1
+  mode: right
+  camera_names:
+    - head
+    - right_wrist
+  # Exact RobotLayout().metadata() emitted by the current Wuji deployment node.
+  robot_layout:
+    arm_dof: 14
+    hand_dof: 40
+    arm_dof_per_side: 7
+    hand_dof_per_side: 20
+    eef_dof_per_side: 7
+    state_dim: 54
+    action_dim: 54
+    eef_dim: 14
+    n_sides: 2
+    sides: [left, right]
+    action_layout:
+      - side: left
+        eef: [0, 7]
+        hand: [7, 27]
+      - side: right
+        eef: [27, 34]
+        hand: [34, 54]
+    qpos_layout:
+      - side: left
+        arm: [0, 7]
+        hand: [7, 27]
+      - side: right
+        arm: [27, 34]
+        hand: [34, 54]
+    units:
+      qpos.arm: radian
+      qpos.hand: radian
+      action.eef.position: metre
+      action.eef.quaternion: xyzw
+      action.hand: degree
+  active_hand_sides:
+    - right
+  zero_filled_hand_sides:
+    - left
+  action_rate_hz: 15.0
+  wire_chunk_size: 32
+  startup_handoff: false
+
+model:
+  # full: unconstrained model; small_motion: clamp around observation; hold: no model/GPU.
+  service_mode: hold
+  checkpoint_path: /replace/with/cosmos/checkpoint
+  checkpoint_sha256: null
+  config_file: cosmos_framework/configs/base/config.py
+  experiment: action_policy_singlerighthand_edge
+  experiment_overrides: []
+  output_dir: outputs/cosmos_protocol_v2
+  credential_path: credentials/gcp_checkpoint.secret
+  sampler: unipc
+  task: make a sandwich
+  domain_name: singlerighthand
+  seed: 0
+  guidance: 3.0
+  num_steps: 4
+  shift: 5.0
+  trajectory_smoothing: binomial5
+  resolution: "480"
+  native_action_dim: 27
+  native_chunk_size: 32
+  max_action_dim: 64
+  use_ema_weights: true
+  warmup: true
+
+image_preprocessing:
+  codec: jpeg
+  input_color_space: bgr8
+  model_color_space: rgb
+  composition: right_wrist_over_head
+  keep_aspect_ratio: true
+  padding: reflection
+  warmup_shapes:
+    head: [480, 640, 3]
+    right_wrist: [480, 640, 3]
+
+timestamps:
+  max_image_source_skew_s: 0.25
+
+coordinate_frames:
+  native_action_type: absolute
+  observation_right_eef: right_chest
+  model_right_eef: right_chest
+  wire_right_eef: right_chest
+  model_to_wire_transform: identity
+  quaternion_order: xyzw
+
+safety:
+  max_eef_step_m: 0.15
+  max_eef_step_deg: 75.0
+  max_hand_step_deg: 75.0
+  quaternion_min_norm: 1.0e-6
+  small_motion_max_eef_m: 0.01
+  small_motion_max_eef_deg: 5.0
+  small_motion_max_hand_deg: 5.0
+
+auth:
+  api_key_env: COSMOS_POLICY_API_KEY
+  api_key_file: null
+
+service:
+  host: 0.0.0.0
+  port: 8000
+  endpoint: /v1/robot-policy
+  max_request_bytes: 16777216
+  max_response_bytes: 4194304
+  max_sessions: 8
+  session_ttl_s: 120.0
+  max_inflight_inferences: 1
+  inference_timeout_s: 30.0

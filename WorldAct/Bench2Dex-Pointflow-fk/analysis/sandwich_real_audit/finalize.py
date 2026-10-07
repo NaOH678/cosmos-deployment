@@ -1,0 +1,23 @@
+from audit import *
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+x=json.load(open(B/'mesh_batch.json'));frames=[dict(episode=e['episode'],**r) for e in x for r in e['frames']];accepted=[r for r in frames if r['n_hits']>=30]
+dz=np.array([r['surface_depth_difference_mm']['median'] for r in accepted]);xyz=np.array([r['surface_xyz_gap_mm']['median'] for r in accepted]);epmed=[float(np.median([r['surface_xyz_gap_mm']['median'] for r in e['frames'] if r['n_hits']>=30])) for e in x]
+report=dict(episodes=len(x),sampled_frames=len(frames),accepted_frames=len(accepted),surface_correspondences=sum(r['n_hits'] for r in accepted),candidate_rays=sum(r['n_rays'] for r in accepted),aggregation='First compute median across matched surface points in each frame, then summarize those 706 frame medians. Not pooled point percentiles.',frame_median_signed_surface_depth_mm=stats(dz),frame_median_surface_xyz_mm=stats(xyz),episode_median_surface_xyz_mm=stats(epmed),fk_independent_recompute_max_frame_p95_mm=max(r['fk_link_origin_nearest_mm']['p95'] for r in frames),sensor_check=json.load(open(B/'sensor_surface_check650.json')),source_pointflow=str(PF),fk_source=str(FK),urdf=str(URDF),extrinsic=str(EXT),alignment_fitted=False,method=['Recompute URDF link transforms from recorded 54D qpos; cross-check FK21 against hand link origins.','Use calibrated colour intrinsics resized to 640x448; cast rays at stored pixel coordinates.','Only valid & unique hand pixels; 5x5 mask erosion, every fourth pixel on each image axis; intersect nearest URDF hand visual surface.','Compare original PointFlow camera-space XYZ directly to same-ray mesh surface. No scaling, translation fitting, smoothing or GPU rerun.'],limitations=['URDF visual surface is a geometry reference, not perfect glove ground truth.','Non-hand object occlusion, residual extrinsic error and recording latency are not fully resolved.','v2 hand mask already uses URDF proximity, so mask agreement is not independent calibration validation.','Only one frame has independent D435 corroboration; D435 itself has noise/occlusion.','Current data gap does not by itself establish how much is caused by the DA3 chunk metadata bug.'])
+(B/'final_report.json').write_text(json.dumps(report,indent=2))
+fig,axs=plt.subplots(2,2,figsize=(13,9),constrained_layout=True)
+axs[0,0].hist(dz/10,bins=45,color='#e67e22');axs[0,0].axvline(0,color='k');axs[0,0].set(xlabel='Per-frame median: PF Z - URDF surface Z (cm)',ylabel='Frames',title=f'Median across frames: {np.median(dz)/10:.1f} cm')
+axs[0,1].hist(xyz/10,bins=45,color='#1565c0');axs[0,1].set(xlabel='Per-frame median 3D surface gap (cm)',ylabel='Frames',title=f'Median {np.median(xyz)/10:.1f} cm; frame-median P95 {np.percentile(xyz,95)/10:.1f} cm')
+axs[1,0].plot(np.sort(epmed)/10,'.');axs[1,0].set(xlabel='Episode rank (sorted)',ylabel='Median of sampled-frame 3D gaps (cm)',title='101 sandwich episodes')
+y=json.load(open(B/'mesh_check.json'));axs[1,1].plot([r['frame'] for r in y],[r['surface_xyz_gap_mm']['median']/10 for r in y],'o-',label='3D surface gap');axs[1,1].plot([r['frame'] for r in y],[r['surface_depth_difference_mm']['median']/10 for r in y],'s-',label='Signed depth difference');axs[1,1].axhline(0,color='gray');axs[1,1].set(xlabel='Frame',ylabel='cm',title='Episode 0013 (July 31), surface comparison');axs[1,1].legend(fontsize=9)
+fig.suptitle('PointFlow vs FK-driven URDF surface | 101 episodes, 706 frames | no fitted alignment',fontsize=13);fig.savefig(B/'surface_summary.png',dpi=160);plt.close(fig)
+fig=go.Figure();steps=[];chosen=[0,128,300,500,650,800,1000,1191]
+for idx,f in enumerate(chosen):
+ z=np.load(B/f'mesh_surface_{f:04d}.npz');start=len(fig.data)
+ for key,color,label in [('pf','#e67e22','PointFlow (matched pixels)'),('surface','#1565c0','URDF hand surface (same pixels)'),('fk','#333333','FK21 joints')]:
+  p=z[key];fig.add_trace(go.Scatter3d(x=p[:,0],y=p[:,1],z=p[:,2],mode='markers',marker=dict(size=3 if key=='fk' else 2,color=color),name=label,visible=idx==0))
+ steps.append((f,start))
+fig.update_layout(title='Sandwich 0013: orange PointFlow / blue same-pixel URDF surface / grey FK joints',scene=dict(xaxis_title='camera X (m)',yaxis_title='camera Y (m)',zaxis_title='camera Z (m)',aspectmode='data'),sliders=[dict(steps=[dict(label=str(f),method='update',args=[{'visible':[start<=i<start+3 for i in range(len(fig.data))]},{'title':f'Frame {f}: original PointFlow vs same-pixel URDF surface (metres)'}]) for f,start in steps])]);fig.write_html(B/'surface_comparison_3d.html',include_plotlyjs=True)
+print(json.dumps(report,indent=2))

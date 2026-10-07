@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: OpenMDW-1.1
+
+# Edge-DROID single-right-hand policy SFT. Temporal settings live in the
+# registered experiment: 15 fps, 33 observations, 32 actions, one-frame stride.
+
+[job]
+task       = "vfm"
+experiment = "action_policy_singlerighthand_edge"
+project    = "cosmos3_action"
+group      = "action_sft"
+name       = "action_policy_singlerighthand_edge"
+wandb_mode = "offline"
+
+[model]
+precision = "bfloat16"
+
+[model.parallelism]
+data_parallel_shard_degree     = 1
+data_parallel_replicate_degree = -1
+
+[model.activation_checkpointing]
+mode           = "full"
+save_ops_regex = ["fmha"]
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+[optimizer]
+lr = 2.0e-5
+
+[scheduler]
+cycle_lengths = [10000]
+f_max          = [1.0]
+f_min          = [0.0]
+f_start        = [0.0]
+warm_up_steps  = [100]
+
+[dataloader_train]
+# Per-rank microbatch. With DP=8 and no accumulation the effective global batch is 256.
+max_samples_per_batch = 32
+
+[trainer]
+max_iter        = 10000
+logging_iter    = 10
+grad_accum_iter = 1
+
+[trainer.callbacks.compile_tokenizer]
+enabled            = false # This cluster has the CUDA 12.8 runtime but no nvcc toolkit.
+warmup_resolutions = ["480"]
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+save_iter = 500

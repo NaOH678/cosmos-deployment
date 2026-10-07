@@ -1,0 +1,88 @@
+--- a/source/cosmos_framework/inference/model.py
++++ b/source/cosmos_framework/inference/model.py
+@@ -1,5 +1,7 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: OpenMDW-1.1
++
++from __future__ import annotations
+ 
+ import contextlib
+ import json
+@@ -14,12 +16,15 @@
+ import torch.distributed.checkpoint as dcp
+ import transformers
+ from torch.distributed.checkpoint.filesystem import FileSystemReader
+-from torch.distributed.checkpoint.hf_storage import (
+-    CUSTOM_METADATA_KEY,
+-    SAVED_OFFSETS_KEY,
+-    HuggingFaceStorageReader,
+-    _HFStorageInfo,
+-)
++try:
++    from torch.distributed.checkpoint.hf_storage import (
++        CUSTOM_METADATA_KEY, SAVED_OFFSETS_KEY, HuggingFaceStorageReader, _HFStorageInfo,
++    )
++except ModuleNotFoundError as exc:
++    if exc.name != "torch.distributed.checkpoint.hf_storage":
++        raise
++    HuggingFaceStorageReader = None
++
+ from torch.distributed.checkpoint.metadata import (
+     STORAGE_TYPES,
+     ChunkStorageMetadata,
+@@ -270,10 +275,12 @@
+     return name.removeprefix("model.net.").replace("_orig_mod.", "").replace("_checkpoint_wrapped_module.", "")
+ 
+ 
+-class _DiffusersHuggingFaceStorageReader(HuggingFaceStorageReader):
++class _DiffusersHuggingFaceStorageReader(HuggingFaceStorageReader if HuggingFaceStorageReader is not None else object):
+     """Hugging Face safetensors reader that follows diffusers' root weight map."""
+ 
+     def __init__(self, checkpoint_path: Path) -> None:
++        if HuggingFaceStorageReader is None:
++            raise RuntimeError("This Torch version supports DCP here, but not HF storage")
+         super().__init__(str(checkpoint_path))
+         self.checkpoint_path = checkpoint_path
+         self.files_to_keys = _diffusers_files_to_keys(_diffusers_weight_map(checkpoint_path))
+@@ -553,6 +560,8 @@
+                     # parameter buffers without allocating a second model copy.
+                     load_planner = CustomLoadPlanner(load_ema_to_reg=True)
+             case CheckpointType.HF:
++                if HuggingFaceStorageReader is None:
++                    raise RuntimeError("HF storage requires a newer Torch; use a DCP checkpoint")
+                 if _is_diffusers_checkpoint(checkpoint_path):
+                     state_dict = get_model_state_dict(model.model.net)
+                     # Single-rank load must skip DCP's collective path: it gathers
+--- a/source/cosmos_framework/inference/common/args.py
++++ b/source/cosmos_framework/inference/common/args.py
+@@ -309,7 +309,7 @@
+ 
+     def _build(self, target: type[_ArgsT], **kwargs) -> _ArgsT:
+         """Build arguments from overrides."""
+-        return target.model_validate(self.model_dump() | kwargs, extra="ignore")
++        return target.model_validate({k: v for k, v in (self.model_dump() | kwargs).items() if k in target.model_fields})
+ 
+ 
+ _OverridesT = TypeVar("_OverridesT", bound=OverridesBase)
+--- a/source/cosmos_framework/inference/robot_policy/adapters.py
++++ b/source/cosmos_framework/inference/robot_policy/adapters.py
+@@ -544,6 +544,7 @@
+                 # Robot-policy inference returns actions, not user-facing media.
+                 # Avoid loading optional text/video guardrail models and deps.
+                 "guardrails": False,
++                "use_torch_compile": False,
+             }
+         )
+         setup_args = setup_overrides.build_setup()
+--- a/source/cosmos_framework/model/attention/flash2/__init__.py
++++ b/source/cosmos_framework/model/attention/flash2/__init__.py
+@@ -51,7 +51,8 @@
+     else:
+         flash2_version_str = flash_attn.__version__
+ 
+-    if not version_in_range(flash2_version_str, FLASH_ATTENTION_V2_MIN_VERSION, FLASH_ATTENTION_V2_MAX_VERSION):
++    if (flash2_version_str.split("+")[0] != "2.8.3" and
++        not version_in_range(flash2_version_str, FLASH_ATTENTION_V2_MIN_VERSION, FLASH_ATTENTION_V2_MAX_VERSION)):
+         log.debug(
+             "Flash Attention v2 build is not supported; this backend only supports versions "
+             f"{FLASH_ATTENTION_V2_MIN_VERSION} through {FLASH_ATTENTION_V2_MAX_VERSION}, got "

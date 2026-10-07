@@ -1,0 +1,196 @@
+--- a/track4world/nets/model.py
++++ b/track4world/nets/model.py
+@@ -10,6 +10,9 @@
+ import torch.nn.functional as F
+ import torch.utils.checkpoint
+ import torch.version
++from track4world.nets.da3_chunk_geometry import (
++    target_in_source_units, align_pairs_in_source_units, restore_geometry,
++)
+ 
+ # Custom modules
+ import utils3d
+@@ -1317,6 +1320,9 @@
+         fmaps3d_detail = self.pairwise_concat(fmaps3d_detail)
+         ctxfeats = self.pairwise_concat(ctxfeats)
+         pms = self.pairwise_concat(pms)
++        if self.use_model == 'depthanythingv3':
++            # 3D correlation and predicted displacement use the source scale.
++            pms = target_in_source_units(pms, self._da3_frame_scales)
+ 
+         B_pair, T_pair = fmaps.shape[0], fmaps.shape[1]
+         
+@@ -1967,6 +1973,14 @@
+         pms, points, masks = [], [], []
+         world_points, camera_poses = [], []
+ 
++        # Reset call-local metadata; never reuse a previous video's final block.
++        self._da3_frame_scales = None
++        self._da3_frame_focals = None
++        self._da3_frame_chunk_ids = None
++        da3_scales, da3_focals, da3_chunk_ids = [], [], []
++        if self.use_model == 'depthanythingv3' and B != 1:
++            raise ValueError('DA3 EFEP metadata currently supports B=1 only')
++
+         # Iterate through chunks of frames along the time dimension
+         for t in range(0, T, fmaps_chunk_size):
+             images_chunk = images[:, t : t + fmaps_chunk_size]
+@@ -1979,6 +1993,13 @@
+                 for_flow=True
+             )
+             
++            if self.use_model == 'depthanythingv3':
++                count = images_chunk.shape[1]
++                da3_scales.append(self._metric_scale.detach().expand(count).clone())
++                da3_focals.append(self._da3_focal.detach().expand(count).clone())
++                da3_chunk_ids.append(torch.full((count,), t // fmaps_chunk_size,
++                                               device=pt_c.device, dtype=torch.long))
++
+             # Append reshaped outputs
+             fmaps.append(f_c.reshape(B, -1, C, H8, W8))
+             ctxfeats.append(c_c.reshape(B, -1, C1, H8, W8))
+@@ -1989,6 +2010,11 @@
+             camera_poses.append(cp_c.reshape(B, -1, 4, 4))
+             fmaps3d_detail.append(f3d_c.reshape(B, -1, self.flow3d_dim, H8, W8))
+             
++        if da3_scales:
++            self._da3_frame_scales = torch.cat(da3_scales)
++            self._da3_frame_focals = torch.cat(da3_focals)
++            self._da3_frame_chunk_ids = torch.cat(da3_chunk_ids)
++
+         # Final concatenation and flattening for downstream processing
+         fmaps = torch.cat(fmaps, dim=1).reshape(-1, C, H8, W8)
+         fmaps3d_detail = torch.cat(fmaps3d_detail, dim=1).reshape(-1, self.flow3d_dim, H8, W8)
+@@ -2551,7 +2577,18 @@
+         # Optional temporal alignment of scene flow
+         # This step reduces directional jitter across time
+         # -------------------------------------------------------------
+-        if aligned_scene_flow:
++        da3_scales = (self._da3_frame_scales
++                      if self.use_model == 'depthanythingv3' else None)
++        if da3_scales is not None and da3_scales.numel() != T:
++            raise RuntimeError('DA3 frame metadata does not match output frames')
++        if aligned_scene_flow and da3_scales is not None:
++            flow3d, visconf_maps_e = align_pairs_in_source_units(
++                flow2d_c, flow3d, points,
++                visconf_maps_e.cuda().permute(0, 1, 3, 4, 2),
++                da3_scales, self._da3_frame_chunk_ids,
++                get_aligned_scene_flow_temporal,
++                refine_confidence_with_geometric_consistency)
++        elif aligned_scene_flow:
+             flow3d = get_aligned_scene_flow_temporal(
+                 flow2d_c,
+                 flow3d,
+@@ -2584,7 +2621,10 @@
+             # all downstream geometry lives in metric (meter) space.
+             # ---------------------------------------------------------
+             _ms = getattr(self, '_metric_scale', None) if self.use_metric_scale else None
+-            if _ms is not None:
++            if _ms is not None and da3_scales is not None:
++                points, flow3d, world_points, camera_poses = restore_geometry(
++                    points, flow3d, world_points, camera_poses, da3_scales)
++            elif _ms is not None:
+                 points = points * _ms
+                 flow3d = flow3d * _ms
+                 world_points = world_points * _ms
+@@ -2597,7 +2637,10 @@
+             # Other backbones: estimate both from the point cloud.
+             # ---------------------------------------------------------
+             _da3_f = getattr(self, '_da3_focal', None) if use_da3_focal else None
+-            if _da3_f is not None:
++            if _da3_f is not None and da3_scales is not None:
++                focal = self._da3_frame_focals[None].to(points)
++                shift = torch.zeros(points.shape[0], device=points.device, dtype=points.dtype)
++            elif _da3_f is not None:
+                 focal = _da3_f.expand(points.shape[0])
+                 shift = torch.zeros(points.shape[0], device=points.device, dtype=points.dtype)
+             else:
+@@ -2608,9 +2651,9 @@
+             fy = focal / 2 * (1 + aspect_ratio ** 2) ** 0.5
+ 
+             # Construct camera intrinsics for all frames
+-            intrinsics = utils3d.torch.intrinsics_from_focal_center(
+-                fx, fy, 0.5, 0.5
+-            ).repeat(1, points.shape[1], 1, 1)
++            intrinsics = utils3d.torch.intrinsics_from_focal_center(fx, fy, 0.5, 0.5)
++            if focal.ndim == 1:
++                intrinsics = intrinsics.repeat(1, points.shape[1], 1, 1)
+             
+             # Recover metric depth by applying the global shift
+             depth = points[..., 2] + shift[..., None, None, None].repeat(
+@@ -2665,7 +2708,7 @@
+                 points_f = utils3d.torch.unproject_cv(
+                     flow2d_c,
+                     forward_depth,
+-                    intrinsics=intrinsics[:, :-1][..., None, :, :],
++                    intrinsics=(intrinsics[:, 1:] if da3_scales is not None else intrinsics[:, :-1])[..., None, :, :],
+                     use_ray=False
+                 )
+             else:
+@@ -2701,4 +2744,11 @@
+                 'metric_scale': getattr(self, '_metric_scale', None),
+             })
+ 
++        if da3_scales is not None:
++            return_dict[0]['metric_scale'] = da3_scales
++            return_dict[1]['metric_scale'] = da3_scales[:-1]
++            return_dict[0]['frame_metric_scales'] = da3_scales
++            return_dict[0]['frame_normalized_focals'] = self._da3_frame_focals
++            return_dict[0]['frame_chunk_ids'] = self._da3_frame_chunk_ids
++            return_dict[0]['world_coordinate_scope'] = 'backbone_chunk'
+         return return_dict
+--- /dev/null
++++ b/track4world/nets/da3_chunk_geometry.py
+@@ -0,0 +1,52 @@
++"""Per-frame DA3 geometry metadata for single-video EFEP inference.
++
++Network scene flow is expressed in the source frame's normalized units.
++DA3 world poses remain local to each backbone chunk; this module does not
++estimate a cross-chunk world-frame registration.
++"""
++import torch
++
++
++def target_in_source_units(pair_pointmaps, scales):
++    """[T-1,2,3,h,w] pointmaps, [T] positive normalization scales."""
++    if pair_pointmaps.shape[:2] != (scales.numel()-1, 2):
++        raise ValueError('Point pair count and frame scales do not match')
++    out = pair_pointmaps.clone()
++    out[:, 1] *= (scales[1:] / scales[:-1]).to(out)[:, None, None, None]
++    return out
++
++
++def align_pairs_in_source_units(flow2d, endpoints, points, confidence,
++                                scales, chunk_ids, align_fn, confidence_fn):
++    """Keep native within-chunk alignment; rescale the target at chunk edges.
++
++    Process runs with one source scale so the original normalization and
++    confidence sensitivity are unchanged inside each DA3 chunk.
++    """
++    if points.shape[0] != 1 or scales.shape != (points.shape[1],):
++        raise ValueError('DA3 chunk alignment currently supports one video')
++    aligned, refined = [], []
++    starts = [0] + (torch.nonzero(chunk_ids[1:] != chunk_ids[:-1]).flatten()+1).tolist()
++    for start, end in zip(starts, starts[1:]+[points.shape[1]]):
++        stop = min(end, points.shape[1]-1)
++        if start >= stop:
++            continue
++        local = points[:, start:stop+1] * (scales[start:stop+1]/scales[start]).to(points)[None,:,None,None,None]
++        flow = align_fn(flow2d[:,start:stop], endpoints[:,start:stop], local,
++                        confidence[:,start:stop], mode='align_dir')
++        conf = confidence_fn(flow2d[:,start:stop], flow, local,
++                             confidence[:,start:stop])
++        aligned.append(flow)
++        refined.append(conf)
++    return torch.cat(aligned,dim=1), torch.cat(refined,dim=1)
++
++
++def restore_geometry(points, endpoints, world_points, camera_poses, scales):
++    """Restore per-frame geometry and source-normalized pair endpoints."""
++    s = scales.to(points)
++    points = points * s[None,:,None,None,None]
++    endpoints = endpoints * s[:-1].to(endpoints)[None,:,None,None,None]
++    world_points = world_points * s.to(world_points)[None,:,None,None,None]
++    camera_poses = camera_poses.clone()
++    camera_poses[..., :3, 3] *= s.to(camera_poses)[...,None]
++    return points, endpoints, world_points, camera_poses

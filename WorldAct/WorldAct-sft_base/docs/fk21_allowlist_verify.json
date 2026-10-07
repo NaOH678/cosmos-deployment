@@ -1,0 +1,87 @@
+{
+  "verdict": true,
+  "max_mm": 0.0,
+  "episodes": [
+    {
+      "frames": 1192,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0013_20260731_133649"
+    },
+    {
+      "frames": 1211,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0014_20260731_133743"
+    },
+    {
+      "frames": 1367,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0015_20260730_170501"
+    },
+    {
+      "frames": 1751,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0015_20260731_133841"
+    },
+    {
+      "frames": 1424,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0016_20260730_170616"
+    },
+    {
+      "frames": 1459,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0017_20260731_134058"
+    },
+    {
+      "frames": 1419,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0018_20260730_170833"
+    },
+    {
+      "frames": 1201,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0018_20260731_134203"
+    },
+    {
+      "frames": 1342,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0019_20260730_171242"
+    },
+    {
+      "frames": 1430,
+      "max_mm": 0.0,
+      "mean_mm": 0.0,
+      "worst_frame": 0,
+      "worst_keypoint": 0,
+      "episode": "episode_0019_20260731_134304"
+    }
+  ],
+  "failures": []
+}

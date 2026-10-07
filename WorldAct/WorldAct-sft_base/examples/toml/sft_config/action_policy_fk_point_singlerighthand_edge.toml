@@ -1,0 +1,89 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: OpenMDW-1.1
+
+# Edge-DROID single-right-hand policy SFT with BOTH extra modalities on: FK
+# (right-hand 21 keypoints) and PointFlow (point cloud).  `experiment` stays the
+# shared `action_policy_singlerighthand_edge` so the recipe module is not forked;
+# only the job name differs.  Temporal settings live in that experiment: 15 fps,
+# 33 observations, 32 actions, one-frame stride.
+
+[job]
+task       = "vfm"
+experiment = "action_policy_singlerighthand_edge"
+project    = "cosmos3_action"
+group      = "action_sft"
+name       = "action_policy_fk_point_singlerighthand_edge"
+wandb_mode = "offline"
+
+[model]
+precision = "bfloat16"
+
+[model.parallelism]
+# Overridden by the wrapper (tools/run_fk_point_101.sh) to
+# shard = GPUs-per-node, replicate = node count -- intra-node FSDP over NVLink,
+# inter-node gradient all-reduce only.  The literal 1 here is the single-node
+# no-sharding value and does NOT satisfy the shard x replicate x CP == WORLD_SIZE
+# invariant at 16 ranks, which is why the wrapper must override it.
+data_parallel_shard_degree     = 1
+data_parallel_replicate_degree = -1
+
+[model.activation_checkpointing]
+mode           = "full"
+save_ops_regex = ["fmha"]
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+# Compile the transformer blocks, matching the PointFlow recipe.
+# The paired launcher defaults TORCHINDUCTOR_MIX_ORDER_REDUCTION=0 to avoid
+# the previously observed Triton shared-memory overflow during backward.
+[model.compile]
+enabled = true
+
+[optimizer]
+lr = 2.0e-5
+
+[scheduler]
+cycle_lengths = [10000]
+f_max          = [1.0]
+f_min          = [0.0]
+f_start        = [0.0]
+warm_up_steps  = [100]
+
+[dataloader_train]
+# Per-rank microbatch.  16 x 8 GPUs = 128 per node; at 2 nodes the global batch is
+# 256, which is the data budget the 10000 steps below were sized for.
+max_samples_per_batch = 16
+
+[trainer]
+max_iter        = 10000
+# Master gate for every callback that logs on an interval: the main WandBCallback
+# (train/loss, optim/lr, timers) at exactly this many steps, and the second one
+# (wandb_2x, callbacks/wandb_log.py, logging_iter_multipler=2) at twice it.  Also
+# paces IterSpeed / MFU / OFU / grad-clip / dataloader-state reporting.
+logging_iter    = 10
+grad_accum_iter = 1
+
+[trainer.callbacks.compile_tokenizer]
+enabled            = false # This cluster has the CUDA runtime but no nvcc toolkit.
+warmup_resolutions = ["480"]
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+# Same 500-step lattice as both single-modality recipes.  The interval bounds how
+# much work a crash can destroy.
+#
+# ⚠️ There is NO retention policy: nothing deletes old checkpoints.  This comment used
+# to claim they "are deleted as the run goes", which contradicts the code --
+# cosmos_framework/utils/checkpointer.py has no deletion call at all, no launcher
+# prunes, and fk-101-16gpu-flash2 finished holding 5 complete checkpoints (30 GB each,
+# model/optim/scheduler/trainer all present).  So the footprint is LINEAR:
+#
+#     max_iter / save_iter x ~30 GB      e.g. 20000 / 500 = 40 x 30 GB = ~1.2 TB
+#
+# Size the volume for that before submitting, or prune old iterations by hand -- but
+# pruning breaks resume for those iterations (a pruned checkpoint reports
+# "metadata is None" and its real cause is swallowed), so keep the last one or two.
+# Raising save_iter is the only in-run lever, and it trades crash-loss granularity
+# for disk.
+save_iter = 500

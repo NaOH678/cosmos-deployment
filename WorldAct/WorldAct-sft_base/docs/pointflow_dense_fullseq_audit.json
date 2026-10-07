@@ -1,0 +1,2039 @@
+{
+  "root": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/datasets/sandwich_dense_fullseq_10_0298_20260908/outputs",
+  "method": "All NPY headers and COMPLETE.json files; complete ratio, timestamp, frame-index, intrinsics and c2w arrays; selected dense frames. No full scan of large dense arrays; no tracker execution.",
+  "episodes": [
+    {
+      "episode": "episode_0013_20260731_133649",
+      "frames": 1192,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 0,
+        "episode": "episode_0013_20260731_133649",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0013_20260731_133649/videos/head.mp4",
+        "frames": 1192,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1192,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1192,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 173.095671701245,
+        "valid_ratio": 0.8126041372121809,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788848934.4398444
+      },
+      "valid_counts_from_ratios": {
+        "first": 258559,
+        "minimum": 215443,
+        "maximum": 258897,
+        "last": 232435
+      },
+      "zero_frames": 0,
+      "first_zero_frame": null,
+      "zeros_form_tail": false,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8128330707550049,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.161190152168274,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.006039210595190525,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1192,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 76416
+        },
+        "confidence.npy": {
+          "shape": [
+            1192,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1367081088
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1192
+          ],
+          "dtype": "int64",
+          "file_bytes": 9664
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1192,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 43040
+        },
+        "position.npy": {
+          "shape": [
+            1192,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4101243008
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1192
+          ],
+          "dtype": "float64",
+          "file_bytes": 9664
+        },
+        "uv_px.npy": {
+          "shape": [
+            1192,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 2734162048
+        },
+        "valid.npy": {
+          "shape": [
+            1192,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 341770368
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1192
+          ],
+          "dtype": "float32",
+          "file_bytes": 4896
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 258559,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9858527183532715,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07897694408893585,
+            0.1670512303709984
+          ]
+        },
+        {
+          "frame": 596,
+          "valid_count": 228531,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 6,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 3.5340235626790673e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08127821981906891,
+            0.17146090567111963
+          ]
+        },
+        {
+          "frame": 1109,
+          "valid_count": 215443,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 2,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08038053661584854,
+            0.16968941688537598
+          ]
+        },
+        {
+          "frame": 1191,
+          "valid_count": 232435,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 2,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08209285140037537,
+            0.17384615540504453
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "episode_0014_20260731_133743",
+      "frames": 1211,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 1,
+        "episode": "episode_0014_20260731_133743",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0014_20260731_133743/videos/head.mp4",
+        "frames": 1211,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1211,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1211,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 175.0638160146773,
+        "valid_ratio": 0.7276651303020305,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788849135.113739
+      },
+      "valid_counts_from_ratios": {
+        "first": 246223,
+        "minimum": 181088,
+        "maximum": 246520,
+        "last": 195240
+      },
+      "zero_frames": 0,
+      "first_zero_frame": null,
+      "zeros_form_tail": false,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8703922629356384,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.243417501449585,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.008461317978799343,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1211,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 77632
+        },
+        "confidence.npy": {
+          "shape": [
+            1211,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1388871808
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1211
+          ],
+          "dtype": "int64",
+          "file_bytes": 9816
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1211,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 43724
+        },
+        "position.npy": {
+          "shape": [
+            1211,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4166615168
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1211
+          ],
+          "dtype": "float64",
+          "file_bytes": 9816
+        },
+        "uv_px.npy": {
+          "shape": [
+            1211,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 2777743488
+        },
+        "valid.npy": {
+          "shape": [
+            1211,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 347218048
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1211
+          ],
+          "dtype": "float32",
+          "file_bytes": 4972
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 246223,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9815254211425781,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.09176214784383774,
+            0.21646825969219208
+          ]
+        },
+        {
+          "frame": 605,
+          "valid_count": 208236,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 8.341739885509014e-07,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.09405209496617317,
+            0.2137531042098999
+          ]
+        },
+        {
+          "frame": 1151,
+          "valid_count": 181088,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.09342673793435097,
+            0.2138944312930107
+          ]
+        },
+        {
+          "frame": 1210,
+          "valid_count": 195240,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.0941176600754261,
+            0.21674228906631454
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "episode_0015_20260730_170501",
+      "frames": 1367,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 2,
+        "episode": "episode_0015_20260730_170501",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0015_20260730_170501/videos/head.mp4",
+        "frames": 1367,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1367,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1367,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 199.44654915714636,
+        "valid_ratio": 0.5907759467216729,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788849362.723209
+      },
+      "valid_counts_from_ratios": {
+        "first": 252467,
+        "minimum": 0,
+        "maximum": 252840,
+        "last": 0
+      },
+      "zero_frames": 247,
+      "first_zero_frame": 1120,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8191491365432739,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1702131032943726,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.011706548742949963,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1367,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 87616
+        },
+        "confidence.npy": {
+          "shape": [
+            1367,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1567785088
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1367
+          ],
+          "dtype": "int64",
+          "file_bytes": 11064
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1367,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 49340
+        },
+        "position.npy": {
+          "shape": [
+            1367,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4703355008
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1367
+          ],
+          "dtype": "float64",
+          "file_bytes": 11064
+        },
+        "uv_px.npy": {
+          "shape": [
+            1367,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3135570048
+        },
+        "valid.npy": {
+          "shape": [
+            1367,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 391946368
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1367
+          ],
+          "dtype": "float32",
+          "file_bytes": 5596
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 252467,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9741334915161133,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07646122574806213,
+            0.16474343389272686
+          ]
+        },
+        {
+          "frame": 683,
+          "valid_count": 198685,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 23,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 2.400520315859467e-07,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.0834021270275116,
+            0.16779561862349507
+          ]
+        },
+        {
+          "frame": 1119,
+          "valid_count": 23,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.1505126953125,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08094236254692078,
+            0.12894076853990555
+          ]
+        },
+        {
+          "frame": 1120,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.059061104910714285,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1366,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.0,
+          "finite_confidence_fraction": 0.0,
+          "confidence_min": null,
+          "confidence_max": null
+        }
+      ]
+    },
+    {
+      "episode": "episode_0015_20260731_133841",
+      "frames": 1751,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 3,
+        "episode": "episode_0015_20260731_133841",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0015_20260731_133841/videos/head.mp4",
+        "frames": 1751,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1751,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1751,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 255.40950464596972,
+        "valid_ratio": 0.584781611559976,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788849654.73595
+      },
+      "valid_counts_from_ratios": {
+        "first": 258135,
+        "minimum": 0,
+        "maximum": 258404,
+        "last": 0
+      },
+      "zero_frames": 455,
+      "first_zero_frame": 1296,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8130782842636108,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1615403890609741,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.0057671284303069115,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1751,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 112192
+        },
+        "confidence.npy": {
+          "shape": [
+            1751,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 2008187008
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1751
+          ],
+          "dtype": "int64",
+          "file_bytes": 14136
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1751,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 63164
+        },
+        "position.npy": {
+          "shape": [
+            1751,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 6024560768
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1751
+          ],
+          "dtype": "float64",
+          "file_bytes": 14136
+        },
+        "uv_px.npy": {
+          "shape": [
+            1751,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 4016373888
+        },
+        "valid.npy": {
+          "shape": [
+            1751,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 502046848
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1751
+          ],
+          "dtype": "float32",
+          "file_bytes": 7132
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 258135,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9921910762786865,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08952827751636505,
+            0.2030216723680495
+          ]
+        },
+        {
+          "frame": 875,
+          "valid_count": 230528,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 31,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 5.062292984803207e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08768933266401291,
+            0.19124433100223523
+          ]
+        },
+        {
+          "frame": 1295,
+          "valid_count": 638,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.15530482700892856,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.0955880656838417,
+            0.2632865384221077
+          ]
+        },
+        {
+          "frame": 1296,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.04757603236607143,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1750,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.0,
+          "finite_confidence_fraction": 0.0,
+          "confidence_min": null,
+          "confidence_max": null
+        }
+      ]
+    },
+    {
+      "episode": "episode_0016_20260730_170616",
+      "frames": 1424,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 4,
+        "episode": "episode_0016_20260730_170616",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0016_20260730_170616/videos/head.mp4",
+        "frames": 1424,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1424,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1424,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 208.89671360701323,
+        "valid_ratio": 0.7645121419793339,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788849893.1359897
+      },
+      "valid_counts_from_ratios": {
+        "first": 262262,
+        "minimum": 0,
+        "maximum": 262541,
+        "last": 0
+      },
+      "zero_frames": 80,
+      "first_zero_frame": 1344,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.857006311416626,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.2242947816848755,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.006332849618047476,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1424,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 91264
+        },
+        "confidence.npy": {
+          "shape": [
+            1424,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1633157248
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1424
+          ],
+          "dtype": "int64",
+          "file_bytes": 11520
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1424,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 51392
+        },
+        "position.npy": {
+          "shape": [
+            1424,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4899471488
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1424
+          ],
+          "dtype": "float64",
+          "file_bytes": 11520
+        },
+        "uv_px.npy": {
+          "shape": [
+            1424,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3266314368
+        },
+        "valid.npy": {
+          "shape": [
+            1424,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 408289408
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1424
+          ],
+          "dtype": "float32",
+          "file_bytes": 5824
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 262262,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9751095771789551,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07857761532068253,
+            0.16698560118675224
+          ]
+        },
+        {
+          "frame": 712,
+          "valid_count": 235328,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 1.0268413461744785e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07892553135752678,
+            0.16790235489606856
+          ]
+        },
+        {
+          "frame": 1343,
+          "valid_count": 134,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.056825474330357145,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08796631544828415,
+            0.16594187840819358
+          ]
+        },
+        {
+          "frame": 1344,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.027176339285714286,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1423,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.0,
+          "finite_confidence_fraction": 0.09575892857142858,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        }
+      ]
+    },
+    {
+      "episode": "episode_0017_20260731_134058",
+      "frames": 1459,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 5,
+        "episode": "episode_0017_20260731_134058",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0017_20260731_134058/videos/head.mp4",
+        "frames": 1459,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1459,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1459,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 212.36957657895982,
+        "valid_ratio": 0.757851395643879,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788850139.7604544
+      },
+      "valid_counts_from_ratios": {
+        "first": 252700,
+        "minimum": 0,
+        "maximum": 253033,
+        "last": 0
+      },
+      "zero_frames": 43,
+      "first_zero_frame": 1416,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8313465118408203,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1876379251480103,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.005145049188286066,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1459,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 93504
+        },
+        "confidence.npy": {
+          "shape": [
+            1459,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1673298048
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1459
+          ],
+          "dtype": "int64",
+          "file_bytes": 11800
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1459,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 52652
+        },
+        "position.npy": {
+          "shape": [
+            1459,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 5019893888
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1459
+          ],
+          "dtype": "float64",
+          "file_bytes": 11800
+        },
+        "uv_px.npy": {
+          "shape": [
+            1459,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3346595968
+        },
+        "valid.npy": {
+          "shape": [
+            1459,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 418324608
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1459
+          ],
+          "dtype": "float32",
+          "file_bytes": 5964
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 252700,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9887747764587402,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.09180359542369843,
+            0.1945689484477043
+          ]
+        },
+        {
+          "frame": 729,
+          "valid_count": 225901,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 6.024051799613517e-07,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08652922511100769,
+            0.18089832365512848
+          ]
+        },
+        {
+          "frame": 1415,
+          "valid_count": 137,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.09937220982142857,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08507847040891647,
+            0.14695397317409511
+          ]
+        },
+        {
+          "frame": 1416,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.040767996651785716,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1458,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.015541294642857143,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        }
+      ]
+    },
+    {
+      "episode": "episode_0018_20260730_170833",
+      "frames": 1419,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 6,
+        "episode": "episode_0018_20260730_170833",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0018_20260730_170833/videos/head.mp4",
+        "frames": 1419,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1419,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1419,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 209.66587282484397,
+        "valid_ratio": 0.5621342855530492,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788850378.8130832
+      },
+      "valid_counts_from_ratios": {
+        "first": 266245,
+        "minimum": 0,
+        "maximum": 266465,
+        "last": 0
+      },
+      "zero_frames": 427,
+      "first_zero_frame": 992,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.9327536225318909,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.332505226135254,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.011234342120587826,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1419,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 90944
+        },
+        "confidence.npy": {
+          "shape": [
+            1419,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1627422848
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1419
+          ],
+          "dtype": "int64",
+          "file_bytes": 11480
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1419,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 51212
+        },
+        "position.npy": {
+          "shape": [
+            1419,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4882268288
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1419
+          ],
+          "dtype": "float64",
+          "file_bytes": 11480
+        },
+        "uv_px.npy": {
+          "shape": [
+            1419,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3254845568
+        },
+        "valid.npy": {
+          "shape": [
+            1419,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 406855808
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1419
+          ],
+          "dtype": "float32",
+          "file_bytes": 5804
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 266245,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9565639495849609,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08177419751882553,
+            0.1711610019207
+          ]
+        },
+        {
+          "frame": 709,
+          "valid_count": 240836,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 3,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08060590922832489,
+            0.16995208859443664
+          ]
+        },
+        {
+          "frame": 991,
+          "valid_count": 1450,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.1562534877232143,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08101072534918785,
+            0.17743977755308152
+          ]
+        },
+        {
+          "frame": 992,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.062353515625,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1418,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.0,
+          "finite_confidence_fraction": 0.0,
+          "confidence_min": null,
+          "confidence_max": null
+        }
+      ]
+    },
+    {
+      "episode": "episode_0018_20260731_134203",
+      "frames": 1201,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 7,
+        "episode": "episode_0018_20260731_134203",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0018_20260731_134203/videos/head.mp4",
+        "frames": 1201,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1201,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1201,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 173.5363609828055,
+        "valid_ratio": 0.8226284091986217,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788850575.8425257
+      },
+      "valid_counts_from_ratios": {
+        "first": 255684,
+        "minimum": 217279,
+        "maximum": 255715,
+        "last": 234662
+      },
+      "zero_frames": 0,
+      "first_zero_frame": null,
+      "zeros_form_tail": false,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.8089771270751953,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1556816101074219,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.0037768888287246227,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1201,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 76992
+        },
+        "confidence.npy": {
+          "shape": [
+            1201,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1377403008
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1201
+          ],
+          "dtype": "int64",
+          "file_bytes": 9736
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1201,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 43364
+        },
+        "position.npy": {
+          "shape": [
+            1201,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4132208768
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1201
+          ],
+          "dtype": "float64",
+          "file_bytes": 9736
+        },
+        "uv_px.npy": {
+          "shape": [
+            1201,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 2754805888
+        },
+        "valid.npy": {
+          "shape": [
+            1201,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 344350848
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1201
+          ],
+          "dtype": "float32",
+          "file_bytes": 4932
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 255684,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9858465194702148,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08123069256544113,
+            0.17343235835433
+          ]
+        },
+        {
+          "frame": 600,
+          "valid_count": 229152,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 3,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 2.3927714210003614e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07916709780693054,
+            0.16882959902286523
+          ]
+        },
+        {
+          "frame": 825,
+          "valid_count": 217279,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 2.548540578573011e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07815840095281601,
+            0.16736869663000106
+          ]
+        },
+        {
+          "frame": 1200,
+          "valid_count": 234662,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 2,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.07925216481089592,
+            0.16948826238512993
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "episode_0019_20260730_171242",
+      "frames": 1342,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 8,
+        "episode": "episode_0019_20260730_171242",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0019_20260730_171242/videos/head.mp4",
+        "frames": 1342,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1342,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1342,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 195.30623758025467,
+        "valid_ratio": 0.8229560616525509,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788850798.8066745
+      },
+      "valid_counts_from_ratios": {
+        "first": 262031,
+        "minimum": 78764,
+        "maximum": 262418,
+        "last": 78764
+      },
+      "zero_frames": 0,
+      "first_zero_frame": null,
+      "zeros_form_tail": false,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.7898378968238831,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1283398866653442,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.0072069233283400536,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1342,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 86016
+        },
+        "confidence.npy": {
+          "shape": [
+            1342,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1539113088
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1342
+          ],
+          "dtype": "int64",
+          "file_bytes": 10864
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1342,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 48440
+        },
+        "position.npy": {
+          "shape": [
+            1342,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4617339008
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1342
+          ],
+          "dtype": "float64",
+          "file_bytes": 10864
+        },
+        "uv_px.npy": {
+          "shape": [
+            1342,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3078226048
+        },
+        "valid.npy": {
+          "shape": [
+            1342,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 384778368
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1342
+          ],
+          "dtype": "float32",
+          "file_bytes": 5496
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 262031,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.99365234375,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.09132227301597595,
+            0.2058803290128708
+          ]
+        },
+        {
+          "frame": 671,
+          "valid_count": 241544,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 5,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 6.897171260789037e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08966382592916489,
+            0.2057991907000538
+          ]
+        },
+        {
+          "frame": 1341,
+          "valid_count": 78764,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 29,
+          "finite_xyz_fraction": 0.5877894810267857,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08110477775335312,
+            0.21622033119201675
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "episode_0019_20260731_134304",
+      "frames": 1430,
+      "query_slots": 286720,
+      "metadata": {
+        "index": 9,
+        "episode": "episode_0019_20260731_134304",
+        "video": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/raw_data/singlerighthand_sandwich_100/episode_0019_20260731_134304/videos/head.mp4",
+        "frames": 1430,
+        "fps": 30.0,
+        "width": 640,
+        "height": 480,
+        "mode": "3d_ff",
+        "coordinate": "camera_depthanythingv3",
+        "frames_inferred": 1430,
+        "inference_calls": 1,
+        "external_chunks": 0,
+        "query_frame": 0,
+        "pixel_queries": 286720,
+        "inference_height": 448,
+        "inference_width": 640,
+        "position_shape": [
+          1430,
+          448,
+          640,
+          3
+        ],
+        "metric_scale": true,
+        "inference_seconds": 209.11581550259143,
+        "valid_ratio": 0.7131457726843469,
+        "source_demo": "/mnt/shared-storage-gpfs2/ailab-eailabagent-gpfs/shichaojian/Track4World_portable/Track4World/demo.py",
+        "updated": 1788851037.6023993
+      },
+      "valid_counts_from_ratios": {
+        "first": 252931,
+        "minimum": 0,
+        "maximum": 252931,
+        "last": 0
+      },
+      "zero_frames": 70,
+      "first_zero_frame": 1360,
+      "zeros_form_tail": true,
+      "frame_ids_contiguous": true,
+      "timestamp_30fps_max_error": 0.0,
+      "intrinsics_first": [
+        [
+          0.7737416625022888,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          1.1053452491760254,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_max_change": 0.0,
+      "c2w_max_element_change": 0.005505173467099667,
+      "arrays": {
+        "c2w.npy": {
+          "shape": [
+            1430,
+            4,
+            4
+          ],
+          "dtype": "float32",
+          "file_bytes": 91648
+        },
+        "confidence.npy": {
+          "shape": [
+            1430,
+            448,
+            640
+          ],
+          "dtype": "float32",
+          "file_bytes": 1640038528
+        },
+        "frame_indices.npy": {
+          "shape": [
+            1430
+          ],
+          "dtype": "int64",
+          "file_bytes": 11568
+        },
+        "intrinsics.npy": {
+          "shape": [
+            1430,
+            3,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 51608
+        },
+        "position.npy": {
+          "shape": [
+            1430,
+            448,
+            640,
+            3
+          ],
+          "dtype": "float32",
+          "file_bytes": 4920115328
+        },
+        "timestamps_sec.npy": {
+          "shape": [
+            1430
+          ],
+          "dtype": "float64",
+          "file_bytes": 11568
+        },
+        "uv_px.npy": {
+          "shape": [
+            1430,
+            448,
+            640,
+            2
+          ],
+          "dtype": "float32",
+          "file_bytes": 3280076928
+        },
+        "valid.npy": {
+          "shape": [
+            1430,
+            448,
+            640
+          ],
+          "dtype": "bool",
+          "file_bytes": 410009728
+        },
+        "valid_ratio_per_frame.npy": {
+          "shape": [
+            1430
+          ],
+          "dtype": "float32",
+          "file_bytes": 5848
+        }
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "valid_count": 252931,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.9785356521606445,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08915793150663376,
+            0.2030360996723175
+          ]
+        },
+        {
+          "frame": 715,
+          "valid_count": 226325,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 17,
+          "finite_xyz_fraction": 1.0,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 2.651220711413771e-06,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.08963208273053169,
+            0.197690250724554
+          ]
+        },
+        {
+          "frame": 1359,
+          "valid_count": 7,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.11038295200892857,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0,
+          "normalized_K_projection_error_px_p50_p95": [
+            0.108401358127594,
+            0.22114220708608617
+          ]
+        },
+        {
+          "frame": 1360,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.047314453125,
+          "finite_confidence_fraction": 1.0,
+          "confidence_min": 0.0,
+          "confidence_max": 1.0
+        },
+        {
+          "frame": 1429,
+          "valid_count": 0,
+          "count_matches_ratio": true,
+          "valid_nonpositive_depth": 0,
+          "finite_xyz_fraction": 0.0,
+          "finite_confidence_fraction": 0.0,
+          "confidence_min": null,
+          "confidence_max": null
+        }
+      ]
+    }
+  ],
+  "total_npy_bytes": 98891395040
+}

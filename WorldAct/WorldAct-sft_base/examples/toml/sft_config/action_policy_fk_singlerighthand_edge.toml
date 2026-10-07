@@ -1,0 +1,72 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: OpenMDW-1.1
+
+# Edge-DROID single-right-hand policy SFT. Temporal settings live in the
+# registered experiment: 15 fps, 33 observations, 32 actions, one-frame stride.
+
+[job]
+task       = "vfm"
+experiment = "action_policy_singlerighthand_edge"
+project    = "cosmos3_action"
+group      = "action_sft"
+name       = "action_policy_fk_singlerighthand_edge"
+wandb_mode = "offline"
+
+[model]
+precision = "bfloat16"
+
+[model.parallelism]
+data_parallel_shard_degree     = 1
+data_parallel_replicate_degree = -1
+
+[model.activation_checkpointing]
+mode           = "full"
+save_ops_regex = ["fmha"]
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+[optimizer]
+lr = 2.0e-5
+
+[scheduler]
+cycle_lengths = [10000]
+f_max          = [1.0]
+f_min          = [0.0]
+f_start        = [0.0]
+warm_up_steps  = [100]
+
+[dataloader_train]
+# Per-rank microbatch. With DP=8 and no accumulation the effective global batch is 256.
+max_samples_per_batch = 32
+
+[trainer]
+max_iter        = 10000
+# Master gate for every callback that logs on an interval: the main WandBCallback
+# (train/loss, optim/lr, timers) at exactly this many steps, and the second one
+# (wandb_2x, callbacks/wandb_log.py, logging_iter_multipler=2) at twice it.  Also
+# paces IterSpeed / MFU / OFU / grad-clip / dataloader-state reporting.
+logging_iter    = 10
+grad_accum_iter = 1
+
+[trainer.callbacks.compile_tokenizer]
+enabled            = false # This cluster has the CUDA 12.8 runtime but no nvcc toolkit.
+warmup_resolutions = ["480"]
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+# Matches the PointFlow recipe this was ported from (action_policy_singlerighthand_edge
+# .toml on the sft side, and its runs save on the same 500-step lattice).  The
+# interval bounds how much work a crash can destroy, and this is not hypothetical:
+# the run before this one was killed at step 1329 and, at 2000, had not yet written
+# a single checkpoint -- 1.5 hours lost.  At 500 it would have kept step 500 and
+# 1000.
+#
+# The cost is disk, and it is real: there is no retention policy, so this keeps
+# every checkpoint it writes -- max_iter/500 = 20 x ~30 GB = ~600 GB, which is what
+# filled the quota at step 8200 two runs ago.  That is handled by DELETING old
+# checkpoints as the run goes, the way the PointFlow runs are kept small (that
+# recipe also saves every 500 and the surviving run directories hold only the last
+# handful).  Do not raise this interval to solve a disk problem: it trades a
+# bounded, recoverable loss for an unbounded, unrecoverable one.
+save_iter = 500
