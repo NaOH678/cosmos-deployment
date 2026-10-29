@@ -111,6 +111,114 @@ COSMOS_DEPLOYMENT_CONFIG=../WorldAct/WorldAct-sft-pointflow-fk/examples/deployme
 
 原生对照使用 `--backend native`，去掉 `--omni-*` 和 `--record-video`，其他模型及客户端配置保持一致。不要同时启动两个占用相同 GPU／端口或控制同一机器人的会话。
 
+## 原生 WAM 推理说明（2026-10-29 补充）
+
+本节只说明原生 PyTorch 的 WAM 推理，供部署和移植到其他加速卡使用；Omni、PointFlow/FK 不在本节范围内。
+
+### 1. 用到的目录
+
+| 目录 | 作用 |
+|---|---|
+| `WorldAct/WorldAct-sft-pointflow-fk/cosmos_framework/` | 推理源码（下文简写为 `cf/`） |
+| `WorldAct/WorldAct-sft-pointflow-fk/examples/deployment/*.yaml` | 服务端配置（相机、动作空间、采样参数） |
+| `WorldAct/WorldAct-sft-pointflow-fk/script/start_cosmos_local_policy_server.sh` | 服务端启动脚本 |
+| `wuji-hand-teleop-pipeline/` | ROS 客户端：采集观测、HTTP 调服务、执行动作块 |
+
+调用链：ROS `deployment_node` 每次把头部 + 右腕两张图和 27 维右手状态通过 HTTP 发给服务端，服务端返回 32 步动作；客户端按观测时间异步执行，重叠区平滑混合。
+
+### 2. 推理入口
+
+一次推理就是一次函数调用：
+
+```python
+samples = model.generate_samples_from_batch(batch, guidance=3.0, seed=[0], num_steps=4, shift=5.0)
+action  = samples["action"][0]          # [33, 27]，第 0 行是状态，取 [1:] 得到 32 步
+```
+
+- 模型加载：`cf/inference/inference.py::OmniInference.create(setup_args)`，读 DCP checkpoint 和训练时冻结的 `config.yaml`，用 EMA 权重。
+- batch 构建：`cf/inference/robot_policy/adapters.py::_build_batch`（官方对应实现 `cf/inference/action.py::build_action_batch`）。
+- 推理主体：`cf/model/generator/omni_mot_model.py::generate_samples_from_batch`。
+- 服务封装：`cf/inference/robot_policy/server.py`（HTTP），`adapters.py::_infer_native`。
+
+### 3. 输入 / 输出
+
+| 名称 | 形状 / 内容 |
+|---|---|
+| 视频 | `[3, 33, 736, 544]` uint8。第 0 帧：腕部 480×640 在上、头部 480×640 在下拼接，等比缩放后反射填充到 736×544；第 1～32 帧全 0 |
+| 动作 | `[33, 64]` fp32。第 0 行前 27 维是状态（右手 EEF 位置 3 + 四元数 xyzw 4 + 手指关节 20），其余全 0 |
+| 文本 | JSON 格式 prompt，由 `ActionPromptJsonFormatter` 生成 |
+| 其他 | `domain_id`、`conditioning_fps=15`、`image_size`、`sequence_plan`（mode=`wam`） |
+| 输出 | `samples["action"][0]`：`[33, 27]`；视频 latent 不需要解码 |
+
+32 步动作对应 15 Hz 下 2.13 s。
+
+#### 归一化 checkpoint
+
+如果训练 `config.yaml` 里有 `dataloader_train...singlerighthand.dataset.action_stats_path`，这是归一化训练的 checkpoint，部署端必须：
+- 状态进模型前做 `(x - offset) / scale`；
+- 输出动作做 `x * scale + offset`；四元数 4 维不变。
+
+实现在 `cf/inference/robot_policy/action_normalization.py`，adapter 自动加载，会校验 `action_stats_sha256`。没有这个字段的 checkpoint 不做归一化。
+
+### 4. 计算流程
+
+1. **文本**：tokenizer 转成 token。文本 K/V 在 4 个去噪步之间缓存复用（`mot/inference_text_kv_memory.py`）。
+2. **VAE 编码**：Wan2.2 VAE（`cf/model/generator/tokenizers/wan2pt2_vae_4x16x16.py`），时间 4×、空间 16× 压缩，48 通道。33 帧 → 9 个 latent，每个 46×34。只有第 0 个 latent 是条件，其余 8 个从噪声开始。
+3. **组装序列**：latent 按 2×2 patchify，每个 391 token，共 3519 个视频 token；加 33 个动作 token 和文本 token 拼成一条序列，3D mRoPE 位置编码。
+4. **去噪**：UniPC（`diffusion/samplers/fm_solvers_unipc.py`），4 步，shift=5.0。每步有条件/无条件各一次前向（CFG，guidance=3.0），共 8 次前向；guidance=1.0 时只需 4 次。视频和动作共用同一个 σ；第 0 个视频 latent 和第 0 个动作 token 保持干净。
+5. **输出**：取动作 token，（如需）反归一化，得到 32 步动作。
+
+### 5. 网络结构
+
+主干 Nemotron-2B-Dense-VL，按 Mixture-of-Transformers 改造（`cf/model/generator/mot/unified_mot.py`）：
+- 28 层，hidden 2048，16 个 query 头 / 8 个 KV 头（GQA），head_dim 128，MLP 9216，BF16。
+- 每层两套权重：und 处理文本，gen 处理视频和动作。
+- 注意力 `two_way`（`mot/attention.py::two_way_attention`）：文本之间因果；视频/动作 token 看全部 token，无 mask。batch=1 走 dense 分支，不需要 varlen。
+- 动作输入/输出投影是 `DomainAwareLinear`（`mot/domain_aware_linear.py`），按 `domain_id` 选权重。
+- VAE 内的注意力直接用 `F.scaled_dot_product_attention`。
+
+### 6. 移植到其他加速卡要改的地方
+
+| 位置 | 现状 | 建议 |
+|---|---|---|
+| 注意力后端 `cf/model/attention/backends.py` | 按 CUDA 架构号在 cudnn / flash2 / flash3 / natten 中选，没有纯 PyTorch 兜底 | 新增一个 SDPA 或厂商算子的后端：支持 GQA（16/8）、因果与非因果、BSHD 布局，只需 dense 路径 |
+| torch.compile | 推理默认开（`inference/common/args.py`：`use_torch_compile=True`） | 先关：setup 参数传 `use_torch_compile=False`（需加到 `OmniSetupOverrides`） |
+| CUDA Graph | 默认关 | 保持关 |
+| 写死的 `cuda` | adapter 里的 `device="cuda"`、`torch.cuda.synchronize()`；`omni_mot_model` 里的 `packed_sequence.to_cuda()` | 改成厂商 device，或用厂商 torch 插件映射 |
+| 分布式初始化 | 单进程也起 world_size=1 的 nccl 进程组（`adapters.py::_maybe_init_distributed`） | 换厂商通信后端或 gloo |
+| BF16 | 全模型 BF16 | 需要 BF16 矩阵乘 |
+| VAE | conv3d、groupnorm、SDPA | 一般不用改 |
+
+推理路径上没有自定义 triton kernel。
+
+### 7. 数值对齐
+
+1. 在 5090 上 dump 一次推理的输入（视频、动作、prompt、seed）和输出（每步 velocity、最终动作）。
+2. 新卡加载同一份输入，比较：第 0 帧 VAE latent、第 1 步有条件 velocity、最终动作。
+3. 5090 自己跑两次动作最大差就有 0.5～0.7，新卡差异在这个量级即可。逐层排查先比注意力输出。
+
+参考性能：5090，guidance 3.0、4 步，单次推理中位数约 591 ms，最好控制在 1 s 内。
+
+### 8. 在 5090 上启动（参考）
+
+checkpoint、`action_stats.json`、基座模型 `cosmos3-edge-droid`（tokenizer + VAE）需另外拷贝。训练产出的 `config.yaml` 复制为 `config.deploy.yaml`，把 `load_path`、`tokenizer_type`、`action_stats_path` 改成本机路径（sha256 不改）。
+
+```bash
+cd wuji-hand-teleop-pipeline
+COSMOS_DEPLOYMENT_CONFIG=../WorldAct/WorldAct-sft-pointflow-fk/examples/deployment/cosmos_sandwich_normalized_94train_20k_protocol_v2.yaml \
+./src/scripts/start_local_cosmos_deployment.sh \
+  --backend native \
+  --port 18006 \
+  --checkpoint-dir <ckpt_root>/sandwich_normalized_94train/iter_000020000 \
+  --model-config-file <ckpt_root>/sandwich_normalized_94train/config.deploy.yaml \
+  --model-package ../WorldAct/models/cosmos3-edge-droid \
+  --inference-repo ../WorldAct/WorldAct-sft-pointflow-fk \
+  --service-mode full \
+  --config /home/wuji/ros2_ws/src/wuji_data_pipeline/config/cosmos_protocol_v2_50k_retrain_async_blend.yaml
+```
+
+`--check-only` 只检查路径和导入，不加载模型。环境准备见 [外部依赖说明](docs/EXTERNAL_DEPENDENCIES.md)。
+
 ## 文档与维护
 
 - [完整优化／实验记录](wuji-hand-teleop-pipeline/docs/cosmos_5090_optimization_experiments_20261007.md)：5090 后端优化、论文 async+blend、实测对照。
