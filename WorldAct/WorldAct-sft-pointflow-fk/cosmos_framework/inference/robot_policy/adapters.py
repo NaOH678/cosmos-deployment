@@ -500,6 +500,8 @@ class SingleRightHandCosmosAdapter(ModelAdapter):
         super().__init__(config)
         self._ready = False
         self._lock = threading.Lock()
+        from .action_normalization import load_for_deployment
+        self._action_normalizer = load_for_deployment(config)
         self._load_model()
         if config.model.warmup:
             self._warmup()
@@ -592,7 +594,9 @@ class SingleRightHandCosmosAdapter(ModelAdapter):
         image_size = padded["image_size"]
 
         action = torch.zeros((target_frames, self.config.model.max_action_dim), dtype=torch.float32)
-        action[0, : self.config.model.native_action_dim] = torch.from_numpy(right_state)
+        normalizer = getattr(self, "_action_normalizer", None)
+        model_state = normalizer.normalize(right_state) if normalizer is not None else right_state
+        action[0, : self.config.model.native_action_dim] = torch.from_numpy(model_state)
         sequence_plan = build_sequence_plan_from_mode(
             mode="wam",
             video_length=target_frames,
@@ -658,7 +662,11 @@ class SingleRightHandCosmosAdapter(ModelAdapter):
             raise ProtocolError(
                 "COSMOS_INVALID_ACTION", f"Cosmos returned action shape {action.shape}, expected {expected_shape}"
             )
-        return np.asarray(action[1:], dtype=np.float32), inference_ms
+        actions = np.asarray(action[1:], dtype=np.float32)
+        normalizer = getattr(self, "_action_normalizer", None)
+        if normalizer is not None:
+            actions = normalizer.denormalize(actions)
+        return actions, inference_ms
 
     def _warmup(self) -> None:
         images = {
